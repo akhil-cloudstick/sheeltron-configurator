@@ -44,14 +44,16 @@ export function homeForRole(role: Role): string {
  * (surfaced as a button on each product page, not a separate nav item).
  */
 export function navForRole(role: Role): NavGroup[] {
-  // Salesman has its own slim nav: start a quote (configurator) + their own quotes.
+  // Salesman has its own slim nav: the two ways to start a quote (build to order or
+  // pick a ready compatible setup) + their own quotes.
   if (role === 'salesman') {
     return [
       {
         id: 'sell',
         title: 'Sell',
         items: [
-          { to: '/configurator', label: 'New quote', real: true },
+          { to: '/configurator/processor', label: 'Build to order', real: true },
+          { to: '/configurator/compatibility', label: 'Compatibility', real: true },
           { to: '/quotes', label: 'My quotes', real: true },
         ],
       },
@@ -89,7 +91,7 @@ export function navForRole(role: Role): NavGroup[] {
       title: 'Pricing & Rules',
       items: [
         { to: '/pricing/bulk', label: 'Bulk price update' },
-        { to: '/compatibility', label: 'Compatible packs', real: true },
+        { to: '/compatibility', label: 'Compatibility', real: true },
       ],
     })
   }

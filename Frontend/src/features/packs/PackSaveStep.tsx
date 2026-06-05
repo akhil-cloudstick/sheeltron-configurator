@@ -72,13 +72,13 @@ export function PackSaveStep() {
         <div className="text-meta uppercase tracking-wider text-accent">Saved</div>
         <h1 className="mt-1 font-display text-2xl font-bold leading-tight text-primary">{saved.pack_number}</h1>
         <p className="mt-1 max-w-sm text-caption text-muted">
-          "{saved.name}" is now available to the sales team as a ready-made pack.
+          "{saved.name}" is now available to the sales team under Compatibility.
         </p>
         <div className="mt-5 flex gap-2">
           <Button variant="secondary" onClick={buildAnother}>
-            Build another pack
+            Build another
           </Button>
-          <Button onClick={() => navigate('/compatibility')}>Back to packs</Button>
+          <Button onClick={() => navigate('/compatibility')}>Back to Compatibility</Button>
         </div>
       </div>
     )

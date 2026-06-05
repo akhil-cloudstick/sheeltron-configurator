@@ -61,8 +61,8 @@ export function PacksPage() {
     <div className="flex h-full flex-col gap-3">
       <div className="flex items-start justify-between gap-3">
         <PageHeader
-          title="Compatible packs"
-          description="Prebuilt, socket-compatible server bundles your sales team can sell in one pick."
+          title="Compatibility"
+          description="Prebuilt, socket-compatible server setups your sales team can sell in one pick."
         />
         <Button onClick={() => navigate('/compatibility/build')}>
           <IconPlus width={14} height={14} />
@@ -99,7 +99,11 @@ export function PacksPage() {
             </tr>
           ) : (
             packs.map((p) => (
-              <TR key={p.id}>
+              <tr
+                key={p.id}
+                onClick={() => navigate(`/compatibility/${p.id}`)}
+                className="cursor-pointer border-b border-border last:border-0 hover:bg-subtle/70"
+              >
                 <TD className="font-mono font-semibold text-primary">{p.pack_number}</TD>
                 <TD>
                   <div className="text-primary">{p.name || '—'}</div>
@@ -112,11 +116,17 @@ export function PacksPage() {
                   {p.created_at ? new Date(p.created_at).toLocaleString() : '—'}
                 </TD>
                 <TDActions>
-                  <IconButton label="Delete pack" onClick={() => setToDelete(p)}>
+                  <IconButton
+                    label="Delete pack"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setToDelete(p)
+                    }}
+                  >
                     <IconTrash width={15} height={15} />
                   </IconButton>
                 </TDActions>
-              </TR>
+              </tr>
             ))
           )}
         </tbody>

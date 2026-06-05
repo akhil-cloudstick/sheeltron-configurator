@@ -12,7 +12,7 @@ import { PricingSection } from '@/features/pricing/PricingSection'
 import { BulkPriceUpdate } from '@/features/pricing/BulkPriceUpdate'
 import { CoveragePage } from '@/features/coverage/CoveragePage'
 import { ConfiguratorLayout } from '@/features/configurator/ConfiguratorLayout'
-import { ConfiguratorHome } from '@/features/configurator/ConfiguratorHome'
+import { CompatibilityPicker } from '@/features/configurator/CompatibilityPicker'
 import { ProcessorStep } from '@/features/configurator/steps/ProcessorStep'
 import { ChassisStep } from '@/features/configurator/steps/ChassisStep'
 import { RamStep } from '@/features/configurator/steps/RamStep'
@@ -20,6 +20,7 @@ import { StorageStep } from '@/features/configurator/steps/StorageStep'
 import { ReviewStep } from '@/features/configurator/steps/ReviewStep'
 import { PACK_STEP_ORDER } from '@/features/configurator/configuratorSteps'
 import { PacksPage } from '@/features/packs/PacksPage'
+import { PackDetailPage } from '@/features/packs/PackDetailPage'
 import { PackSaveStep } from '@/features/packs/PackSaveStep'
 import { QuotesPage } from '@/features/quotes/QuotesPage'
 import { QuoteDetailPage } from '@/features/quotes/QuoteDetailPage'
@@ -65,6 +66,7 @@ export default function App() {
                 <Route path="compatibility" element={<Navigate to="/compatibility" replace />} />
               </Route>
               <Route path="compatibility" element={<PacksPage />} />
+              <Route path="compatibility/:id" element={<PackDetailPage />} />
               {/* Pack builder — wizard embedded in the admin shell (sidebar stays). */}
               <Route
                 path="compatibility/build"
@@ -80,11 +82,12 @@ export default function App() {
             </Route>
 
             {/* Salesman configurator — embedded in the admin shell (sidebar stays). The
-                entry page offers two options (build to order / ready-made pack); the
-                wizard steps live under it. */}
+                two entry points (Build to order / Compatibility) are sidebar items; the
+                wizard steps and the compatibility picker live under /configurator. */}
             <Route element={<RoleRoute roles={['salesman']} />}>
               <Route path="configurator">
-                <Route index element={<ConfiguratorHome />} />
+                <Route index element={<Navigate to="/configurator/processor" replace />} />
+                <Route path="compatibility" element={<CompatibilityPicker />} />
                 <Route element={<ConfiguratorLayout embedded />}>
                   <Route path="processor" element={<ProcessorStep />} />
                   <Route path="chassis" element={<ChassisStep />} />
