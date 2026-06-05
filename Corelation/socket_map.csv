@@ -1,0 +1,17 @@
+vendor,family_or_pattern,socket,typical_ram,note
+AMD,EPYC 7000 / 7xFx / 7Bxx / 7Cxx / 7Rxx / 7Hxx / 7Kxx,SP3,DDR4,"Naples/Rome/Milan, 1-2P server"
+AMD,EPYC 8xxx,SP6,DDR5,"Siena, edge/1P server"
+AMD,EPYC 9xxx / 9Bxx,SP5,DDR5,"Genoa/Bergamo/Turin, 1-2P server"
+AMD,Threadripper PRO / xxxxWX,sWRX8,DDR4,workstation - NOT a server (excluded)
+AMD,Ryzen,AM4/AM5,DDR4/5,desktop - NOT a server (excluded)
+Intel,Xeon Scalable x1xx/x2xx (2nd digit 1-2),LGA3647,DDR4,Gen1/2 Skylake/Cascade Lake
+Intel,Xeon Scalable x3xx (2nd digit 3),LGA4189,DDR4,Gen3 Ice Lake / Cooper Lake
+Intel,Xeon Scalable x4xx/x5xx (2nd digit 4-5),LGA4677,DDR5,Gen4/5 Sapphire/Emerald Rapids
+Intel,Xeon E5-26xx v3/v4,LGA2011-3,DDR4,Haswell/Broadwell-EP
+Intel,Xeon E5-26xx v1/v2,LGA2011,DDR3,Sandy/Ivy Bridge-EP
+Intel,Xeon E5-46xx (4P),LGA2011,DDR3,4-socket EP
+Intel,"Xeon 55xx/56xx, X55xx/X56xx",LGA1366,DDR3,Nehalem/Westmere-EP legacy (review)
+Intel,"Xeon E-21xx/23xx, E3 v5/v6",LGA1151,DDR4,entry 1P server (review)
+Intel,Xeon E7 x8xx / 75xx,LGA1567/2011,DDR3/4,EX 4-8P legacy (review)
+Intel,Xeon W-2xxx,LGA2066,DDR4,workstation (review)
+Intel,Core i / Pentium / Celeron,(none),-,desktop - NOT a server (excluded)

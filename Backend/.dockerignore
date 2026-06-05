@@ -1,0 +1,7 @@
+# Local artifacts — never ship these into the image
+.env
+*.exe
+*.out
+*.err
+docker-compose.yml
+README.md

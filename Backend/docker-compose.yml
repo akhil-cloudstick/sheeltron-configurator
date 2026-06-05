@@ -1,0 +1,24 @@
+# For the LATER move to a shared DB. Not needed for local testing.
+# When ready: run `docker compose up -d db` on the shared host (e.g. ZAISERVER),
+# then set DB_HOST in every dev's .env to that host. No code change required.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sheeltron_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sheeltron
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sheeltron"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

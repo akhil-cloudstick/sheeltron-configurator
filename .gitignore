@@ -1,0 +1,23 @@
+# --- Secrets: NEVER commit (DB credentials, API base URLs) ---
+.env
+Backend/.env
+Frontend/.env
+Frontend/.env.local
+
+# --- Frontend ---
+Frontend/node_modules/
+Frontend/dist/
+
+# --- Backend build artifacts ---
+Backend/configurator
+Backend/configurator.exe
+*.exe
+
+# --- Logs ---
+*.out
+*.err
+
+# --- Local tooling / OS ---
+.claude/
+.DS_Store
+Thumbs.db

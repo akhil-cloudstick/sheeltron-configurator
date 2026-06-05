@@ -1,0 +1,385 @@
+stock_id,brand,family,series,model,cores,threads,base_ghz,turbo_ghz,cache,condition_new,condition_refurbished,socket,is_server,needs_review,socket_note
+5,AMD,AMD EPYC,,AMD EPYC 3995WX,64 Cores,128 Threads,2.70 GHz,4.2 GHz,256 MB,no,no,sWRX8,no,yes,Threadripper PRO / workstation - not a server socket
+6,AMD,AMD EPYC,AMD EPYC 72F3,AMD EPYC 72F3,8 Cores,16 Threads,3.70 GHz,4.10 GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+7,AMD,AMD EPYC,,AMD EPYC 73F3,3 Cores,32 Threads,3.5 GHz,4.0 GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+8,AMD,AMD EPYC,AMD EPYC 73F3,AMD EPYC 73F3 PROCESSOR,16 Cores,32 Threads,3.5 GHz,4GHz,128MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+9,AMD,AMD EPYC,AMD EPYC 74F3,AMD EPYC 74F3 24 Core 3.2 GHz Processor,24 Cores,48 Threads,3.20 GHz,4.00 GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+10,AMD,AMD EPYC,AMD EPYC 75F3,AMD EPYC 75F3 Processor,32 Cores,64 Threads,2.95GHz,4.0GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+11,AMD,AMD EPYC,AMD EPYC 7B13,AMD EPYC 7B13 PROCESSOR,64 Cores,128 Threads,2.2 GHz,3.7 Ghz,64 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+12,AMD,AMD EPYC,AMD EPYC 7C13,AMD EPYC 7C13,64 Cores,128 Threads,2.25GHz,2.675GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+13,AMD,AMD EPYC,AMD EPYC 7H12,AMD EPYC 7H12,64 Cores,128 Threads,2.60 GHz,3.30 GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+14,AMD,AMD EPYC,AMD EPYC 7K62,AMD EPYC 7K62,48 Cores,96 Threads,2.6 GHz,3.3 GHz,192 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+15,AMD,AMD EPYC,AMD EPYC 7R13,AMD EPYC 7R13,64 Cores,128 Threads,2 GHz,304Ghz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+16,AMD,AMD EPYC,AMD EPYC 9B14,AMD EPYC 9B14,96 Cores,192 Threads,2.60GHz,3.7 GHz,384MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+17,AMD,AMD EPYC 7000 Series,AMD EPYC 7251,AMD EPYC 7251 Processor,8 Cores,16 Threads,2.1GHz,2.9GHz,32MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+18,AMD,AMD EPYC 7000 Series,AMD EPYC 7252,AMD EPYC 7252 Processor,8 Cores,16 Threads,3.1GHz,3.2GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+19,AMD,AMD EPYC 7000 Series,AMD EPYC 7262,AMD EPYC 7262 Processor,8 Cores,16 Thread,3.2 GHz,3.40GHz,128MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+20,AMD,AMD EPYC 7000 Series,AMD EPYC 7282,AMD EPYC 7282 Processor,,32 Threads,2.8GHz,3.2GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+21,AMD,AMD EPYC 7000 Series,AMD EPYC 7302P,AMD EPYC 7302P,16 Cores,32 Threads,3.00 GHz,3.30 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+22,AMD,AMD EPYC 7000 Series,AMD EPYC 7313,AMD EPYC 7313 Processor,16 Cores,32 Threads,3.00 GHz,3.2GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+23,AMD,AMD EPYC 7000 Series,AMD EPYC 7343,AMD EPYC 7343,16 Cores,32 Threads,3.2 GHz,3.9 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+24,AMD,AMD EPYC 7000 Series,,AMD EPYC 7351,7351 Cores,32 Threads,2.40 GHz,2.90GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+25,AMD,AMD EPYC 7000 Series,AMD EPYC 7351,AMD EPYC 7351 Processor,,32 Threads,2.4GHz,2.9GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+26,AMD,AMD EPYC 7000 Series,AMD EPYC 7373X,AMD EPYC 7373X PROCESSOR,16 Cores,16 Cores,3 GHz,3.5 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+27,AMD,AMD EPYC 7000 Series,AMD EPYC 7401,AMD EPYC 7401 Processor,24 Cores,48 Threads,2.0GHz,3.0GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+28,AMD,AMD EPYC 7000 Series,AMD EPYC 7401P,AMD EPYC 7401P Processor,24 Cores,48 Threads,2.0GHz,3.0GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+29,AMD,AMD EPYC 7000 Series,AMD EPYC 7402,AMD EPYC 7402 Processor,24 Cores,48 Threads,2.8GHz,3.35GHz,128MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+30,AMD,AMD EPYC 7000 Series,AMD EPYC 7402P,AMD EPYC 7402P PROCESSOR,24 Cores,48 Threads,2.20 GHz,3.35 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+31,AMD,AMD EPYC 7000 Series,AMD EPYC 7413,AMD EPYC 7413,24 Cores,48 Threads,2.65 GHz,3.60 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+32,AMD,AMD EPYC 7000 Series,AMD EPYC 7443P,AMD EPYC 7443P PROCESSOR,24 Cores,48 Threads,2.85 GHz,3.75 GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+33,AMD,AMD EPYC 7000 Series,AMD EPYC 7451,AMD EPYC 7451 Processor,,48 Threads,2.3GHz,3.2GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+34,AMD,AMD EPYC 7000 Series,AMD EPYC 7452,AMD EPYC 7452 Processor,32 Cores,64 Threads,2.3GHz,3.35GHz,128MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+35,AMD,AMD EPYC 7000 Series,AMD EPYC 7453,AMD EPYC 7453,28 Cores,56 Threads,2.75 GHz,3.45 GHz,64 MB L3,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+36,AMD,AMD EPYC 7000 Series,AMD EPYC 7473X,AMD EPYC 7473X Processor,24 Cores,48 Threads,2.8GHz,3.7GHz,768MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+37,AMD,AMD EPYC 7000 Series,AMD EPYC 7502,AMD EPYC 7502 PROCESSOR,32 Cores,64 Threads,2.50 GHz,3.35GHz,128MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+38,AMD,AMD EPYC 7000 Series,AMD EPYC 7542,AMD EPYC 7542 PROCESSOR,32 Cores,64 Threads,2.90 GHz,3.4GHz,128 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+39,AMD,AMD EPYC 7000 Series,AMD EPYC 7543,AMD EPYC 7543 Processor,,64 Threads,2.8GHz,3.7GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+40,AMD,AMD EPYC 7000 Series,AMD EPYC 7543P,AMD EPYC 7543P,32 Cores,64 Threads,2.7GHz,3.25GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+41,AMD,AMD EPYC 7000 Series,AMD EPYC 7551,AMD EPYC 7551 Processor,32 Cores,64 Threads,2.0 GHz,3. 6GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+42,AMD,AMD EPYC 7000 Series,AMD EPYC 7573X,AMD EPYC 7573X Processor,32 Cores,64 Threads,2.8GHz,3.6GHz,,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+43,AMD,AMD EPYC 7000 Series,AMD EPYC 7601,AMD EPYC 7601 Processor,,64 Threads,2.20GHz,3.2GHz,64MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+44,AMD,AMD EPYC 7000 Series,AMD EPYC 7642,AMD EPYC 7642,48 Cores,96 Threads,2.3 GHz,3.6 GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+45,AMD,AMD EPYC 7000 Series,AMD EPYC 7643,AMD EPYC 7643,48 Cores,96 Threads,2.3 GHz,3.6 GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+46,AMD,AMD EPYC 7000 Series,AMD EPYC 7662,AMD EPYC 7662 Processor,64 Cores,128 Threads,2.0GHz,3.3GHz,256 MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+47,AMD,AMD EPYC 7000 Series,AMD EPYC 7663,AMD EPYC 7663 PROCESSOR,56 Cores,112 Threads,2 GHz,3.5GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+48,AMD,AMD EPYC 7000 Series,AMD EPYC 7713,AMD EPYC 7713 Processor,64 Cores,128 Threads,2.0GHz,3.675GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+49,AMD,AMD EPYC 7000 Series,AMD EPYC 7713P,AMD EPYC 7713P Processor,64 Cores,128 Threads,2.0GHz,3.67GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+50,AMD,AMD EPYC 7000 Series,AMD EPYC 7742,AMD EPYC 7742 Processor,64 Cores,128 Threads,2.25GHz,3.4GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+51,AMD,AMD EPYC 7000 Series,AMD EPYC 7763,AMD EPYC 7763 Processor,64 Cores,128 Threads,2.45 GHz,3.5GHz,256MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+52,AMD,AMD EPYC 7000 Series,AMD EPYC 7773X,AMD EPYC 7773X Processor,64 Cores,128 Threads,2.2GHz,3.5GHz,768MB,no,no,SP3,yes,no,AMD EPYC 7000 (Naples/Rome/Milan)
+53,AMD,AMD EPYC 8000 Series,AMD EPYC 8024PN,AMD EPYC 8024PN 8Core 2.05 GHz Processor,8 Cores,16 Threads,2.05 GHz,3 GHz,32 MB,no,no,SP6,yes,no,AMD EPYC 8000 (Siena)
+54,AMD,AMD EPYC 8000 Series,,AMD EPYC 8124PN,16 Cores,32 Threads,2.00 GHz,3.00 GHz,64MB,no,no,SP6,yes,no,AMD EPYC 8000 (Siena)
+55,AMD,AMD EPYC 8000 Series,AMD EPYC 8124PN,AMD EPYC 8124PN PROCESSOR,16 Cores,32 Threads,2 GHz,3 GHz,32MB,no,no,SP6,yes,no,AMD EPYC 8000 (Siena)
+56,AMD,AMD EPYC 8000 Series,AMD EPYC 8224PN,AMD EPYC 8224PN 24 Core 2 GHz Processor,24 Cores,48 Threads,2 GHz,3.2GHz,32 MB,no,no,SP6,yes,no,AMD EPYC 8000 (Siena)
+57,AMD,AMD EPYC 8000 Series,AMD EPYC 8534P,AMD EPYC 8534P PROCESSOR,64 Cores,128 Threads,2.2 GHz,3.7 GHz,128 MB,no,no,SP6,yes,no,AMD EPYC 8000 (Siena)
+58,AMD,AMD EPYC 9000 Series,,AMD EPYC 9124,9124 Cores,32 Threads,3.00 GHz,3.70GHz,,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+59,AMD,AMD EPYC 9000 Series,AMD EPYC 9124,AMD EPYC 9124 16 Core 3.0GHz Processor,16 Cores,32 Threads,3.0GHz,3.6GHz,64MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+60,AMD,AMD EPYC 9000 Series,AMD EPYC 9174F,AMD EPYC 9174F Processor,,32 Threads,4.1GHz,4.4GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+61,AMD,AMD EPYC 9000 Series,AMD EPYC 9184X,AMD EPYC 9184X,16 Cores,32 Threads,4.20 GHz,3.6 GHz,128MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+62,AMD,AMD EPYC 9000 Series,AMD EPYC 9274F,AMD EPYC 9274F 24 Core 4.05GHz Processor,24 Cores,48 Threads,4.05GHz,4.30GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+63,AMD,AMD EPYC 9000 Series,AMD EPYC 9334,AMD EPYC 9334 Processor,32 Cores,64 Threads,2.7GHz,3.9GHz,128MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+64,AMD,AMD EPYC 9000 Series,AMD EPYC 9354,AMD EPYC 9354 Processor,32 Cores,64 Threads,3.25GHz,3.80GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+65,AMD,AMD EPYC 9000 Series,AMD EPYC 9354P,AMD EPYC 9354P,32 Cores,64 Threads,2.3GHz,3.25GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+66,AMD,AMD EPYC 9000 Series,AMD EPYC 9374F,AMD EPYC 9374F Processor,32 Cores,64 Threads,3.85GHz,4.30GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+67,AMD,AMD EPYC 9000 Series,,AMD EPYC 9384X,,64 Threads,3.1GHz,3.9 GHz,768 MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+68,AMD,AMD EPYC 9000 Series,AMD EPYC 9474F,AMD EPYC 9474F Processor,48 Cores,96 Threads,3.6GHz,4.1GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+69,AMD,AMD EPYC 9000 Series,AMD EPYC 9534,AMD EPYC 9534 Processor,64 Cores,128 Threads,2.45GHz,3.75GHz,256 MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+70,AMD,AMD EPYC 9000 Series,AMD EPYC 9554,AMD EPYC 9554 Processor,64 Cores,128 Threads,3.1GHz,3.75GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+71,AMD,AMD EPYC 9000 Series,,AMD EPYC 9575F,64 Cores,128 Threads,3.3 GHz,5 GHz,256 MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+72,AMD,AMD EPYC 9000 Series,AMD EPYC 9654,AMD EPYC 9654 Processor,,192 Threads,2.4GHz,3.7GHz,384MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+73,AMD,AMD EPYC 9000 Series,AMD EPYC 9684X,AMD EPYC 9684X,,192 Threads,2.55GHz,3.7 GHz,384MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+74,AMD,AMD EPYC 9000 Series,AMD EPYC 9734,AMD EPYC 9734 Processor,112 Cores,224 Threads,2.20GHz,3.00GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+75,AMD,AMD EPYC 9000 Series,AMD EPYC 9754,AMD EPYC 9754 Processor,128 Cores,256 Threads,2.25 GHz,3.10GHz,256MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+76,AMD,AMD EPYC 9000 Series,AMD EPYC 9755,AMD EPYC 9755,128 Cores,256 Threads,2.7 GHz,4.1 GHz,512MB,no,no,SP5,yes,no,AMD EPYC 9000 (Genoa/Bergamo/Turin)
+77,AMD,AMD Ryzen,,AMD RYZEN 5955WX,16 Cores,32 Threads,4.00GHz,4.5,64MB,no,no,sWRX8,no,yes,Threadripper PRO / workstation - not a server socket
+78,AMD,AMD Ryzen,,AMD RYZEN 9 7950X3D,16 Cores,32 Threads,4.2 GHz,5.7 GHz,64MB,no,no,AM5,no,yes,Ryzen desktop - not a server socket
+79,AMD,AMD Ryzen,AMD RYZEN,AMD RYZEN 9 PRO 7945,12 Cores,24 Threads,3.7GHz,5.40 GHz,64 MB,no,no,AM5,no,yes,Ryzen desktop - not a server socket
+80,AMD,AMD Threadripper PRO,AMD EPYC THREADRIPPER PRO 3945WX,AMD EPYC 3945WX,12 Cores,24 Threads,4.00 GHz,4.3 GHz,2TB,no,no,sWRX8,no,yes,Threadripper PRO / workstation - not a server socket
+81,AMD,AMD Threadripper PRO,,AMD EPYC 3975WX,,64 Threads,3.50 GHz,4.2 GHz,2TB,no,no,sWRX8,no,yes,Threadripper PRO / workstation - not a server socket
+82,AMD,AMD Threadripper PRO,AMD RYZEN,Amd Ryzen Threadripper Pro 5995WX Processor,64 Cores,128 Threads,2.7GHz,4.5GHz,256MB,no,no,sWRX8,no,yes,Threadripper PRO / workstation - not a server socket
+83,Intel,Intel Celeron,Intel Celeron,Intel® Celeron® G3900,2 Cores,2 Threads,2.80 GHz,,2 MB,no,no,,no,yes,Desktop CPU - not a server part
+84,Intel,Intel Core i Series,Intel Core i3,Intel® Core™ i3-2100,2 Cores,4,3.10 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+85,Intel,Intel Core i Series,Intel Core i3,Intel® Core™ i3-2120,2 Cores,4,3.30 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+86,Intel,Intel Core i Series,Intel Core i3,Intel® Core™ i3-3240,2 Cores,4,3.40 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+87,Intel,Intel Core i Series,Intel Core i3,Intel® Core™ i3-4130,2 Cores,4,3.40 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+88,Intel,Intel Core i Series,Intel Core i3,Intel® Core™ i3-4160T,2 Cores,4,3.10 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+89,Intel,Intel Core i Series,Intel Core i5,Intel® Core™ i5-11600K,6 Cores,4,3.90 GHz,4.90 GHz,12 MB,no,no,,no,yes,Desktop CPU - not a server part
+90,Intel,Intel Core i Series,Intel Core i5,Intel® Core™ i5-4300M,2 Cores,4,2.60 GHz,3.30 GHz,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+91,Intel,Intel Core i Series,Intel Core i5,Intel® Core™ i5-4310M,2 Cores,4,2.70 GHz,3.40 GHz,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+92,Intel,Intel Core i Series,Intel Core i5,Intel® Core™ i5-4570T,2 Cores,4,2.90 GHz,3.60 GHz,4 MB,no,no,,no,yes,Desktop CPU - not a server part
+93,Intel,Intel Core i Series,Intel Core i7,Intel® Core™ i7-4600M,2 Cores,8,3.40 GHz,4.00 GHz,8 MB,no,no,,no,yes,Desktop CPU - not a server part
+94,Intel,Intel Core i Series,Intel Core i7,Intel® Core™ i7-6700,4 Cores,8,3.40 GHz,4.00 GHz,8 MB,no,no,,no,yes,Desktop CPU - not a server part
+95,Intel,Intel Core i Series,Intel Core i3,Intel® Core™i3-4150,2 Cores,4,3.50 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+96,Intel,Intel Core i Series,Intel Core i3,Intel® Core™i3-7100,2 Cores,4,3.90 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+97,Intel,Intel Core i Series,Intel Core i9,Intel® Xeon™ i9-10980XE,18 Cores,36,3.00 GHz,4.60 GHz,4.60 GHz,no,no,,no,yes,Desktop CPU - not a server part
+98,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® E5800,2 Cores,,3.20 GHz,,2 MB,no,no,,no,yes,Desktop CPU - not a server part
+99,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® G2020,2 Cores,2,2.90 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+100,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® G3220,2 Cores,2,3.00 GHz,2.80 GHz,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+101,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® G630,2 Cores,2,2.70 GHz,2.80 GHz,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+102,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® G640,2 Cores,2,2.80 GHz,2.8 GHz,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+103,Intel,Intel Pentium,Intel Pentium,Intel® Pentium® G645,2 Cores,2,2.90 GHz,,3 MB,no,no,,no,yes,Desktop CPU - not a server part
+104,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E2180,2 Cores,2 Threads,2.00 GHz,,1 MB L2 Cache,no,no,,no,yes,unresolved
+105,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E2410 Processor,6 Cores,,1.60GHz,,1 MB L2 Cache,no,no,,no,yes,unresolved
+106,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E5506,4 Cores,4 Threads,2.13GHz,0GHz,4MB,no,no,,no,yes,unresolved
+107,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E5520,4 Cores,8 Threads,2.26GHz,2.53GHz,8 MB,no,no,,no,yes,unresolved
+108,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E5540,4 Cores,8 Threads,2.53GHz,2.80GHz,8 MB,no,no,,no,yes,unresolved
+109,Intel,Intel Xeon,Intel Xeon E Series,Intel Xeon E7520,4 Cores,8 Threads,1.87GHz,1.87GHz,18 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+110,Intel,Intel Xeon,Intel Xeon W,Intel Xeon W-2104,,4 Threads,3.20 GHz,,8.25 MB,no,no,LGA2066,no,yes,Xeon W workstation
+111,Intel,Intel Xeon,Intel Xeon W,Intel Xeon W-2133,6 Cores,12 Threads,3.60 GHz,3.90 GHz,8.25 MB,no,no,LGA2066,no,yes,Xeon W workstation
+112,Intel,Intel Xeon,Intel Xeon W,Intel Xeon W3520,,8 Threads,2.66 GHz,2.93 GHz,8 MB,no,no,LGA2066,no,yes,Xeon W workstation
+113,Intel,Intel Xeon,Intel Xeon W,Intel Xeon W3530,,8 Threads,2.80 GHz,3.06 GHz,8 MB,no,no,LGA2066,no,yes,Xeon W workstation
+114,Intel,Intel Xeon,Intel Xeon W,Intel Xeon W3550,,8 Threads,3.06 GHz,3.33 GHz,8 MB,no,no,LGA2066,no,yes,Xeon W workstation
+115,Intel,Intel Xeon,Intel Xeon X,Intel Xeon X3450,,8 Threads,2.66 GHz,3.20 GHz,8 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+116,Intel,Intel Xeon,Intel Xeon X,Intel Xeon X5650,,12 Threads,2.66 GHz,3.06 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+117,Intel,Intel Xeon,Intel Xeon X,Intel Xeon X5690,,12 Threads,3.46 GHz,3.73 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+118,Intel,Intel Xeon,Intel Xeon,Intel® Xeon® 6336Y,24 Cores,48 Threads,2.40 GHz,3.60 GHz,36 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+119,Intel,Intel Xeon,Intel Xeon,Intel® Xeon® 6348H,24 Cores,48 Threads,2.30 GHz,4.20 GHz,33 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+120,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2104G,4 Cores,4 Threads,3.20GHz,4.30 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+121,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2124,4 Cores,4 Threads,3.30GHz,4.30 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+122,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2144G,4 Cores,8,3.60GHz,4.50 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+123,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2314,4 Cores,4 Threads,2.80 GHz,4.50 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+124,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2336,6 Cores,12 Threads,2.90 GHz,4.80 GHz,12 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+125,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E-2356G,6 Cores,12 Threads,2.90 GHz,4.80 GHz,12 MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+126,Intel,Intel Xeon,Intel Xeon,Intel® Xeon® E4500,02 Cores,2,2.20 GHz,,2 MB,no,no,,no,yes,unresolved
+127,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5400,2 Cores,,2.70GHz,,2 MB L2 Cache,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+128,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5405,4 Cores,4 Threads,2.13 GHz,,12 MB L2 Cache,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+129,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5410,4 Cores,4 Threads,2.33GHz,,12MB,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+130,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5430,4 Cores,4 Threads,2.66 GHz,,12 MB,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+131,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5440,4 Cores,4 Threads,2.83GHz,0GHz,12MB,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+132,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5450,4 Cores,4 Threads,3.00GHz,0GHz,12MB,no,no,LGA771,no,yes,Xeon 5400/5300 (Harpertown) very old
+133,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5504,4 Cores,4 Threads,2.00 GHz,,4 MB,no,no,,no,yes,unresolved
+134,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5507 Processor,4 Cores,4 Threads,,,4 MB,no,no,,no,yes,unresolved
+135,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5603,4 Cores,8 Threads,1.60 GHz,3.80 GHz,4 MB,no,no,,no,yes,unresolved
+136,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5620,4 Cores,8 Threads,2.40GHz,2.66GHz,12MB,no,no,,no,yes,unresolved
+137,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5630,4 Cores,8 Threads,2.53GHz,2.80 GHz,12 MB,no,no,,no,yes,unresolved
+138,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5645,06 Cores,12 Threads,2.40 GHz,2.67 GHz,12MB,no,no,,no,yes,unresolved
+139,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E5649,6 Cores,12,2.53 GHz,2.93 GHz,12 MB,no,no,,no,yes,unresolved
+140,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E6510,4 Cores,8 Threads,1.73 GHz,1.73 GHz,12 MB,no,no,,no,yes,unresolved
+141,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E6540,6 Cores,12,2.00 GHz,2.27 GHz,12 MB,no,no,,no,yes,unresolved
+142,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon® E7530,6 Cores,12 Threads,1.87 GHz,2.13 GHz,12 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+143,Intel,Intel Xeon,Intel Xeon,Intel® Xeon® L5520,4 Cores,8 Threads,2.26 GHz,2.48 GHz,8 MB,no,no,LGA1366,no,yes,Xeon L-series legacy
+144,Intel,Intel Xeon,Intel Xeon,Intel® Xeon® L7555,8 Cores,16 Threads,1.877 GHz,2.53 GHz,24 MB L3 Cache,no,no,LGA1366,no,yes,Xeon L-series legacy
+145,Intel,Intel Xeon,Intel Xeon W,Intel® Xeon® W-2102,4 Cores,4 Threads,2.90 GHz,,8.25 MB,no,no,LGA2066,no,yes,Xeon W workstation
+146,Intel,Intel Xeon,Intel Xeon W,Intel® Xeon® W-2123,4 Cores,8 Threads,3.60 GHz,3.90 GHz,8.25 MB,no,no,LGA2066,no,yes,Xeon W workstation
+147,Intel,Intel Xeon,Intel Xeon W,Intel® Xeon® W-2125,4 Cores,8 Threads,4.00 GHz,4.50 GHz,8.25 MB,no,no,LGA2066,no,yes,Xeon W workstation
+148,Intel,Intel Xeon,Intel Xeon W,Intel® Xeon® W-2145,8 Cores,16 Threads,3.70 GHz,4.50 GHz,4.50 GHz,no,no,LGA2066,no,yes,Xeon W workstation
+149,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X3430,4 Cores,4,2.40GHz,2.80 GHz,12 MB L2 Cache,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+150,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5260,2 Cores,,3.33 GHz,,6 MB L2 Cache,no,no,,no,yes,unresolved
+151,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5450,4 Cores,,3.00 GHz,,12 MB L2 Cache,no,no,,no,yes,unresolved
+152,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5460,4 Cores,4,3.16 GHz,,12 MB L2 Cache,no,no,,no,yes,unresolved
+153,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5550,4 Cores,8,2.66 GHz,3.06 GHz,8 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+154,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5560,4 Cores,8 Threads,2.80 GHz,3.20 GHz,8 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+155,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5570,4 Cores,8,2.93 GHz,3.33 GHz,8 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+156,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5660,6 Cores,12 Threads,2.80 GHz,3.20 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+157,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5670,6 Cores,12,2.93 GHz,3.36 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+158,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5675,6 Cores,12 Threads,3.06 GHz,3.46 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+159,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X5680,6 Cores,12 Threads,3.33 GHz,3.60 GHz,12 MB,no,no,LGA1366,no,yes,Xeon X55xx/X56xx (Westmere) or X34xx - legacy
+160,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X7542,6 Cores,12,2.93 GHz,2.80 GHz,18 MB,no,no,,no,yes,unresolved
+161,Intel,Intel Xeon,Intel Xeon X,Intel® Xeon® X7560,8 Cores,16,2.77 GHz,2.67 GHz,24 MB,no,no,,no,yes,unresolved
+162,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon®E-2146G,06 Cores,12Threads,3.50 GHz,4.50GHz,12MB,no,no,LGA1151,no,yes,Xeon E-21xx/23xx entry (LGA1151)
+163,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon®E5530,4 Cores,8 Threads,2.40GHz,2.66GHz,8MB,no,no,,no,yes,unresolved
+164,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon®E5607,4 Cores,4 Threads,2.26GHz,0GHz,8MB,no,no,,no,yes,unresolved
+165,Intel,Intel Xeon,Intel Xeon E Series,Intel® Xeon®E5640,4 Cores,8 Threads,2.66 GHz,2.93 GHz,12 MB,no,no,,no,yes,unresolved
+166,Intel,Intel Xeon,Intel Xeon,Intel® Xeon®L5639,4 Cores,8,2.133 GHz,2.667 GHz,8 MB,no,no,LGA1366,no,yes,Xeon L-series legacy
+167,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E3-1220 v5,4 Cores,4 Threads,3.00 GHz,3.50 GHz,8 GT/s,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+168,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V3,Intel® Xeon® E3-1220L v3,2 Cores,4 Threads,1.10 GHz,1.50 GHz,4 MB,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+169,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V2,Intel® Xeon® E3-1220v2,4 Cores,4 Threads,3.1 GHz,3.5 GHz,8MB,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+170,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E3-1225 v5,4 Cores,4 Threads,3.30 GHz,3.70 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+171,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E3-1230 v5,4 Cores,8 Threads,3.40 GHz,3.80 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+172,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E3-1245 v5,4 Cores,8 Threads,3.50 GHz,3.90 GHz,8 MB,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+173,Intel,Intel Xeon E3 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E3-1270 v5,4 Cores,4 Threads,3.60 GHz,4.00 GHz,8 GT/s,no,no,LGA1151,no,yes,Xeon E3 entry workstation
+174,Intel,Intel Xeon E3 (Legacy),Intel Xeon,Intel® Xeon® E3-1270 v6,4 Cores,8 Threads,3.80 GHz,4.20 GHz,8 MB,no,no,,no,yes,unresolved
+175,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel Xeon E5-1650 V3 6 Core Processor,6 Cores,12 Threads,3.20 GHz,3.80 GHz,12 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+176,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-1650 v2,6 Cores,12 Threads,3.50 GHz,3.90 GHz,12MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+177,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-1660v3,8 Cores,16 Threads,3.00 GHz,3.50 GHz,20MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+178,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-2470 V2,10 Cores,20 Threads,2.40 GHz,3.20 GHz,25 MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+179,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel Xeon E5-2603,4 Cores,4 Threads,1.80GHz,0GHz,10 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+180,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2603 v4,6 Cores,12 Threads,1.70 GHz,1.70 GHz,15 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+181,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2609v4,8 Cores,8 Threads,1.70 GHz,,20 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+182,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2620 v4,8 Cores,16 Threads,2.10 GHz,3.00 GHz,20 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+183,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2630v3,8 Cores,16 Threads,2.40 GHz,3.20 GHz,20MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+184,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2640 V3 8 Core Processor,8 Cores,16 Threads,2.6 GHz,3.40 GHz,20 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+185,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2640 V4,10 Cores,20 Threads,2.40 GHz,3.40 GHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+186,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 v3,Intel Xeon E5-2640v3,8 Cores,16 Threads,2.60 GHz,3.40 GHz,20MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+187,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2650L v3,12 Cores,24 Threads,1.8GHz,2.5GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+188,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-2651 V2 12,12 Cores,24 Threads,1.8GHz,2.2GHz,30MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+189,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2660v3,10 Cores,20 Threads,2.60 GHz,3.30 GHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+190,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-2667v2,8 Cores,16 Threads,3.3GHz,4.0GHz,25MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+191,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2667v3,8 Cores,16 Threads,3.20 GHz,3.60 GHz,20MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+192,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2673 v3,12 Cores,24 Threads,3.3GHz,4.0GHz,25MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+193,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2678 V3,12 Cores,24 Threads,2.5GHz,3.3GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+194,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2683v4,16 Cores,32 Threads,2.1GHz,3.0GHz,40MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+195,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-2687wv2,8 Cores,16 Threads,3.4GHz,4GHz,25MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+196,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-2690v2,10 Cores,20 Threads,3.00GHz,3.6 GHz,25MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+197,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2695V3,12 Cores,24 Threads,2.40GHz,3.2GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+198,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2697v3,14 Cores,28 Threads,2.6GHz,3.6GHz,35MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+199,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2698v3,16 Cores,32 Threads,2.3GHz,3.6GHz,40MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+200,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel Xeon E5-2699 v3,18 Cores,36 Threads,2.3GHz,3.6GHz,45MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+201,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel Xeon E5-2699C V4,22 Cores,44 Threads,2.20 GHz,2.40 GHz,55 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+202,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-4607v2,6 Cores,12 Threads,2.60 GHz,2.60 GHz,15MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+203,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel Xeon E5-4610v2,8 Cores,16 Threads,2.30 GHz,2.70 GHz,16MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+204,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel Xeon E5606,4 Cores,4 Threads,2.13GHz,,8 MB,no,no,LGA1366,no,yes,Xeon 5500/5600 (Nehalem/Westmere-EP) - legacy
+205,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel XeonE5-2650 v3,10 Cores,20 Threads,2.30 GHz,3.00 GHz,25 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+206,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® CONFIDENTIAL E5-4650,8 Cores,16 Threads,2.70 GHz,3.30 GHz,20 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+207,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E3-1240v2,4 Cores,8 Threads,3.40 GHz,3.80GHz,8MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+208,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5- 4607,6 Cores,12,2.20 GHz,,12 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+209,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5- 4610 Processor,6 Cores,12,2.00 GHz,2.90 GHz,15 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+210,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-1603,4 Cores,8 Threads,3.60GHz,3.80GHz,10MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+211,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-1603v3,4 Cores,4 Threads,2.80 GHz,0 GHz,10MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+212,Intel,Intel Xeon E5 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E5-1607,4 Cores,4 Threads,3.00GHz,0GHz,10MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+213,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-1607 v4 Refurbished Processor,4 Cores,4 Threads,3.10 GHz,,10 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+214,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-1620V2,4 Cores,8 Threads,3.7GHz,3.9GHz,10MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+215,Intel,Intel Xeon E5 (Legacy),Intel Xeon E3 V5,Intel® Xeon® E5-1650,6 Cores,12,3.20 GHz,3.80 GHz,12 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+216,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-1650 v3,6 Cores,12 Threads,3.50 GHz,3.80 GHz,15 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+217,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-1650 v4 Processor,6 Cores,12 Threads,3.60 GHz,4.00 GHz,15MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+218,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2403V2,4 Cores,4 Threads,1.8GHz,1.8GHz,10MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+219,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2407 v2,4 Cores,4 Threads,2.40 GHz,2.40 GHz,10 MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+220,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2420,6 Cores,12 threads,2.40 GHz,3.80 GHz,15 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+221,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2420v2,6 Cores,12 Threads,2.20 GHz,2.70 GHz,15MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+222,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2430 V2,6 Cores,12 Threads,2.20 GHz,2.70 GHz,15 MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+223,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2603V3,6 Cores,6 Threads,1.60 GHz,1.80 GHz,15MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+224,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2609V2,4 Cores,4 Threads,2.5GHz,2.5GHz,10MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+225,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2609v3,6 Cores,6 Threads,1.90 GHz,2.50 GHz,15MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+226,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2620 V2 6 Core Processor,6 Cores,12 Threads,2.1GHz,2.6GHz,15MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+227,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2620V3,6 Cores,12 Threads,2.4GHz,3.2GHz,15MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+228,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2623 v4,4 Cores,8 Threads,2.60 GHz,3.20 GHz,10 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+229,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2630,6 Cores,12,2.30 GHz,2.80 GHz,15 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+230,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2630 V4,10 Cores,20 Threads,2.20GHz,3.10GHz,25MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+231,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2630V2,6 Cores,12 Threads,2.6GHz,3.1GHz,15MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+232,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2637 v4,4 Cores,8 Threads,3.50 GHz.,3.70 GHz,15 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+233,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-2637v2,4 Cores,8 Threads,3.50 GHz,3.80GHz,15MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+234,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2637v3,4 Cores,8 Threads,3.50 GHz,3.70GHz,15MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+235,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2640,6 Cores,12 Threads,2.50 GHz,3.00 GHz,15 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+236,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2643 v4 Processor,6 Cores,12 Threads,3.40 GHz,3.70 GHz,20 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+237,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2643v3,6 Cores,12 Threads,3.40 GHz,3.70 GHz,20MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+238,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2650L,8 Cores,16 Threads,1.80 GHz,2.30 GHz,20 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+239,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2650V4,12 Cores,24 Threads,2.2GHz,2.9GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+240,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-266,8 Cores,16 Threads,2.20 GHz,3.00 GHz,20 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+241,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2666V3,10 Cores,20 Threads,2.9 GHz/ 2900 MHz,3.5 GHz / 3500 MHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+242,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2667,06 Cores,12 Threads,2.90 GHz,3.50GHz,15MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+243,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2667 v4,8 Cores,16 Threads,3.20 GHz,3.60 GHz,25 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+244,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2670,08 Cores,16 Threads,2.60 GHz,3.30 GHz,20MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+245,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2670V3,12 Cores,24 Threads,2.30 GHz,3.10 GHz,30 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+246,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2680,08 Cores,16 Threads,2.70 GHz,3.50 GHz,20MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+247,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2680 V3,12 Cores,24 Threads,2.50 GHz,3.30 GHz,30 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+248,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2680 v4,14 Cores,28 Threads,2.4GHz,3.3GHz,35MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+249,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2683V3,14 Cores,28 Threads,2.0GHz,3.0GHz,35MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+250,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2685v3,12 Cores,12 Threads,2.60 GHz,3.30 GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+251,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2687W v3,10 Cores,20 Threads,3.10 GHz,3.50 GHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+252,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2687W v4,12 Cores,24 Threads,3.00 GHz,3.50 GHz,30 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+253,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® E5-2690v3,12 Cores,24 Threads,2.60 GHz,3.50 GHz,30MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+254,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2690v4,14 Cores,28 Threads,2.60 GHz,3.50 GHz,35MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+255,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2696v4,22 Cores,44 Threads,2.20 GHz,3.60 GHz,55 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+256,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2697 v4,18 Cores,36 Threads,2.30 GHz,3.60 GHz,45 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+257,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-2699 v4,22 Cores,44 Threads,2.20 GHz,3.60 GHz,55 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+258,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-2699A v4,22 Cores,44 Threads,2.40 GHz,3.60 GHz,55 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+259,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-4603,4 Cores,8 Threads,2.00GHz,2.20GHz,10MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+260,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-4610,6 Cores,12,2.40 GHz,2.90 GHz,15 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+261,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-4617,06 Cores,6Threads,2.90 GHz,3.40 GHz,15MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+262,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-4620,08 Cores,16 Threads,2.20 GHz,2.60 GHz,16MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+263,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® E5-4627 v4,10 Cores,10 Threads,2.60 GHz,3.20 GHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+264,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® E5-4640,8 Cores,16 Threads,2.40 GHz,2.80 GHz,20 MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+265,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon® E5-4657lv2,12 Cores,24 Threads,2.40 GHz,2.9 GHz,30MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+266,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon® Processor E5-1620 v3 Processor,4 Cores,8 Threads,3.50 GHz,3.60 GHz,10 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+267,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V4,Intel® Xeon® Processor E5-1620 v4 Processor,4 Cores,8 Threads,3.50 GHz,3.80 GHz,10 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+268,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon® Processor E5-2695 v4 18 Cores 2.10 GHz,18 Cores,36 Threads,2.10 GHz,3.30 GHz,45 MB Intel® Smart Cache,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+269,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon®E5-1620,4 Cores,8 Threads,3.60GHz,3.80GHz,10MB,no,no,LGA2011,yes,yes,Xeon E5 - version unresolved
+270,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon®E5-2620,6 Cores,12,2.00 GHz,2.50 GHz,15 MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+271,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5,Intel® Xeon®E5-2665,08 Cores,16 Threads,2.40 GHz,3.10 GHz,20MB,no,no,LGA2011,yes,no,Xeon E5-2600 v1 (Sandy Bridge-EP)
+272,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V3,Intel® Xeon®E5-4610v3,10 Cores,20 Threads,1.70 GHz,1.70 GHz,25 MB,no,no,LGA2011-3,yes,no,Xeon E5 v3/v4 (Haswell/Broadwell-EP)
+273,Intel,Intel Xeon E5 (Legacy),Intel Xeon E5 V2,Intel® Xeon®r E5-2650lv2,10 Cores,20 Threads,1.70 GHz,2.10 GHz,25 MB,no,no,LGA2011,yes,no,Xeon E5 v2 (Ivy Bridge-EP)
+274,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V2,Intel Xeon E7-4880v2,15 Cores,30 Threads,2.5GHz,3.1GHz,37.5MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+275,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V4,Intel Xeon E7-8880v4,22 Cores,44 Threads,2.20 GHz,3.30 GHz,55 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+276,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7- 8837,8 Cores,8 Threads,2.66 GHz,2.80 GHz,24 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+277,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7-2850,10 Cores,20 Threads,3.10 GHz,2.00 GHz,24 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+278,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7-2860,10 Cores,20 Threads,2.26 GHz,2.67 GHz,24 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+279,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7-4807,6 Cores,18,1.86 GHz,,18 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+280,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7-4870,10 Cores,20 Threads,2.40 GHz,2.80 GHz,30 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+281,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V2,Intel® Xeon® E7-4890v2,18 Cores,30 Threads,2.80 GHz,3.40 GHz,37.5 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+282,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 Plain,Intel® Xeon® E7-8860,10 Cores,20 Threads,2.26 GHz,2.67 GHz,24 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+283,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V4,Intel® Xeon® E7-8860 v4,18 Cores,36 Threads,2.20 GHz,3.20 GHz,40 MB Intel® Smart Cache,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+284,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V2,Intel® Xeon® E7-8880v2,15 Cores,30 Threads,2.5 GHz,3.1 GHz,37.5 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+285,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V3,Intel® Xeon® E7-8880v3,18 Cores,36 Threads,2.30 GHz,3.10 GHz,45 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+286,Intel,Intel Xeon E7 (Legacy),Intel Xeon E7 V4,Intel® Xeon® E7-8890 V4 24 Cores 2.20GHz Processor,24 Cores,48 Threads,2.20 GHz,3.40 GHz,60 MB,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+287,Intel,Intel Xeon Scalable,Intel Pentium,Intel Pentium Gold G5400,2 Cores,4 Threads,3.70 GHz,,4 MB,no,no,,no,yes,Desktop CPU - not a server part
+288,Intel,Intel Xeon Scalable,Intel Xeon Bronze,Intel Xeon Bronze 3104,6 Cores,6 Threads,1.70GHz,1.70 GHz,8.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+289,Intel,Intel Xeon Scalable,Intel Xeon Bronze,Intel Xeon Bronze 3204,6 Cores,6 Threads,1.90GHz,1.90GHz,8.5 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+290,Intel,Intel Xeon Scalable,Intel Xeon Bronze,Intel Xeon Bronze 3206R,8 Cores,8 Threads,1.9GHz,1.9GHz,11 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+291,Intel,Intel Xeon Scalable,Intel Xeon GOLD,Intel Xeon GOLD 5418Y,24 Cores,48 Threads,2.00 GHz,3.80 GHz,45MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+292,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5118,12 Cores,24 Threads,2.30GHz,3.20GHz,16.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+293,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5120,14 Cores,28 Threads,2.20 GHz,3.20 GHz,19.25 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+294,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5215,10 Cores,20 Threads,2.50 GHz,3.40 GHz,13.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+295,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5217,8 Cores,16 Threads,3.00GHz,3.70GHz,11MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+296,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5220,18 Cores,36 Threads,2.20 GHz,3.90 GHz,24.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+297,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5317,12 Cores,24 Threads,3.00 GHz,3.60 GHz,18 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+298,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 5320 26 Cores 2.20 GHz Processor,26 Cores,52 Threads,2.20 GHz,3.40 GHz,39 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+299,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6128,6 Cores,12 Threads,3.40GHz,3.70GHz,19.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+300,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6130,16 Cores,32 Threads,2.10GHz,3.70GHz,22MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+301,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6134,8 Cores,16 Threads,3.20GHz,3.70 GHz,24.75 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+302,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6136,12 Cores,24 Threads,3.00 GHz,3.70 GHz,24.75 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+303,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6138,20 Cores,40 Threads,2.00GHz,3.70GHz,27.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+304,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6138T,20 Cores,40 Threads,2.00 GHz,3.70 GHz,27.5 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+305,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6139,18 Cores,36 Threads,2.3 GHz,3.7 GHz,24.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+306,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6142,16 Cores,32 Threads,2.600GHz,3.70GHz,22 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+307,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6144,8 Cores,16 Threads,3.50GHz,4.20GHz,24.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+308,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6150,18 Cores,36 Threads,2.70 GHz,3.70 GHz,24.75 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+309,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6152,22 Cores,44 Threads,2.10GHz,3.70GHz,30.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+310,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6208U,16 Cores,32 Threads,2.90 GHz,3.90 GHz,22 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+311,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6230,20 Cores,40 Threads,3.90 GHz,2.10 GHz,27.5 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+312,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6230N,20 Cores,40 Threads,2.30GHz,3.50 GHz,27.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+313,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6230R,26 Cores,52 Threads,2.1GHz,4.0GHz,35.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+314,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6234,8 Cores,16 Threads,3.30 GHz,4.00 GHz,24.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+315,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6238 Processor,22 Cores,44 Threads,2.1GHz,3.7GHz,30.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+316,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6240,18 Cores,36 Threads,2.60 GHz,3.90 GHz,24.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+317,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6242,16 Cores,32 Threads,2.80 GHz,3.90 GHz,22 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+318,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6242R,20 Cores,40 Threads,3.10 GHz,4.10 GHz,35.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+319,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6246R,16 Cores,32 threads,3.40 GHz,4.10 GHz,35.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+320,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6248,20 Cores,40 Threads,2.50 GHz,3.90 GHz,27.5 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+321,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6252,24 Cores,48 Threads,2.10GHz,3.70GHz,35.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+322,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6252N,24 Cores,48 Threads,2.30 GHz,3.60 GHz,35.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+323,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6254,18 Cores,36 Threads,3.10GHz,4.00GHz,24.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+324,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6262V/6262,24 Cores,48 Threads,1.90GHz,3.60GHz,33MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+325,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6334,8 Cores,16 Threads,3.60 GHz,3.70 GHz,18 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+326,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6338N,32 Cores,64 Threads,2.20GHz,3.20GHz,48MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+327,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6342,24 Cores,48 threads,2.8 GHz,3.50GHz,36 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+328,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6346,16 Cores,32 Threads,3.10 GHz,3.60 GHz,36 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+329,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6348,28 Cores,56 Threads,2.60GHz,3.50GHz,42MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+330,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon Gold 6444Y,16 Cores,32 Threads,3.60 GHz,4.00 GHz,45MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+331,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8153,16 Cores,32 Threads,2.00 GHz,2.80 GHz,22 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+332,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8160,24 Cores,48 Threads,2.10 GHz,3.70 GHz,33 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+333,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8160T,24 Cores,48 Threads,2.10 GHz,3.70 GHz,33 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+334,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8168,24 Cores,48 Threads,2.70 GHz,3.70 GHz,33 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+335,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8173M,28 Cores,56 Threads,2 GHz / 2000 MHz,3.5 GHz / 3500 MHz,38.50 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+336,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8175M,24 Cores,48 Threads,2.5 GHz / 2500 MHz,3.5 GHz / 3500 MHz,33 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+337,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8176,28 Cores,56 Threads,2.10 GHz,3.80 GHz,38.5 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+338,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8176M,28 Cores,56 Threads,2.10 GHz,3.80 GHz,38.5 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+339,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8260,24 Cores,48 Threads,2.40 GHz,3.90 GHz,35.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+340,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8273CL,28 Cores,56 Threads,2.2 GHz / 2200 MHz,3.7 GHz / 3700 MHz,38.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+341,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8352V,36 Cores,72 Threads,2.10 GHz,3.50 GHz,54 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+342,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8352Y,32 Cores,64 Threads,2.20 GHz,3.40 GHz,48 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+343,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel Xeon Platinum 8358,32 Cores,64 Threads,2.60GHz,3.40GHz,48MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+344,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4108,8 Cores,16 Threads,2.1GHz,3.0GHz,11MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+345,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4110,8 Cores,16 Threads,2.10 GHz,3.00 GHz,11 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+346,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4112,4 Cores,8 Threads,2.60 GHz,3.0 GHz,8.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+347,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4114 Processor,10 Cores,20 Threads,2.20GHz,3.0GHz,13.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+348,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4116,12 Cores,24 Threads,2.10 GHz,3.00 GHz,16.5 MB L3 Cache,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+349,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4208,8 Cores,12 Threads,2.1GHz,3.2GHz,11MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+350,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4210R,10 Cores,20 Threads,2.4GHz,3.2GHz,13.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+351,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4214,12 Cores,24 Threads,2.2GHz,3.2GHz,16.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+352,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4214R,12 Cores,24 Threads,2.40 GHz,3.50 GHz,16.5 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+353,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4215,8 Cores,16 Threads,2.50 GHz,3.50 GHz,11 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+354,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4215 R,8 Cores,16 Threads,3.2GHz,4.0GHz,11MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+355,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4216,16 Cores,32 Threads,2.10 GHz,3.20 GHz,22 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+356,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4309Y,8 Cores,16 Threads,2.80 GHz,3.60 GHz,12 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+357,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4310,12 Cores,20 Threads,2.4GHz,3.3GHz,13.75MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+358,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon Silver 4316,20 Cores,40 Threads,2.30GHz,3.40GHz,30MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+359,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 5218R,20 Cores,40 Threads,2.1GHz,4.0GHz,27.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+360,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 5220R,24 Cores,48 Threads,2.20GHz,4.0GHz,35.7MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+361,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 5315Y,8 Cores,16 Threads,3.20GHz,3.60GHz,12MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+362,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 5318Y,24 Cores,48 Threads,2.10GHz,3.40GHz,36MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+363,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6140,18 Cores,36 Threads,2.3GHz,3.7GHz,24.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+364,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6148,20 Cores,40 Threads,2.40GHz,3.70GHz,27.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+365,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6226,12 Cores,24 Threads,2.70GHz,3.70GHz,19.25MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+366,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6226R,16 Cores,32 Threads,2.9GHz,3.9GHz,22 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+367,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6238R,28 Cores,56 Threads,2.2GHz,4.00GHz,38.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+368,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6240R,24 Cores,48 Threads,2.40GHz,4.00GHz,35.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+369,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6248R,24 Cores,48 Threads,3.00GHz,4.00GHz,35.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+370,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6258R,28 Cores,56 Threads,2.70GHz,4.00GHz,38.5MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+371,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel Xeon-Gold 6330,28 Cores,56 Threads,2.00GHz,3.10GHz,42MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+372,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon-silver 4210,10 Cores,20 Threads,2.4GHz,3.2GHz,13.75MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+373,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel Xeon-silver 4314,16 Cores,20 Threads,2.4GHz,3.4GHz,13.75MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+374,Intel,Intel Xeon Scalable,Intel Xeon Bronze,Intel® Xeon® Bronze 3408U,8 Cores,8 Threads,1.80 GHz,1.90 GHz,22.5 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+375,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® E7540,6 Cores,12,2.00 GHz,2.27 GHz,18 MB L3 Cache,no,no,LGA1567,no,yes,Xeon 7x00 (Nehalem/Westmere-EX) legacy
+376,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 5122,4 Cores,8 Threads,3.60 GHz,3.70GHz,16.5 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+377,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 5415,8 Cores,16,2.90 GHz,4.10 GHz,22.5 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+378,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 5420,28 Cores,56,2.00 GHz,4.10 GHz,52.5 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+379,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 6154,18 Cores,36 Threads,3.00 GHz,3.70 GHz,24.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+380,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 6244,8 Cores,16 Threads,3.60 GHz,4.40 GHz,24.75 MB,no,no,LGA3647,yes,no,Xeon Scalable Gen1/2 (Skylake/Cascade Lake)
+381,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 6354,18 Cores,36 Threads,3.00 GHz,3.60 GHz,39 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+382,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 6430,32 Cores,64 Threads,2.10 GHz,3.40 GHz,60 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+383,Intel,Intel Xeon Scalable,Intel Xeon Gold,Intel® Xeon® Gold 6442Y Processor,24 Cores,48 Threads,2.60 GHz,4.00 GHz,60 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+384,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel® Xeon® Platinum 8368,38 Cores,76 Threads,2.40 GHz,3.40 GHz,57 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+385,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel® Xeon® Platinum 8368Q,38 Cores,76 Threads,2.60 GHz,3.70 GHz,57 MB,no,no,LGA4189,yes,no,Xeon Scalable Gen3 (Ice Lake/Cooper Lake)
+386,Intel,Intel Xeon Scalable,Intel Xeon Platinum,Intel® Xeon® Platinum 8480,56 Cores,112 Threads,2.00 GHz,3.80 GHz,105 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+387,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel® Xeon® Silver 4410Y,12 Cores,24 Threads,2.00 GHz,3.90 GHz,30 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)
+388,Intel,Intel Xeon Scalable,Intel Xeon Silver,Intel® Xeon® Silver 4416,20 Cores,40 Threads,2.00 GHz,3.90 GHz,37.5 MB,no,no,LGA4677,yes,no,Xeon Scalable Gen4/5 (Sapphire/Emerald Rapids)

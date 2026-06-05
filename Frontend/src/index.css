@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens — mirror docs/04_VISUAL_DESIGN.md §2.
+ * UI code consumes the SEMANTIC names (via Tailwind: bg-surface, text-primary,
+ * bg-accent, ...). A dark theme can be added later by overriding the same
+ * variables under [data-theme='dark'] — no markup changes required.
+ */
+:root,
+:root[data-theme='light'] {
+  /* surfaces & text */
+  --bg-page: #f6f7f9;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #f3f4f6;
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a5160;
+  --text-muted: #6a738a;
+  --text-on-accent: #ffffff;
+  --border: #e4e7ef;
+  --border-strong: #cbd5e1;
+
+  /* brand & action (sacred — actions/selected only) */
+  --color-accent: #e53935;
+  --color-accent-hover: #c62a26;
+  --color-accent-soft: #fee2e2;
+  --color-accent-on-soft: #991b1b;
+  --color-accent-halo: rgba(229, 57, 53, 0.14);
+  --color-accent-deep: #411615;
+
+  /* status (never use for actions) */
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-warning: #92400e;
+  --color-warning-soft: #fef3c7;
+  --color-danger: #991b1b;
+  --color-danger-soft: #fecaca;
+  --color-info: #1e40af;
+  --color-info-soft: #dbeafe;
+  --color-neutral-soft-bg: #e2e8f0;
+  --color-neutral-soft-ink: #334155;
+  --color-highlight: #fef9c3;
+}
+
+/* Dark theme — architecturally ready, not surfaced in v1. */
+:root[data-theme='dark'] {
+  --bg-page: #0a0a0a;
+  --bg-surface: #15100f;
+  --bg-elevated: #1c1614;
+  --bg-subtle: #1f1a18;
+  --text-primary: #ffffff;
+  --text-secondary: #c9ccd6;
+  --text-muted: #8b93a7;
+  --text-on-accent: #ffffff;
+  --border: #2a2422;
+  --border-strong: #3a3330;
+
+  --color-accent: #e53935;
+  --color-accent-hover: #f0524e;
+  --color-accent-soft: #3a1614;
+  --color-accent-on-soft: #fca5a5;
+  --color-accent-halo: rgba(229, 57, 53, 0.22);
+  --color-accent-deep: #411615;
+
+  --color-success: #4ade80;
+  --color-success-soft: #14321f;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #352a10;
+  --color-danger: #f87171;
+  --color-danger-soft: #3a1414;
+  --color-info: #93c5fd;
+  --color-info-soft: #15233f;
+  --color-neutral-soft-bg: #2a2f3a;
+  --color-neutral-soft-ink: #cbd5e1;
+  --color-highlight: #3a3410;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Always show a focus ring for keyboard users (never outline:none). */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* The "just changed" green flash used on inline edits / new rows. */
+@keyframes row-flash {
+  0% {
+    background-color: var(--color-success-soft);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.row-flash {
+  animation: row-flash 1.5s ease-out;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animate-drawer-in {
+  animation: drawer-in 180ms ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-toast-in {
+  animation: toast-in 180ms ease-out;
+}
+
+/*
+ * Native date filter, themed to match the app. The popup calendar is rendered
+ * by the browser, so color-scheme is what makes it follow light/dark; accent-color
+ * paints the selected day in the project red; the rest styles the picker icon.
+ */
+.theme-date {
+  accent-color: var(--color-accent);
+  color-scheme: light;
+}
+:root[data-theme='dark'] .theme-date {
+  color-scheme: dark;
+}
+.theme-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: opacity 120ms ease, background-color 120ms ease;
+}
+.theme-date::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  background-color: var(--bg-subtle);
+}
+:root[data-theme='dark'] .theme-date::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Thin, unobtrusive scrollbars for dense tables. */
+.scroll-thin::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+  border: 3px solid var(--bg-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

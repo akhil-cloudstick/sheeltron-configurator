@@ -1,0 +1,15 @@
+# env / secrets
+.env
+
+# build output
+/bin/
+*.exe
+configurator
+configurator.exe
+
+# go
+/vendor/
+
+# os / editor
+.DS_Store
+Thumbs.db

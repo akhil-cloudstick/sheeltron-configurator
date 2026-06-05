@@ -1,0 +1,20 @@
+-- +migrate Up
+CREATE TABLE ssd_units (
+  id                      SERIAL PRIMARY KEY,
+  ssd_brand               TEXT,
+  interface               TEXT,
+  capacity                TEXT,
+  form_factor             TEXT,
+  speed                   TEXT,
+  product_name            TEXT,                 -- identity (deduped on import)
+  condition_new           BOOLEAN DEFAULT FALSE,
+  condition_refurbished   BOOLEAN DEFAULT FALSE,
+  price_new               NUMERIC(12,2),
+  price_refurbished       NUMERIC(12,2),
+  remark                  TEXT,
+  created_at              TIMESTAMPTZ DEFAULT NOW(),
+  updated_at              TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- +migrate Down
+DROP TABLE ssd_units;
