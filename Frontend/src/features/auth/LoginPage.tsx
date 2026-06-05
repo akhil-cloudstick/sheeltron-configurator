@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Field, Input, PillTabs } from '@/components/ui'
 import { Logo } from '@/components/layout/Logo'
 import { useAuthStore } from '@/store/authStore'
+import { homeForRole } from '@/components/layout/navConfig'
 import type { Role } from '@/types/auth'
 
 export function LoginPage() {
@@ -21,7 +22,7 @@ export function LoginPage() {
       return
     }
     setError(null)
-    navigate('/stock/chassis', { replace: true })
+    navigate(homeForRole(r), { replace: true })
   }
 
   function onSubmit(e: FormEvent) {
@@ -34,6 +35,7 @@ export function LoginPage() {
       super_admin: 'super.admin',
       admin: 'admin',
       stock_manager: 'stock.manager',
+      salesman: 'sales',
     }
     signIn(usernames[r], 'demo', r)
   }
@@ -58,6 +60,7 @@ export function LoginPage() {
                   { value: 'super_admin', label: 'Super Admin' },
                   { value: 'admin', label: 'Admin' },
                   { value: 'stock_manager', label: 'Stock Manager' },
+                  { value: 'salesman', label: 'Salesman' },
                 ]}
               />
             </Field>
@@ -94,20 +97,18 @@ export function LoginPage() {
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted">
               Quick demo sign-in
             </p>
-            <div className="flex gap-2">
-              <Button variant="secondary" size="sm" className="flex-1" onClick={() => demo('super_admin')}>
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="secondary" size="sm" onClick={() => demo('super_admin')}>
                 As Super Admin
               </Button>
-              <Button variant="secondary" size="sm" className="flex-1" onClick={() => demo('admin')}>
+              <Button variant="secondary" size="sm" onClick={() => demo('admin')}>
                 As Admin
               </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="flex-1"
-                onClick={() => demo('stock_manager')}
-              >
+              <Button variant="secondary" size="sm" onClick={() => demo('stock_manager')}>
                 As Stock Manager
+              </Button>
+              <Button variant="secondary" size="sm" onClick={() => demo('salesman')}>
+                As Salesman
               </Button>
             </div>
           </div>

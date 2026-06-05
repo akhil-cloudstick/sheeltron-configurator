@@ -31,8 +31,8 @@ function isPriceManager(role: Role): boolean {
 }
 
 /** Landing route for a role after login / when bounced from a forbidden route. */
-export function homeForRole(_role: Role): string {
-  return '/stock/chassis'
+export function homeForRole(role: Role): string {
+  return role === 'salesman' ? '/configurator/processor' : '/stock/chassis'
 }
 
 /**
@@ -65,6 +65,11 @@ export function navForRole(role: Role): NavGroup[] {
     })
   }
   if (isPriceManager(role)) {
+    groups.push({
+      id: 'sales',
+      title: 'Sales',
+      items: [{ to: '/quotes', label: 'All quotes', real: true }],
+    })
     groups.push({
       id: 'pricing',
       title: 'Pricing & Rules',

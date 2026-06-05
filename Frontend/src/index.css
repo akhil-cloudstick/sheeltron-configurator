@@ -198,3 +198,21 @@ h3,
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Print isolation: when printing a quote, show only the .printable document
+   (hides the app chrome — sidebar, top bar, wizard rails — in any layout). */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable,
+  .printable * {
+    visibility: visible;
+  }
+  .printable {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: none;
+  }
+}

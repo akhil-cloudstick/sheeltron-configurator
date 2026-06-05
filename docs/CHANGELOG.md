@@ -8,7 +8,25 @@ Format: dates are `DD/MM/YY`; each entry shows the time it was logged in
 
 ---
 
+## 06/06/26
+
+**`12:10 AM`**
+- Dev-server fix: Vite was failing to load `/src/main.tsx` (`Does the file exist?`) → browser got raw TSX → `Uncaught SyntaxError: missing ) after argument list`. Root cause: the UNC share is mapped to **two** drive letters (`S:` and `Y:`); Vite realpaths resolved files and Windows canonicalizes the share to `Y:`, mismatching the `S:` launch root. Added `resolve.preserveSymlinks: true` to `vite.config.ts` so paths stay on the launch drive — `npm run dev` from `S:` now serves cleanly on `:5173`. Also fixed `Frontend/.env`: `VITE_API_BASE_URL` had stray leading spaces in its value.
+
+**`12:00 AM`**
+- Configurator fix: the **"Your configuration" rail no longer keeps stale data**. The build store was wrapped in zustand `persist` (localStorage `sheeltron.configurator`), so a completed build survived a refresh and a saved quote was never cleared. The store is now **session-only** (in-memory; legacy persisted key is wiped on load) and `reset()` runs **after a quote saves**. Going back to change an earlier pick already dropped the previous selection + everything downstream via the select cascade.
+
+---
+
 ## 05/06/26
+
+**`11:18 PM`**
+- New **Super Admin** role: same interface as admin, plus a per-product **Import correlation** button that enriches existing stock from the `Corelation/` CSVs (socket / ram_type / drive form factors / needs_review); storage CSV is split by KIND on the SSD vs HDD pages. Admin keeps edit + price but no add/import; stock manager unchanged.
+- Super admin can expand any product row to see **all columns** and edit the compatibility keys.
+- New **Coverage by socket** dashboard (super-admin only): CPU↔chassis socket matrix + cards, computed live from the enriched tables.
+- New **Salesman** role + **configurator** portal: Processor → Chassis → RAM → Storage wizard with compatibility filtered **by the backend**; each item is split by condition (New/Refurbished priced separately); per-item quantity; GST-18% quote saved to the backend (`Q-YYYY-NNNNN`) with browser print-to-PDF + CSV.
+- New **All quotes** page (admin + super admin) listing saved quotes.
+- Configurator UX: one-filter-at-a-time **accordion** narrowing, centered fixed-height panel, Back/Continue at the bottom, and **locked step order** (no skipping ahead).
 
 **`03:40 PM`**
 - Issues + Change logs: added a **date filter** (calendar) next to the type dropdown on both pages; the listing now defaults to **today** and the user can pick any other day (clearing the date shows all). Issues page also gained the **product-type filter** dropdown it was missing. Backend `/api/issues` and `/api/change-logs` now accept `from`/`to` instant bounds. Change logs row layout reordered: product number first, time moved to the last column (single line).

@@ -1,7 +1,7 @@
 // Roles supported by the admin portal.
 // NOTE: auth is mocked — the chosen role is sent in the X-User-Role header. `super_admin`
 // is the only role that may import the correlation (compatibility) catalogs.
-export type Role = 'super_admin' | 'admin' | 'stock_manager'
+export type Role = 'super_admin' | 'admin' | 'stock_manager' | 'salesman'
 
 export interface AuthUser {
   username: string
@@ -13,6 +13,7 @@ export const ROLE_LABELS: Record<Role, string> = {
   super_admin: 'Super Admin',
   admin: 'Admin',
   stock_manager: 'Stock Manager',
+  salesman: 'Salesman',
 }
 
 /** Roles that can see/edit prices (admin + super_admin); stock managers cannot. */

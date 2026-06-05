@@ -23,7 +23,8 @@ func InitRoutes(e *echo.Echo) {
 	})
 
 	// Stock module
-	stockrouters.RegisterServerRoutes(e)  // chassis (server_units)
-	stockrouters.RegisterProductRoutes(e) // processor / memory / ssd / hdd
-	stockrouters.RegisterAuditRoutes(e)   // import issues + change logs
+	stockrouters.RegisterServerRoutes(e)       // chassis (server_units)
+	stockrouters.RegisterProductRoutes(e)      // processor / memory / ssd / hdd
+	stockrouters.RegisterAuditRoutes(e)        // import issues + change logs
+	stockrouters.RegisterConfiguratorRoutes(e) // salesman configurator filters + quotes
 }

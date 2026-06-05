@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
+import { homeForRole } from './navConfig'
 import type { Role } from '@/types/auth'
 
 /** Redirects to /login when not authenticated. */
@@ -18,7 +19,7 @@ export function RoleRoute({ roles, children }: { roles: Role[]; children?: React
   const user = useAuthStore((s) => s.user)
   if (!user) return <Navigate to="/login" replace />
   if (!roles.includes(user.role)) {
-    return <Navigate to="/stock/chassis" replace />
+    return <Navigate to={homeForRole(user.role)} replace />
   }
   return children ? <>{children}</> : <Outlet />
 }

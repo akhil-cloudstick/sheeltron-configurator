@@ -31,11 +31,21 @@ import (
 // RequireSuperAdmin gates a route to the super_admin role (mocked via X-User-Role).
 // Correlation imports rewrite catalog compatibility keys, so only super-admins may run them.
 func RequireSuperAdmin(next echo.HandlerFunc) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		if !strings.EqualFold(c.Request().Header.Get("X-User-Role"), "super_admin") {
-			return fail(c, http.StatusForbidden, "super_admin role required")
+	return RequireRole("super_admin")(next)
+}
+
+// RequireRole gates a route to one of the given roles (mocked via the X-User-Role header).
+func RequireRole(roles ...string) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			role := strings.TrimSpace(c.Request().Header.Get("X-User-Role"))
+			for _, r := range roles {
+				if strings.EqualFold(role, r) {
+					return next(c)
+				}
+			}
+			return fail(c, http.StatusForbidden, strings.Join(roles, "/")+" role required")
 		}
-		return next(c)
 	}
 }
 

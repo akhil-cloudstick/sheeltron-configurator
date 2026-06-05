@@ -9,6 +9,11 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+    // The repo is a UNC share mapped to *two* drive letters (S: and Y:). Vite
+    // realpaths resolved files, and Windows canonicalizes the share to Y:,
+    // which then mismatches the S: root and breaks loading (`Failed to load
+    // url /src/main.tsx`). Skip the realpath so paths stay on the launch drive.
+    preserveSymlinks: true,
   },
   server: {
     port: 5173,
