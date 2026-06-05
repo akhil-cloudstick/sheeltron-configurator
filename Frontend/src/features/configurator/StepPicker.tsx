@@ -4,7 +4,7 @@ import { Button, Input, Pill, ErrorBanner, type PillTone } from '@/components/ui
 import { ApiError } from '@/lib/api'
 import { useConfiguratorStore } from '@/store/configuratorStore'
 import { cn } from '@/lib/cn'
-import { STEP_ORDER } from './configuratorSteps'
+import { useWizardSteps } from './wizardContext'
 import type { Category, ConfigOption } from './types'
 import { optionKey } from './types'
 import { money, conditionLabel, conditionTone } from './format'
@@ -59,7 +59,8 @@ export function StepPicker({
   const setQty = useConfiguratorStore((s) => s.setQty)
   const clear = useConfiguratorStore((s) => s.clear)
 
-  const stepIdx = STEP_ORDER.findIndex((s) => s.category === category)
+  const steps = useWizardSteps()
+  const stepIdx = steps.findIndex((s) => s.category === category)
 
   const [options, setOptions] = useState<ConfigOption[]>([])
   const [loading, setLoading] = useState(false)
@@ -162,13 +163,13 @@ export function StepPicker({
   const footer = (
     <div className="flex items-center justify-between">
       {stepIdx > 0 ? (
-        <Button variant="secondary" onClick={() => navigate(STEP_ORDER[stepIdx - 1].path)}>
+        <Button variant="secondary" onClick={() => navigate(steps[stepIdx - 1].path)}>
           ← Back
         </Button>
       ) : (
         <span />
       )}
-      <Button disabled={!selected} onClick={() => navigate(STEP_ORDER[stepIdx + 1].path)}>
+      <Button disabled={!selected} onClick={() => navigate(steps[stepIdx + 1].path)}>
         Continue →
       </Button>
     </div>
@@ -176,7 +177,7 @@ export function StepPicker({
 
   if (!ready) {
     return (
-      <Frame stepNo={stepNo} title={title} hint={hint} footer={footer}>
+      <Frame stepNo={stepNo} totalSteps={steps.length} title={title} hint={hint} footer={footer}>
         <Center>{notReadyHint}</Center>
       </Frame>
     )
@@ -185,6 +186,7 @@ export function StepPicker({
   return (
     <Frame
       stepNo={stepNo}
+      totalSteps={steps.length}
       title={title}
       hint={hint}
       footer={footer}
@@ -281,6 +283,7 @@ export function StepPicker({
 
 function Frame({
   stepNo,
+  totalSteps,
   title,
   hint,
   tools,
@@ -288,6 +291,7 @@ function Frame({
   children,
 }: {
   stepNo: number
+  totalSteps: number
   title: string
   hint: string
   tools?: React.ReactNode
@@ -297,7 +301,7 @@ function Frame({
   return (
     <div className="flex h-full flex-col rounded-card border border-border bg-surface p-5">
       <div className="shrink-0">
-        <div className="text-meta uppercase tracking-wider text-accent">Step {stepNo} of 5</div>
+        <div className="text-meta uppercase tracking-wider text-accent">Step {stepNo} of {totalSteps}</div>
         <h1 className="font-display text-2xl font-bold leading-tight text-primary">{title}</h1>
         <p className="mt-0.5 max-w-2xl text-caption text-muted">{hint}</p>
         {tools && <div className="mt-3">{tools}</div>}

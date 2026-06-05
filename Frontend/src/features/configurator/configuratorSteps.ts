@@ -1,18 +1,27 @@
 import type { Category } from './types'
 
 export interface StepDef {
-  category: Category | 'review'
+  category: Category | 'review' | 'save'
   path: string
   label: string
 }
 
-// The fixed wizard order. Review is the terminal step (its own actions).
+// The salesman quote wizard order. Review is the terminal step (its own actions).
 export const STEP_ORDER: StepDef[] = [
   { category: 'processor', path: '/configurator/processor', label: 'Processor' },
   { category: 'chassis', path: '/configurator/chassis', label: 'Chassis' },
   { category: 'ram', path: '/configurator/ram', label: 'RAM' },
   { category: 'storage', path: '/configurator/storage', label: 'Storage' },
   { category: 'review', path: '/configurator/review', label: 'Review' },
+]
+
+// The admin pack-builder order — same four pickers, then "Save pack" as the terminal step.
+export const PACK_STEP_ORDER: StepDef[] = [
+  { category: 'processor', path: '/compatibility/build/processor', label: 'Processor' },
+  { category: 'chassis', path: '/compatibility/build/chassis', label: 'Chassis' },
+  { category: 'ram', path: '/compatibility/build/ram', label: 'RAM' },
+  { category: 'storage', path: '/compatibility/build/storage', label: 'Storage' },
+  { category: 'save', path: '/compatibility/build/save', label: 'Save pack' },
 ]
 
 type StoreSlice = {
@@ -22,9 +31,9 @@ type StoreSlice = {
   storage: unknown | null
 }
 
-/** Whether a picker step has a selection (Review is never "complete" itself). */
-export function isComplete(store: StoreSlice, category: Category | 'review'): boolean {
-  if (category === 'review') return false
+/** Whether a picker step has a selection (the terminal step is never "complete" itself). */
+export function isComplete(store: StoreSlice, category: Category | 'review' | 'save'): boolean {
+  if (category === 'review' || category === 'save') return false
   return store[category] != null
 }
 
@@ -40,7 +49,7 @@ export function maxReachableIndex(store: StoreSlice): number {
   return STEP_ORDER.length - 1
 }
 
-export function stepIndexFromPath(pathname: string): number {
-  const i = STEP_ORDER.findIndex((s) => pathname.startsWith(s.path))
+export function stepIndexFromPath(pathname: string, steps: StepDef[] = STEP_ORDER): number {
+  const i = steps.findIndex((s) => pathname.startsWith(s.path))
   return i === -1 ? 0 : i
 }

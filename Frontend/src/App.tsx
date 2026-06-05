@@ -10,14 +10,17 @@ import { IssuesPage } from '@/features/audit/IssuesPage'
 import { ChangeLogsPage } from '@/features/audit/ChangeLogsPage'
 import { PricingSection } from '@/features/pricing/PricingSection'
 import { BulkPriceUpdate } from '@/features/pricing/BulkPriceUpdate'
-import { CompatibilityOverrides } from '@/features/pricing/CompatibilityOverrides'
 import { CoveragePage } from '@/features/coverage/CoveragePage'
 import { ConfiguratorLayout } from '@/features/configurator/ConfiguratorLayout'
+import { ConfiguratorHome } from '@/features/configurator/ConfiguratorHome'
 import { ProcessorStep } from '@/features/configurator/steps/ProcessorStep'
 import { ChassisStep } from '@/features/configurator/steps/ChassisStep'
 import { RamStep } from '@/features/configurator/steps/RamStep'
 import { StorageStep } from '@/features/configurator/steps/StorageStep'
 import { ReviewStep } from '@/features/configurator/steps/ReviewStep'
+import { PACK_STEP_ORDER } from '@/features/configurator/configuratorSteps'
+import { PacksPage } from '@/features/packs/PacksPage'
+import { PackSaveStep } from '@/features/packs/PackSaveStep'
 import { QuotesPage } from '@/features/quotes/QuotesPage'
 import { QuoteDetailPage } from '@/features/quotes/QuoteDetailPage'
 
@@ -47,27 +50,49 @@ export default function App() {
               <Route path="coverage" element={<CoveragePage />} />
             </Route>
 
-            {/* Pricing & Rules + All quotes — admin + super_admin */}
+            {/* Quotes — salesman sees their own ("My quotes"), admin/super_admin see all. */}
+            <Route element={<RoleRoute roles={['salesman', 'admin', 'super_admin']} />}>
+              <Route path="quotes" element={<QuotesPage />} />
+              <Route path="quotes/:id" element={<QuoteDetailPage />} />
+            </Route>
+
+            {/* Pricing & Rules + Compatible packs — admin + super_admin */}
             <Route element={<RoleRoute roles={['admin', 'super_admin']} />}>
               <Route path="pricing" element={<PricingSection />}>
                 <Route index element={<Navigate to="/pricing/bulk" replace />} />
                 <Route path="bulk" element={<BulkPriceUpdate />} />
-                <Route path="compatibility" element={<CompatibilityOverrides />} />
+                {/* Compatibility overrides was replaced by the packs builder. */}
+                <Route path="compatibility" element={<Navigate to="/compatibility" replace />} />
               </Route>
-              <Route path="quotes" element={<QuotesPage />} />
-              <Route path="quotes/:id" element={<QuoteDetailPage />} />
+              <Route path="compatibility" element={<PacksPage />} />
+              {/* Pack builder — wizard embedded in the admin shell (sidebar stays). */}
+              <Route
+                path="compatibility/build"
+                element={<ConfiguratorLayout steps={PACK_STEP_ORDER} mode="pack" embedded />}
+              >
+                <Route index element={<Navigate to="/compatibility/build/processor" replace />} />
+                <Route path="processor" element={<ProcessorStep />} />
+                <Route path="chassis" element={<ChassisStep />} />
+                <Route path="ram" element={<RamStep />} />
+                <Route path="storage" element={<StorageStep />} />
+                <Route path="save" element={<PackSaveStep />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* Salesman configurator — its own layout (no admin shell), salesman only */}
-          <Route element={<RoleRoute roles={['salesman']} />}>
-            <Route path="configurator" element={<ConfiguratorLayout />}>
-              <Route index element={<Navigate to="/configurator/processor" replace />} />
-              <Route path="processor" element={<ProcessorStep />} />
-              <Route path="chassis" element={<ChassisStep />} />
-              <Route path="ram" element={<RamStep />} />
-              <Route path="storage" element={<StorageStep />} />
-              <Route path="review" element={<ReviewStep />} />
+            {/* Salesman configurator — embedded in the admin shell (sidebar stays). The
+                entry page offers two options (build to order / ready-made pack); the
+                wizard steps live under it. */}
+            <Route element={<RoleRoute roles={['salesman']} />}>
+              <Route path="configurator">
+                <Route index element={<ConfiguratorHome />} />
+                <Route element={<ConfiguratorLayout embedded />}>
+                  <Route path="processor" element={<ProcessorStep />} />
+                  <Route path="chassis" element={<ChassisStep />} />
+                  <Route path="ram" element={<RamStep />} />
+                  <Route path="storage" element={<StorageStep />} />
+                  <Route path="review" element={<ReviewStep />} />
+                </Route>
+              </Route>
             </Route>
           </Route>
         </Route>

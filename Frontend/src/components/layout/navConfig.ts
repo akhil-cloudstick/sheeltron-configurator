@@ -32,7 +32,7 @@ function isPriceManager(role: Role): boolean {
 
 /** Landing route for a role after login / when bounced from a forbidden route. */
 export function homeForRole(role: Role): string {
-  return role === 'salesman' ? '/configurator/processor' : '/stock/chassis'
+  return role === 'salesman' ? '/configurator' : '/stock/chassis'
 }
 
 /**
@@ -44,6 +44,20 @@ export function homeForRole(role: Role): string {
  * (surfaced as a button on each product page, not a separate nav item).
  */
 export function navForRole(role: Role): NavGroup[] {
+  // Salesman has its own slim nav: start a quote (configurator) + their own quotes.
+  if (role === 'salesman') {
+    return [
+      {
+        id: 'sell',
+        title: 'Sell',
+        items: [
+          { to: '/configurator', label: 'New quote', real: true },
+          { to: '/quotes', label: 'My quotes', real: true },
+        ],
+      },
+    ]
+  }
+
   const groups: NavGroup[] = [
     {
       id: 'product',
@@ -75,7 +89,7 @@ export function navForRole(role: Role): NavGroup[] {
       title: 'Pricing & Rules',
       items: [
         { to: '/pricing/bulk', label: 'Bulk price update' },
-        { to: '/pricing/compatibility', label: 'Compatibility overrides' },
+        { to: '/compatibility', label: 'Compatible packs', real: true },
       ],
     })
   }

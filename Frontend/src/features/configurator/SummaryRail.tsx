@@ -14,7 +14,7 @@ const CATEGORY_LABEL: Record<Category, string> = {
 // (empty slots render a placeholder rather than collapsing in/out).
 const CATEGORY_ORDER: Category[] = ['processor', 'chassis', 'ram', 'storage']
 
-export function SummaryRail() {
+export function SummaryRail({ mode = 'quote' }: { mode?: 'quote' | 'pack' }) {
   const store = useConfiguratorStore()
   const lines = selectionLines(store)
   const totals = quoteTotals(lines)
@@ -77,7 +77,9 @@ export function SummaryRail() {
             Some lines have no price set — they count as ₹0 until priced.
           </p>
         )}
-        <p className="mt-2 text-[11px] text-muted">Prices appear on the saved quote.</p>
+        <p className="mt-2 text-[11px] text-muted">
+          Prices appear on the saved {mode === 'pack' ? 'pack' : 'quote'}.
+        </p>
       </div>
     </aside>
   )

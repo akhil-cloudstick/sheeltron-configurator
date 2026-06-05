@@ -85,3 +85,33 @@ export interface SavedQuote {
 }
 
 export const GST_RATE = 0.18
+
+// --- Compatible packs (admin-built bundles a salesman can pick) ---------------
+
+// One line on a pack: the full chosen option snapshot + qty (mirrors the backend
+// PackLine). line_total is filled by the backend on read.
+export interface PackLine {
+  category: Category
+  qty: number
+  option: ConfigOption
+  line_total?: number
+}
+
+export interface PackPayload {
+  name: string
+  description: string
+  lines: { category: Category; qty: number; option: ConfigOption }[]
+}
+
+export interface SavedPack {
+  id: number
+  pack_number: string
+  name: string
+  description: string
+  lines: PackLine[]
+  subtotal: number
+  gst: number
+  grand_total: number
+  created_by: string
+  created_at: string
+}

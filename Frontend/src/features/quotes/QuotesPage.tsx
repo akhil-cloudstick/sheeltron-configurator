@@ -13,12 +13,15 @@ import {
   IconServer,
 } from '@/components/ui'
 import { ApiError } from '@/lib/api'
+import { useAuthStore } from '@/store/authStore'
 import { listQuotes } from './quotesApi'
 import { money } from '@/features/configurator/format'
 import type { SavedQuote } from '@/features/configurator/types'
 
 export function QuotesPage() {
   const navigate = useNavigate()
+  const role = useAuthStore((s) => s.user?.role)
+  const isSalesman = role === 'salesman'
   const [quotes, setQuotes] = useState<SavedQuote[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -35,7 +38,10 @@ export function QuotesPage() {
 
   return (
     <div className="flex h-full flex-col gap-3">
-      <PageHeader title="All quotes" description="Quotes saved by the sales team." />
+      <PageHeader
+        title={isSalesman ? 'My quotes' : 'All quotes'}
+        description={isSalesman ? 'Quotes you have saved.' : 'Quotes saved by the sales team.'}
+      />
       {error && <ErrorBanner message={error} onRetry={load} />}
 
       <TableWrap className="min-h-0 flex-1 overflow-auto">

@@ -87,16 +87,22 @@ func CreateQuote(c echo.Context) error {
 	return c.JSON(http.StatusCreated, map[string]interface{}{"success": true, "data": q})
 }
 
-// ListQuotes — GET /api/quotes (admin/super_admin). Newest first.
+// ListQuotes — GET /api/quotes. Admin/super_admin see every quote; a salesman sees only
+// quotes created under the salesman role (auth is mocked, so "their own" == role-scoped).
+// Newest first.
 func ListQuotes(c echo.Context) error {
+	q := config.DB.Order("id DESC")
+	if actorOf(c) == "salesman" {
+		q = q.Where("created_by = ?", "salesman")
+	}
 	var quotes []models.Quote
-	if err := config.DB.Order("id DESC").Find(&quotes).Error; err != nil {
+	if err := q.Find(&quotes).Error; err != nil {
 		return fail(c, http.StatusBadRequest, "could not list quotes: "+err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{"success": true, "data": quotes})
 }
 
-// GetQuote — GET /api/quotes/:id (admin/super_admin).
+// GetQuote — GET /api/quotes/:id. A salesman may only open salesman-created quotes.
 func GetQuote(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -108,6 +114,9 @@ func GetQuote(c echo.Context) error {
 			return fail(c, http.StatusNotFound, "quote not found")
 		}
 		return fail(c, http.StatusBadRequest, err.Error())
+	}
+	if actorOf(c) == "salesman" && q.CreatedBy != "salesman" {
+		return fail(c, http.StatusNotFound, "quote not found")
 	}
 	return okData(c, q)
 }

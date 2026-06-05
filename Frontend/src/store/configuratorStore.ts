@@ -19,6 +19,7 @@ interface ConfiguratorState {
   setQty: (category: Category, qty: number) => void
   clear: (category: Category) => void
   setCustomer: (patch: Partial<Customer>) => void
+  loadFromPack: (lines: { category: Category; qty: number; option: ConfigOption }[]) => void
   reset: () => void
 }
 
@@ -55,6 +56,22 @@ export const useConfiguratorStore = create<ConfiguratorState>()((set) => ({
   clear: (category) => set({ [category]: null } as Pick<ConfiguratorState, Category>),
 
   setCustomer: (patch) => set((s) => ({ customer: { ...s.customer, ...patch } })),
+
+  // Replace the whole build from an admin-saved pack (salesman "use this pack" flow).
+  // Starts from a clean slate so leftover picks never bleed in.
+  loadFromPack: (lines) =>
+    set(() => {
+      const next = {
+        processor: null as Selection | null,
+        chassis: null as Selection | null,
+        ram: null as Selection | null,
+        storage: null as Selection | null,
+      }
+      for (const l of lines) {
+        next[l.category] = { option: l.option, qty: Math.max(1, l.qty) }
+      }
+      return next
+    }),
 
   reset: () =>
     set({ processor: null, chassis: null, ram: null, storage: null, customer: EMPTY_CUSTOMER }),
