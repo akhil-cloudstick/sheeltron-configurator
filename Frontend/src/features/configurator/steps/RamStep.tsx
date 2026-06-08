@@ -46,6 +46,12 @@ export function RamStep() {
       canIncrement={(o, qty) =>
         maxGb == null ? true : (qty + 1) * (o.capacity_gb ?? 0) <= maxGb
       }
+      incrementReason={(o, qty) => {
+        if (maxSlots != null && qty >= maxSlots) return `All ${maxSlots} DIMM slots are in use.`
+        if (maxGb != null && (qty + 1) * (o.capacity_gb ?? 0) > maxGb)
+          return `One more would exceed the chassis max memory (${maxGb} GB).`
+        return undefined
+      }}
       facets={[
         { key: 'brand', label: 'Brand', get: (o) => o.brand },
         { key: 'speed', label: 'Speed', get: (o) => o.speed, numeric: true },

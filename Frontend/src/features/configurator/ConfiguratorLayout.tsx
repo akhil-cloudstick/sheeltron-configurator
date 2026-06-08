@@ -5,7 +5,6 @@ import { useAuthStore } from '@/store/authStore'
 import { ROLE_LABELS } from '@/types/auth'
 import { useConfiguratorStore } from '@/store/configuratorStore'
 import { SummaryRail } from './SummaryRail'
-import { SelectedDrivesRail } from './SelectedDrivesRail'
 import { STEP_ORDER, isComplete, maxReachableIndex, stepIndexFromPath, type StepDef } from './configuratorSteps'
 import { WizardProvider } from './wizardContext'
 import { cn } from '@/lib/cn'
@@ -107,9 +106,8 @@ export function ConfiguratorLayout({
               </WizardProvider>
             )}
           </main>
-          <div className="hidden w-[320px] shrink-0 flex-col gap-4 overflow-auto lg:flex print:hidden">
+          <div className="hidden w-[360px] shrink-0 flex-col overflow-auto lg:flex print:hidden">
             <SummaryRail mode={mode} />
-            <SelectedDrivesRail />
           </div>
         </div>
       </div>

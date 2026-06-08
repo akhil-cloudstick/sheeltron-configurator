@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import type { Category, ConfigOption, Customer, Selection } from '@/features/configurator/types'
-import { GST_RATE, optionKey } from '@/features/configurator/types'
+import { GST_RATE, optionKey, allowedChassisSockets } from '@/features/configurator/types'
 
 // The build is deliberately session-only — it lives in memory and starts empty on
 // every page load. A refresh, a fresh visit, or a saved quote should never leave a
@@ -61,15 +61,29 @@ export const useConfiguratorStore = create<ConfiguratorState>()((set) => ({
       if (category === 'storage') return {}
       const cur = s[category]
       if (!cur) return {}
-      return { [category]: { ...cur, qty: Math.max(1, qty) } } as Pick<ConfiguratorState, 'ram'>
+      const nq = Math.max(1, qty)
+      if (category === 'processor') {
+        // Changing the CPU count changes which chassis socket counts are valid. If the
+        // chosen chassis no longer fits, drop it (and the spares derived from it).
+        const sock = s.chassis?.option.max_sockets
+        const stillFits = s.chassis != null && sock != null && allowedChassisSockets(nq).includes(sock)
+        return s.chassis && !stillFits
+          ? { processor: { ...cur, qty: nq }, chassis: null, ram: null, storage: [] }
+          : { processor: { ...cur, qty: nq } }
+      }
+      return { [category]: { ...cur, qty: nq } } as Pick<ConfiguratorState, 'ram'>
     }),
 
+  // Clearing a pick cascades like selecting: dropping the CPU invalidates the chassis +
+  // spares, dropping the chassis invalidates the spares (their compatibility was derived
+  // from it). Removing a single storage drive uses toggleStorage, not clear.
   clear: (category) =>
-    set(() =>
-      category === 'storage'
-        ? { storage: [] }
-        : ({ [category]: null } as Pick<ConfiguratorState, 'ram'>),
-    ),
+    set(() => {
+      if (category === 'processor') return { processor: null, chassis: null, ram: null, storage: [] }
+      if (category === 'chassis') return { chassis: null, ram: null, storage: [] }
+      if (category === 'storage') return { storage: [] }
+      return { [category]: null } as Pick<ConfiguratorState, 'ram'>
+    }),
 
   // Add the drive if new, otherwise remove it (toggle). Keyed by optionKey so the same
   // SKU in New vs Refurbished are distinct lines.

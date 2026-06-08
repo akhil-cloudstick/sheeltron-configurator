@@ -1,22 +1,13 @@
 import { StepPicker } from '../StepPicker'
 import { listChassis } from '../configuratorApi'
+import { allowedChassisSockets } from '../types'
 import { useConfiguratorStore } from '@/store/configuratorStore'
-
-// CPU quantity → which chassis socket counts are valid:
-//   1 CPU  → 1- or 2-socket chassis
-//   2 CPUs → 2-socket only
-//   3-4    → 4-socket only
-function allowedSockets(cpuQty: number): number[] {
-  if (cpuQty <= 1) return [1, 2]
-  if (cpuQty === 2) return [2]
-  return [4]
-}
 
 export function ChassisStep() {
   const processor = useConfiguratorStore((s) => s.processor)
   const socket = processor?.option.socket ?? ''
   const cpuQty = processor?.qty ?? 1
-  const allowed = allowedSockets(cpuQty)
+  const allowed = allowedChassisSockets(cpuQty)
 
   return (
     <StepPicker

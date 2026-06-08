@@ -40,6 +40,9 @@ export function StorageStep() {
       // Cap the total number of drives at the chassis bay count (unlimited if unset).
       canSelect={() => hasRoom}
       canIncrement={() => hasRoom}
+      incrementReason={() =>
+        driveBays != null ? `All ${driveBays} drive bays are in use.` : undefined
+      }
       facets={[
         { key: 'type', label: 'Type', get: (o) => o.type },
         { key: 'brand', label: 'Brand', get: (o) => o.brand },

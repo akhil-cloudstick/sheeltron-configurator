@@ -28,12 +28,14 @@ type StoreSlice = {
   processor: unknown | null
   chassis: unknown | null
   ram: unknown | null
-  storage: unknown | null
+  storage: unknown[]
 }
 
 /** Whether a picker step has a selection (the terminal step is never "complete" itself). */
 export function isComplete(store: StoreSlice, category: Category | 'review' | 'save'): boolean {
   if (category === 'review' || category === 'save') return false
+  // Storage is a list (multiple drives) → complete only once at least one is chosen.
+  if (category === 'storage') return store.storage.length > 0
   return store[category] != null
 }
 

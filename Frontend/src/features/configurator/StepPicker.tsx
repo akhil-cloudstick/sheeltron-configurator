@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Input, Pill, ErrorBanner, type PillTone } from '@/components/ui'
 import { ApiError } from '@/lib/api'
 import { useConfiguratorStore } from '@/store/configuratorStore'
+import { toast } from '@/store/uiStore'
 import { cn } from '@/lib/cn'
 import { useWizardSteps } from './wizardContext'
 import type { Category, ConfigOption, Selection } from './types'
@@ -47,6 +48,7 @@ export function StepPicker({
   capBanner,
   canSelect,
   canIncrement,
+  incrementReason,
 }: {
   category: Category
   stepNo: number
@@ -74,6 +76,8 @@ export function StepPicker({
   canSelect?: (o: ConfigOption) => boolean
   /** May a selected row's qty be incremented? (RAM GB cap, storage bays). */
   canIncrement?: (o: ConfigOption, currentQty: number) => boolean
+  /** Tooltip explaining why the + is blocked (max count / slots / memory / bays). */
+  incrementReason?: (o: ConfigOption, currentQty: number) => string | undefined
 }) {
   const navigate = useNavigate()
   // Single-pick categories read their slot; storage reads the array.
@@ -246,11 +250,12 @@ export function StepPicker({
       multi={multi}
       canSelect={canSelect}
       canIncrement={canIncrement}
+      incrementReason={incrementReason}
     />
   )
 
-  // Continue: single picks require a selection; storage is optional → always allowed.
-  const canContinue = multi ? true : !!singleSel
+  // Continue: a step is satisfied once it has at least one pick (storage needs ≥1 drive).
+  const canContinue = multi ? storageSels.length > 0 : !!singleSel
 
   // Back (hidden on the first step) + Continue, anchored at the bottom of the panel.
   const footer = (
@@ -441,6 +446,7 @@ function ProductList({
   multi,
   canSelect,
   canIncrement,
+  incrementReason,
 }: {
   products: ConfigOption[]
   specs: (o: ConfigOption) => SpecBadge[]
@@ -453,6 +459,7 @@ function ProductList({
   multi?: boolean
   canSelect?: (o: ConfigOption) => boolean
   canIncrement?: (o: ConfigOption, qty: number) => boolean
+  incrementReason?: (o: ConfigOption, qty: number) => string | undefined
 }) {
   if (products.length === 0) {
     return <Center>No options match — change a filter, or go back and adjust an earlier pick.</Center>
@@ -477,6 +484,7 @@ function ProductList({
               hideQty={hideQty}
               multi={multi}
               plusDisabled={plusDisabled}
+              plusReason={plusDisabled ? incrementReason?.(o, qty) : undefined}
               onSelect={() => !blocked && onPick(o)}
               onQty={(n) => onQty(o, n)}
               onRemove={() => onPick(o)}
@@ -497,6 +505,7 @@ function OptionRow({
   hideQty,
   multi,
   plusDisabled,
+  plusReason,
   onSelect,
   onQty,
   onRemove,
@@ -509,6 +518,7 @@ function OptionRow({
   hideQty?: boolean
   multi?: boolean
   plusDisabled?: boolean
+  plusReason?: string
   onSelect: () => void
   onQty: (q: number) => void
   onRemove: () => void
@@ -545,7 +555,7 @@ function OptionRow({
       {selected && !hideQty && (
         <div className="mt-1 flex items-center gap-3 border-t border-border pt-2" onClick={(e) => e.stopPropagation()}>
           <span className="text-[11px] uppercase tracking-wide text-muted">Quantity</span>
-          <QtyStepper qty={qty} plusDisabled={plusDisabled} onChange={onQty} />
+          <QtyStepper qty={qty} plusDisabled={plusDisabled} plusReason={plusReason} onChange={onQty} />
           <span className="text-caption text-muted">
             line total <b className="font-mono text-secondary">{money((o.price ?? 0) * qty)}</b>
           </span>
@@ -594,10 +604,12 @@ function BigChip({ onClick, children }: { onClick: () => void; children: React.R
 function QtyStepper({
   qty,
   plusDisabled,
+  plusReason,
   onChange,
 }: {
   qty: number
   plusDisabled?: boolean
+  plusReason?: string
   onChange: (q: number) => void
 }) {
   return (
@@ -608,9 +620,14 @@ function QtyStepper({
       <span className="w-9 text-center font-mono text-caption tabular-nums">{qty}</span>
       <button
         type="button"
-        disabled={plusDisabled}
-        className="px-2.5 py-0.5 text-primary hover:bg-subtle disabled:cursor-not-allowed disabled:opacity-40"
-        onClick={() => !plusDisabled && onChange(qty + 1)}
+        aria-disabled={plusDisabled}
+        // Looks disabled at the cap, but stays clickable so a click can warn *why*
+        // (a native `disabled` button would swallow the click and stay silent).
+        className={cn(
+          'px-2.5 py-0.5 text-primary',
+          plusDisabled ? 'opacity-40' : 'hover:bg-subtle',
+        )}
+        onClick={() => (plusDisabled ? plusReason && toast.info(plusReason) : onChange(qty + 1))}
         aria-label="Increase quantity"
       >
         +

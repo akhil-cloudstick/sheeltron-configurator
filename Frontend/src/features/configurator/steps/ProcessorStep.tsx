@@ -13,6 +13,7 @@ export function ProcessorStep() {
       load={listProcessors}
       loadKey="processors"
       maxQty={4}
+      incrementReason={() => 'Maximum 4 processors per configuration.'}
       vendorFacet={{ key: 'brand', label: 'Vendor', get: (o) => o.brand }}
       facets={[
         { key: 'family', label: 'Family', get: (o) => o.family },

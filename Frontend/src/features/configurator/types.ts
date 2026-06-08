@@ -38,6 +38,18 @@ export function optionKey(o: ConfigOption): string {
   return `${o.kind}-${o.stock_id}-${o.condition}`
 }
 
+/**
+ * Chassis socket counts valid for a given CPU quantity (the processor-first rule):
+ *   1 CPU  → 1- or 2-socket · 2 CPUs → 2-socket · 3–4 CPUs → 4-socket.
+ * Used to filter the chassis list and to drop a now-incompatible chassis when the CPU
+ * count changes.
+ */
+export function allowedChassisSockets(cpuQty: number): number[] {
+  if (cpuQty <= 1) return [1, 2]
+  if (cpuQty === 2) return [2]
+  return [4]
+}
+
 export interface Selection {
   option: ConfigOption
   qty: number
