@@ -38,7 +38,11 @@ export interface ServerUnit {
   cpu_socket: string
   max_sockets: number | null
   ram_type: string
+  max_dimm_slots: number | null
+  max_memory_gb: number | null
   drive_form_factors: string
+  drive_bays: number | null
+  supported_interfaces: string
   datasheet: string
   source: string
   is_server: boolean

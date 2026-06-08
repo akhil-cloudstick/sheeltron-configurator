@@ -1,7 +1,12 @@
 
 package controllers
 
-import "configurator/modules/stock/models"
+import (
+	"strconv"
+	"strings"
+
+	"configurator/modules/stock/models"
+)
 
 // RamCfg wires the generic engine for memory stock. Deduped by product name; no status.
 var RamCfg = UnitCfg[models.RamUnit]{
@@ -21,14 +26,16 @@ var RamCfg = UnitCfg[models.RamUnit]{
 	},
 	// Correlation import: derived ram_type (DDR generation) + needs_review from Corelation/ram.csv.
 	corrTemplateName: "memory_correlation_template.csv",
-	corrTemplateHdrs: []string{"PRODUCT NAME", "RAM TYPE", "NEEDS REVIEW"},
+	corrTemplateHdrs: []string{"PRODUCT NAME", "CAPACITY GB", "RAM TYPE", "NEEDS REVIEW"},
 	corrHeaderToField: map[string]string{
 		"productname": "product_name", "product": "product_name",
+		"capacitygb":  "capacity_gb",
 		"ramtype":     "ram_type",
 		"needsreview": "needs_review",
 	},
 	corrFields: func(u *models.RamUnit) []FieldKV {
 		return []FieldKV{
+			{"capacity_gb", "Capacity (GB)", intPtrStr(u.CapacityGB)},
 			{"ram_type", "RAM type", u.RamType},
 			{"needs_review", "Needs review", yesNo(u.NeedsReview)},
 		}
@@ -45,6 +52,10 @@ var RamCfg = UnitCfg[models.RamUnit]{
 			u.Rank = val
 		case "product_name":
 			u.ProductName = val
+		case "capacity_gb":
+			if n, err := strconv.Atoi(strings.TrimSpace(val)); err == nil {
+				u.CapacityGB = &n
+			}
 		case "ram_type":
 			u.RamType = val
 		case "needs_review":

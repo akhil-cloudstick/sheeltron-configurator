@@ -60,7 +60,13 @@ export function QuoteDocument({ quote }: { quote: SavedQuote }) {
       </table>
 
       <div className="mt-4 flex flex-col items-end gap-1 text-caption">
-        <Row label="Subtotal" value={money(quote.subtotal)} />
+        {quote.units > 1 && (
+          <>
+            <Row label="Per-unit subtotal" value={money(quote.subtotal / quote.units)} muted />
+            <Row label="Units" value={`× ${quote.units}`} />
+          </>
+        )}
+        <Row label={quote.units > 1 ? `Subtotal (× ${quote.units})` : 'Subtotal'} value={money(quote.subtotal)} />
         <Row label="GST 18%" value={money(quote.gst)} muted />
         <div className="mt-1 flex w-56 items-center justify-between border-t border-border pt-2">
           <span className="font-display text-sm font-bold text-primary">Grand total</span>

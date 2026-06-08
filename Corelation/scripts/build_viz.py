@@ -27,19 +27,28 @@ for c in cpus_raw:
         cn=c["condition_new"], cr=c["condition_refurbished"], count=1)
 cpus=list(cpu_by_model.values())
 
-# Chassis: group by model_family
+# Chassis: group by model_family (aggregate bays = max, form-factors/interfaces = union)
+def _union(a,b):
+    return ";".join(sorted({x for x in (a+";"+b).split(";") if x}))
 fam={}
 for c in chassis_raw:
     k=c["model_family"] or c["model"]
     if k not in fam:
         fam[k]=dict(family=k, brand=c["brand"], model=c["model"],
             cpu_socket=c["cpu_socket"], ram_type=c["ram_type"],
-            ff=c["drive_form_factors"], max_sockets=c["max_sockets"],
+            ff="", bays=0, ifaces="", dimm=0, maxmem=0, max_sockets=c["max_sockets"],
             needs_review=c["needs_review"], datasheet=c["datasheet"], count=0,
             cn=c["condition_new"], cr=c["condition_refurbished"])
-    fam[k]["count"]+=1
-    if c["condition_new"]=="yes": fam[k]["cn"]="yes"
-    if c["condition_refurbished"]=="yes": fam[k]["cr"]="yes"
+    f=fam[k]; f["count"]+=1
+    f["ff"]=_union(f["ff"], c.get("drive_form_factors",""))
+    f["ifaces"]=_union(f["ifaces"], c.get("supported_interfaces",""))
+    b=c.get("drive_bays","")
+    if str(b).isdigit() and int(b)>f["bays"]: f["bays"]=int(b)
+    for key,col in (("dimm","max_dimm_slots"),("maxmem","max_memory_gb")):
+        v=c.get(col,"")
+        if str(v).isdigit() and int(v)>f[key]: f[key]=int(v)
+    if c["condition_new"]=="yes": f["cn"]="yes"
+    if c["condition_refurbished"]=="yes": f["cr"]="yes"
 chassis=list(fam.values())
 
 import re as _re
@@ -388,8 +397,12 @@ function renderChassis(){
     const r=el("div","row"+(selCh&&selCh.family==c.family?" sel":""));
     r.innerHTML=`<div class="t"><span>${c.family}</span><span class="badge sock">${c.cpu_socket}</span></div>
       <div class="m"><span class="badge">${c.brand}</span>
+      <span class="badge">${c.max_sockets||"?"}P</span>
       ${c.ram_type?`<span class="badge ram">${c.ram_type}</span>`:""}
-      ${c.ff?`<span class="badge ff">${c.ff}</span>`:'<span class="badge">bays: n/a</span>'}
+      ${c.dimm?`<span class="badge ram">${c.dimm} DIMM</span>`:""}
+      ${c.ff?`<span class="badge ff">${c.ff}</span>`:""}
+      ${c.bays?`<span class="badge">${c.bays} bays</span>`:""}
+      ${c.ifaces?`<span class="badge ff">${c.ifaces.replace(/;/g,"/")}</span>`:""}
       <span class="badge">${c.count} in stock</span>${condBadges(c)}</div>`;
     r.onclick=()=>{selCh=c;resetSpareFacets();renderChassis();renderSpares();};
     L.appendChild(r);
@@ -413,7 +426,8 @@ function renderSpares(){
   buildFacet("#ramBrandRow","#ramBrandWrap",rbase,r=>r.brand,ramBrand,v=>{ramBrand=v;renderSpares();});
   buildFacet("#ramSpeedRow","#ramSpeedWrap",rbase,r=>r.speed,ramSpeed,v=>{ramSpeed=v;renderSpares();},byNumDesc);
   let rams=rbase.filter(r=>(!ramGen||r.ram_type==ramGen)&&(!ramBrand||r.brand==ramBrand)&&(!ramSpeed||r.speed==ramSpeed));
-  $("#why3").innerHTML=`<div class="why">Chassis <b>${selCh.family}</b> uses <b>${rt||"?"}</b> → ${rbase.length} modules.</div>`;
+  const capTxt=(selCh.dimm?` · ${selCh.dimm} DIMM slots`:"")+(selCh.maxmem?` · up to ${selCh.maxmem>=1024?(selCh.maxmem/1024)+"TB":selCh.maxmem+"GB"} max`:"");
+  $("#why3").innerHTML=`<div class="why">Chassis <b>${selCh.family}</b> uses <b>${rt||"?"}</b>${capTxt} → ${rbase.length} modules.</div>`;
   $("#ramCount").textContent=rams.length+" RAM modules";
   const RL=$("#ramList");RL.innerHTML="";
   if(!rams.length)RL.appendChild(el("div","empty","No modules match these filters."));
@@ -422,12 +436,17 @@ function renderSpares(){
      <div class="m"><span>${r.name}</span>${condBadges(r)}</div>`)));
 
   // ---- Step 4 · Storage ----
-  let sbase=DB.storage.filter(s=>s.needs_review=="no"&&(!ffs.length||ffs.includes(s.ff)));
+  const ifaces=(selCh.ifaces||"").split(";").filter(Boolean);     // interfaces the backplane accepts
+  let sbase=DB.storage.filter(s=>s.needs_review=="no"
+    &&(!ffs.length||ffs.includes(s.ff))
+    &&(!ifaces.length||ifaces.includes(s.interface)));            // interface fit (when known)
   buildFacet("#stTypeRow","#stTypeWrap",sbase,s=>s.type,stType,v=>{stType=v;renderSpares();});
   buildFacet("#stBrandRow","#stBrandWrap",sbase,s=>s.brand,stBrand,v=>{stBrand=v;renderSpares();});
   buildFacet("#stSpeedRow","#stSpeedWrap",sbase,s=>s.speed,stSpeed,v=>{stSpeed=v;renderSpares();},byNumDesc);
   let sts=sbase.filter(s=>(!stType||s.type==stType)&&(!stBrand||s.brand==stBrand)&&(!stSpeed||s.speed==stSpeed));
-  $("#why4").innerHTML=`<div class="why">Chassis bays <b>${ffs.join(", ")||"any"}</b> → ${sbase.length} drives${ffs.length?"":" (no bay data — showing all)"}.</div>`;
+  const bayTxt=selCh.bays?` · up to <b>${selCh.bays}</b> drives`:"";
+  const ifTxt=ifaces.length?`, interfaces <b>${ifaces.join("/")}</b>`:" (interface unknown — not filtered)";
+  $("#why4").innerHTML=`<div class="why">Chassis bays <b>${ffs.join(", ")||"any"}</b>${ifTxt}${bayTxt} → ${sbase.length} drives.</div>`;
   $("#stCount").textContent=sts.length+" drives";
   const TL=$("#stList");TL.innerHTML="";
   if(!sts.length)TL.appendChild(el("div","empty","No drives match these filters."));
@@ -466,6 +485,7 @@ function renderMatrix(){
     card("Chassis — by brand",            tallyArr(ch,c=>c.brand),       "#3730a3"),
     card("Chassis — by RAM type",         tallyArr(ch,c=>c.ram_type),    "#065f46"),
     card("Chassis — by drive form factor",tallyArr(ch,ffSplit),          "#9a3412"),
+    card("Chassis — by backplane interface support",tallyArr(ch,c=>(c.ifaces||"").split(";").filter(Boolean).length?c.ifaces.split(";"):"(unknown)"),"#b45309"),
     card("RAM — by generation",           tallyArr(ram,r=>r.ram_type),   "#065f46"),
     card("RAM — by speed (MT/s)",         tallyArr(ram,r=>r.speed),      "#16a34a"),
     card("Storage — by type (HDD/SSD/NVMe)",tallyArr(st,s=>s.type),      "#9a3412"),

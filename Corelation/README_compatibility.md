@@ -40,10 +40,29 @@ and pick the matching price.
 
 | Relationship | Rule |
 |---|---|
-| **CPU ↔ chassis** | `cpu.socket == chassis.cpu_socket` |
-| **RAM ↔ chassis** | `ram.ram_type == chassis.ram_type` |
-| **Storage ↔ chassis** | `storage.form_factor` ∈ `chassis.drive_form_factors` (split on `;`); optionally also require interface support |
+| **CPU ↔ chassis** (type) | `cpu.socket == chassis.cpu_socket` |
+| **CPU ↔ chassis** (qty) | `cpu_qty <= chassis.max_sockets` (1 / 2 / 4) |
+| **RAM ↔ chassis** (type) | `ram.ram_type == chassis.ram_type` |
+| **RAM ↔ chassis** (qty) | `ram_qty <= chassis.max_dimm_slots` and `total_ram_gb <= chassis.max_memory_gb` (each only when set) |
+| **Storage ↔ chassis** (form factor) | `storage.form_factor` ∈ `chassis.drive_form_factors` (split `;`; empty = unknown → show all) |
+| **Storage ↔ chassis** (interface) | `storage.interface` ∈ `chassis.supported_interfaces` **only when set** (empty = unknown → don't filter) |
+| **Storage ↔ chassis** (qty) | `total_drives <= chassis.drive_bays` (when set) |
 | **Network ↔ chassis** | not filtered in v1 (chassis slot data too thin) — show all NICs |
+
+> **Caveat on slot/interface fields (coverage depends on the datasheet).** `max_sockets`
+> is reliable. The rest are extracted from the matched datasheet PDF + stock `BACK PLANE`
+> text, so they are blank when **(a)** no datasheet exists (50/114 chassis — Lenovo/Quanta
+> have none, and many specific models aren't in the PDF set) or **(b)** the datasheet's
+> spec-table layout fragments under text extraction (mainly HPE Gen10-Plus / EPYC).
+> Current coverage of the **114** rows:
+> - `supported_interfaces` — **73/114** (all 64 matched chassis; datasheet storage section + backplane text). Best-effort, **advisory** (may over/understate); filter only when set.
+> - `max_dimm_slots` — **50/114** (50/64 matched).
+> - `max_memory_gb` — **44/114** (44/64 matched); handles both "N TB max" and "up to N TB".
+> - `drive_bays` — **59/114** (from the model name's SFF/LFF tokens).
+>
+> The ~14 matched chassis still missing slots/memory are HPE Gen10-Plus / EPYC (+ a few
+> Fujitsu/Inspur) — top up by hand or with a vendor-specific parser. Apply every field
+> **only when set**; never assume a blank means "unsupported".
 
 **Always exclude rows where `needs_review == yes`** from the wizard until a human
 confirms them (they have missing/uncertain compatibility keys). `is_server == no`
@@ -62,19 +81,20 @@ an allow/block list checked after the attribute join. Not needed for v1.
 - `is_server=no` → desktop/workstation part, hide from configurator.
 
 ### `chassis.csv` — one row per stock chassis (stock IDs preserved)
-`stock_id, brand, model, model_family, cpu_socket, max_sockets, ram_type, drive_form_factors, condition_new, condition_refurbished, datasheet, source, is_server, needs_review, note`
-- **`cpu_socket`, `ram_type`, `drive_form_factors`** are the compatibility keys.
+`stock_id, brand, model, model_family, cpu_socket, max_sockets, ram_type, max_dimm_slots, max_memory_gb, drive_form_factors, drive_bays, supported_interfaces, condition_new, condition_refurbished, datasheet, source, is_server, needs_review, note`
+- **`cpu_socket`, `ram_type`, `drive_form_factors`** are the type-match keys; **`max_sockets`**, **`max_dimm_slots`**, **`max_memory_gb`**, **`drive_bays`**, **`supported_interfaces`** add quantity/interface validation (see contract + caveat). `max_dimm_slots`/`max_memory_gb` are extracted from the matched datasheet PDF.
 - `model_family` = normalized model (bay counts / "ProLiant"/"PowerEdge" stripped) for grouping drive-bay variants of the same platform in the chassis list.
 - `datasheet` = matched PDF under `Servers Data Sheet/` (`none` if no sheet) — for human verification only; the keys are derived from the model/generation, not parsed from the PDF.
 - `source` = `derived` (from model name) or `manual` (needs a human).
 
 ### `ram.csv` — memory catalog
-`stock_id, brand, capacity, ram_type, rank, condition_new, condition_refurbished, product_name, needs_review`
+`stock_id, brand, capacity, capacity_gb, ram_type, rank, condition_new, condition_refurbished, product_name, needs_review`
 - **`ram_type`** (DDR2/3/4/5) is the compatibility key (from the stock `GENERATION` column).
+- **`capacity_gb`** is the numeric size (for the `total_ram <= max_memory_gb` check); blank rows are flagged `needs_review`.
 
 ### `storage.csv` — HDD + SSD merged
-`stock_id, kind, brand, interface, capacity, form_factor, speed, rpm, condition_new, condition_refurbished, product_name, needs_review`
-- **`interface`** (SATA/SAS/NVMe) + **`form_factor`** (2.5" SFF / 3.5" LFF) are the keys.
+`stock_id, kind, brand, interface, capacity, capacity_gb, form_factor, speed, rpm, condition_new, condition_refurbished, product_name, needs_review`
+- **`interface`** (SATA/SAS/NVMe) + **`form_factor`** (2.5" SFF / 3.5" LFF) are the keys; **`capacity_gb`** is the numeric size (for quote totals).
 
 ### `socket_map.csv` — reference rule table
 Documents how a CPU `family`/`series`/model-number maps to a socket. Auditable and

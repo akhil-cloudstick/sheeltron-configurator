@@ -10,7 +10,9 @@ const EMPTY: ServerUnitInput = {
   brand: '', model: '',
   motherboard: '', heat_sink: '', fan: '', raid_card: '', cards: '', riser_1: '', riser_2: '',
   riser_3: '', back_plane: '', power_supply: '', status: 'need_check',
-  model_family: '', cpu_socket: '', max_sockets: null, ram_type: '', drive_form_factors: '',
+  model_family: '', cpu_socket: '', max_sockets: null, ram_type: '',
+  max_dimm_slots: null, max_memory_gb: null, drive_form_factors: '', drive_bays: null,
+  supported_interfaces: '',
   datasheet: '', source: '', is_server: true, needs_review: false, compat_note: '',
   condition_new: false, condition_refurbished: false, price_new: null, price_refurbished: null,
   remark: '',
@@ -181,10 +183,30 @@ export function ServerFormDrawer({
                 />
               </Field>
               <TextField label="RAM type" value={form.ram_type} onChange={(v) => set('ram_type', v)} />
+              <NumberField
+                label="Max DIMM slots"
+                value={form.max_dimm_slots}
+                onChange={(v) => set('max_dimm_slots', v)}
+              />
+              <NumberField
+                label="Max memory (GB)"
+                value={form.max_memory_gb}
+                onChange={(v) => set('max_memory_gb', v)}
+              />
               <TextField
                 label="Drive form factors"
                 value={form.drive_form_factors}
                 onChange={(v) => set('drive_form_factors', v)}
+              />
+              <NumberField
+                label="Drive bays"
+                value={form.drive_bays}
+                onChange={(v) => set('drive_bays', v)}
+              />
+              <TextField
+                label="Supported interfaces"
+                value={form.supported_interfaces}
+                onChange={(v) => set('supported_interfaces', v)}
                 className="col-span-2"
               />
               <TextField label="Datasheet" value={form.datasheet} onChange={(v) => set('datasheet', v)} />
@@ -275,6 +297,33 @@ function TextField({
   return (
     <Field label={label} className={className}>
       <Input value={value} onChange={(e) => onChange(e.target.value)} />
+    </Field>
+  )
+}
+
+function NumberField({
+  label,
+  value,
+  onChange,
+  className,
+}: {
+  label: string
+  value: number | null
+  onChange: (v: number | null) => void
+  className?: string
+}) {
+  return (
+    <Field label={label} className={className}>
+      <Input
+        type="number"
+        min={0}
+        value={value ?? ''}
+        placeholder="not set"
+        onChange={(e) => {
+          const t = e.target.value.trim()
+          onChange(t === '' ? null : Math.max(0, Number(t) || 0))
+        }}
+      />
     </Field>
   )
 }

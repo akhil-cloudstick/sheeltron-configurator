@@ -1,115 +1,115 @@
-stock_id,brand,model,model_family,cpu_socket,max_sockets,ram_type,drive_form_factors,condition_new,condition_refurbished,datasheet,source,is_server,needs_review,note
-4632,HPE,HPE DL 385 GEN 10 PLUS V2  8SFF,HPE DL 385 GEN 10 PLUS V2,LGA4189,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4633,HPE,HPE DL 385 GEN 11 8SFF,HPE DL 385 GEN 11,LGA4677,2,DDR5,"2.5"" SFF",no,no,none,derived,yes,no,HPE Intel Gen11
-4634,HPE,HPE PROLIANT DL365 G10 PLUS 8SFF,HPE DL365 G10 PLUS,SP3,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4635,HPE,HPE DL385 GEN10  8SFF,HPE DL385 GEN10,SP3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE EPYC Gen10
-4636,HPE,HPE DL380 GEN9 12LFF * 2SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,"2.5"" SFF;3.5"" LFF",no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4637,HPE,DL160 GEN9 8SFF,DL160 GEN9,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4638,HPE,DL380 GEN10 8SFF,DL380 GEN10,LGA3647,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4639,HPE,HPE DL 385 GEN 10 PLUS,HPE DL 385 GEN 10 PLUS,LGA4189,2,DDR4,,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4640,HPE,HPE DL360 GEN10,HPE DL360 GEN10,LGA3647,2,DDR4,,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4641,HPE,HPE STORE EASY 1650,HPE STORE EASY 1650,LGA2011-3,2,DDR4,,no,no,none,derived,yes,no,HPE StoreEasy 1650 (Gen9-based)
-4642,HPE,HPE DL385 GEN10,HPE DL385 GEN10,SP3,2,DDR4,,no,no,none,derived,yes,no,HPE EPYC Gen10
-4643,DELL,DELL POWEREDGE R540 8LFF,DELL R540,LGA3647,2,DDR4,"3.5"" LFF",no,no,DELL\dell PowerEdge-R540-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4644,DELL,DELL POWEREDGE R730 8SFF,DELL R730,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4645,DELL,DELL POWEREDGE R740 8LFF,DELL R740,LGA3647,2,DDR4,"3.5"" LFF",no,no,DELL\dell powerEdge -r740-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4646,DELL,DELL POWEREDGE R230 2LFF,DELL R230,LGA1151,1,DDR4,"3.5"" LFF",no,no,DELL\Dell_PowerEdge_R230_DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
-4647,DELL,DELL POWEREDGE R740 8SFF,DELL R740,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\dell powerEdge -r740-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4648,DELL,DELL POWEREDGE NX3240 12LFF,DELL NX3240,LGA3647,2,DDR4,"3.5"" LFF",no,no,DELL\dell -PowerEdge-nx3240_data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4649,DELL,DELL POWEREDGE R730XD 12LFF *2SFF,DELL R730XD,LGA2011-3,2,DDR4,"2.5"" SFF;3.5"" LFF",no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4650,DELL,DELL POWEREDGE NX3230,DELL NX3230,LGA2011-3,2,DDR4,,no,no,DELL\DELLs_poweredge_nx3230_data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4651,DELL,DELL POWEREDGE R730 16SFF,DELL R730,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4652,DELL,DELL POWEREDGE R740XD 24SFF,DELL R740XD,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\dell-poweredge-r740xd-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4653,DELL,DELL POWEREDGE R630 8SFF,DELL R630,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4654,DELL,DELL POWEREDGE R430,DELL R430,LGA2011-3,2,DDR4,,no,no,DELL\Dell-PowerEdge-R430-DATA SHEET.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4655,DELL,DELL POWEREDGE R730XD,DELL R730XD,LGA2011-3,2,DDR4,,no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4656,DELL,DELLPOWEREDGE R7425,DELL R7425,SP3,2,DDR4,,no,no,DELL\DELL PowerEdge-R7425-DATA SHEET.pdf,derived,yes,no,Dell EPYC Naples/Rome
-4657,DELL,DELL POWEREDGE R630,DELL R630,LGA2011-3,2,DDR4,,no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4658,DELL,DELL POWEREDGE R720,DELL R720,LGA2011,2,DDR3,,no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
-4659,DELL,DELL POWEREDGE R640,DELL R640,LGA3647,2,DDR4,,no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4660,HPE,DL 360 GEN10 PLUS,DL 360 GEN10 PLUS,LGA4189,2,DDR4,,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4661,HPE,DL360 GEN9,DL360 GEN9,LGA2011-3,2,DDR4,,no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4662,DELL,DELL POWEREDGE R340,DELL R340,LGA1151,1,DDR4,,no,no,DELL\DELL_poweredge-r340-DATASHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
-4663,DELL,DELL POWEREDGE R350,DELL R350,LGA1151,1,DDR4,,no,no,DELL\dell-emc-poweredge-r350-DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
-4664,DELL,DELL POWEREDGE R440,DELL R440,LGA3647,2,DDR4,,no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4665,HPE,HPDL380P GEN8,HPDL380P GEN8,LGA2011,2,DDR3,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4666,HPE,DL360P GEN8,DL360P GEN8,LGA2011,2,DDR3,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4667,DELL,DELL POWEREDGE R740XD,DELL R740XD,LGA3647,2,DDR4,,no,no,DELL\dell-poweredge-r740xd-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4668,DELL,DELL POWEREDGE R730 8LFF,DELL R730,LGA2011-3,2,DDR4,"3.5"" LFF",no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4669,DELL,DELL POWEREDGE R630 10SFF,DELL R630,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4670,DELL,DELL POWEREDGE R730XD 24 SFF,DELL R730XD,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4671,QUAUNTA,Hitachi DS220 12LFF,HITACHI DS220,LGA3647,2,DDR4,"3.5"" LFF",no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
-4672,DELL,DELL POWEREDGE R720 8SFF,DELL R720,LGA2011,2,DDR3,"2.5"" SFF",no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
-4673,DELL,DELL POWEREDGE 730XD 24SFF,DELL 730XD,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
-4674,DELL,DELL POWEREDGE 730 8SFF,DELL 730,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
-4675,HPE,HPE DL380 GEN10 12LFF,HPE DL380 GEN10,LGA3647,2,DDR4,"3.5"" LFF",no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4676,DELL,DELL POWEREDGE R750XS 16SFF,DELL R750XS,LGA4189,2,DDR4,"2.5"" SFF",no,no,DELL\DELL poweredge r750xs-data sheet.pdf,derived,yes,no,Dell 15G (Ice Lake)
-4677,HPE,HPE DL360p GEN8 4LFF,HPE DL360P GEN8,LGA2011,2,DDR3,"3.5"" LFF",no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4678,DELL,DELL POWEREDGE R820,DELL R820,LGA2011,4,DDR3,,no,no,DELL\Dell-PowerEdge-R820Technical-Guide-2018Jun DATA SHEET.pdf,derived,yes,no,Dell 12G 4-socket (E5-4600 v1/v2)
-4679,DELL,DELL POWEREDGE R7525,DELL R7525,SP3,2,DDR4,,no,no,DELL\DELL poweredge-r7525-DATA SHEET.pdf,derived,yes,no,Dell EPYC Rome/Milan
-4680,DELL,DELL POWEREDGE R530 8LFF,DELL R530,LGA2011-3,2,DDR4,"3.5"" LFF",no,no,DELL\Dell-PowerEdge-R530-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
-4681,HPE,HPE DL380 GEN9 24SFF * 2SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4682,HPE,HPE DL380 GEN10 PLUS 8SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4683,DELL,DELL POWEREDGE R440 8SFF,DELL R440,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4684,HPE,HPE DL325 GEN10 PLUS V2 10SFF,HPE DL325 GEN10 PLUS V2,SP3,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl325-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4685,GIGABYTE,GIGABYTE P162-Z12,GIGABYTE P162 Z12,SP3,2,DDR4,,no,no,none,derived,yes,no,Gigabyte EPYC Rome/Milan
-4686,HPE,HPE DL380 GEN10  8SFF,HPE DL380 GEN10,LGA3647,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4687,DELL,DELL POWEREDGE R620 8SFF,DELL R620,LGA2011,2,DDR3,"2.5"" SFF",no,no,DELL\Dell-PowerEdge-R620-data sheet.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
-4688,DELL,DELL POWEREDGE R450 8SFF,DELL R450,LGA4189,2,DDR4,"2.5"" SFF",no,no,DELL\DELL- PowerEdge-R450-DATA SHEET.pdf,derived,yes,no,Dell 15G (Ice Lake)
-4689,DELL,DELL POWEREDGE R440 10SFF,DELL R440,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4690,HPE,HPE DL360 GEN9 4LFF,HPE DL360 GEN9,LGA2011-3,2,DDR4,"3.5"" LFF",no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4691,HPE,HPE DL360p GEN8,HPE DL360P GEN8,LGA2011,2,DDR3,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4692,HPE,HPE DL160 GEN8,HPE DL160 GEN8,LGA2011,2,DDR3,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4693,HPE,HPE DL160 GEN9,HPE DL160 GEN9,LGA2011-3,2,DDR4,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4694,DELL,DELL POWEREDGE R640 4LFF,DELL R640,LGA3647,2,DDR4,"3.5"" LFF",no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4695,DELL,DELL POWEREDGE 430  8SFF,DELL 430,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
-4696,HPE,HPE 365 GEN10 PLUS,HPE 365 GEN10 PLUS,LGA4189,2,DDR4,,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4697,LENOVO,LENOVO HR630X,LENOVO HR630X,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Lenovo HR630X (Scalable)
-4698,HPE,HPE DL360 GEN9 8SFF,HPE DL360 GEN9,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4699,HPE,DL360 GEN10,DL360 GEN10,LGA3647,2,DDR4,,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4700,INSPUR,INSPUR SA5112M4 8SFF,INSPUR SA5112M4,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,Inspur M4 (E5 v3/v4)
-4701,INSPUR,INSPUR SA5112M4 4LFF,INSPUR SA5112M4,LGA2011-3,2,DDR4,"3.5"" LFF",no,no,none,derived,yes,no,Inspur M4 (E5 v3/v4)
-4702,HPE,HPE DL120 GEN9,HPE DL120 GEN9,LGA2011-3,2,DDR4,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4703,HPE,HPE DL360 GEN8 4LFF,HPE DL360 GEN8,LGA2011,2,DDR3,"3.5"" LFF",no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4704,CISCO,Cisco UCS UCSC-C220-M4S,CISCO UCS UCSC C220 M4S,LGA2011-3,2,DDR4,,no,no,none,derived,yes,no,Cisco UCS M4 (E5 v3/v4)
-4705,DELL,DELL POWEREDGE R420 4LFF,DELL R420,LGA1356,2,DDR3,"3.5"" LFF",no,no,DELL\Dell-PowerEdge-R420Technical-Guide data sheet.pdf,derived,yes,no,Dell 12G entry (E5-2400)
-4706,QUANTA,QUANTA DS220,QUANTA DS220,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
-4707,QUANTA,QUANTA T4TS2U,QUANTA T4TS2U,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
-4708,QUANTA,QUANTA DS120,QUANTA DS120,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
-4709,HPE,HPE DL380 GEN10,HPE DL380 GEN10,LGA3647,2,DDR4,,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4710,DELL,DELL POWEREDGE R640 10SFF,DELL R640,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4711,DELL,DELL POWEREDGE R640 8SFF,DELL R640,LGA3647,2,DDR4,"2.5"" SFF",no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
-4712,HPE,HPDL380P GEN8  8SFF,HPDL380P GEN8,LGA2011,2,DDR3,"2.5"" SFF",no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4713,INSPUR,INSPUR NF5280M5  12LFF  * 2SFF,INSPUR NF5280M5,LGA3647,2,DDR4,"2.5"" SFF;3.5"" LFF",no,no,INSPUR\INSPURE_NF5280M5 12LFF  2SFF DATA SHEET.pdf,derived,yes,no,Inspur M5 (Skylake/Cascade)
-4714,GIGABYTE,GIGABYTE R162-Z12,GIGABYTE R162 Z12,SP3,2,DDR4,,no,no,none,derived,yes,no,Gigabyte EPYC Rome/Milan
-4715,HPE,DL360 GEN9  4LFF,DL360 GEN9,LGA2011-3,2,DDR4,"3.5"" LFF",no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4716,HPE,HPE DL380 GEN9 8SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
-4717,DELL,DELL POWEREDGE R720 16SFF,DELL R720,LGA2011,2,DDR3,"2.5"" SFF",no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
-4718,DELL,DELL POWEREDGE R350 4LFF,DELL R350,LGA1151,1,DDR4,"3.5"" LFF",no,no,DELL\dell-emc-poweredge-r350-DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
-4719,HPE,DL385 GEN10 PLUS,DL385 GEN10 PLUS,SP3,2,DDR4,,no,no,HPE\hpe-dl385-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4720,HPE,DL385 GEN10 PLUS V2,DL385 GEN10 PLUS V2,SP3,2,DDR4,,no,no,HPE\hpe-dl385-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4721,HPE,ProLiant DL360 Gen10,DL360 GEN10,LGA3647,2,DDR4,,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4722,HPE,DL385 GEN11,DL385 GEN11,SP5,2,DDR5,,no,no,none,derived,yes,no,HPE EPYC Gen11
-4723,DELL,DELL POWEREDGE R840,DELL R840,LGA3647,4,DDR4,,no,no,DELL\DELL poweredge-r840-DATA SHEET.pdf,derived,yes,no,Dell 14G 4-socket (Skylake/Cascade)
-4724,DELL,DELL POWEREDGE R750 XS LFF,DELL R750 XS LFF,LGA4189,2,DDR4,"3.5"" LFF",no,no,DELL\DELL poweredge r750xs-data sheet.pdf,derived,yes,no,Dell 15G (Ice Lake)
-4725,GIGABYTE,GIGABYTE G292-Z20,GIGABYTE G292 Z20,SP3,2,DDR4,,no,no,GIGABYTE\GIGABYTE_G292-Z20_datasheet.pdf,derived,yes,no,Gigabyte EPYC Rome/Milan
-4726,INSPUR,INSPUR SA5212M5,INSPUR SA5212M5,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Inspur M5 (Skylake/Cascade)
-4727,HPE,HPE DL380 GEN10 PLUS 12SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4728,HPE,HPE DL320E GEN8 V2,HPE DL320E GEN8 V2,LGA2011,2,DDR3,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
-4729,DELL,DELL POWEREDGE E10S,DELL E10S,,1,,,no,no,none,manual,no,yes,Dell Edge/embedded - verify
-4730,DELL,DELL POWEREDGE E33S,DELL E33S,,1,,,no,no,none,manual,no,yes,Dell Edge/embedded - verify
-4731,GIGABYTE,HYVE EDGE METAL G10,HYVE EDGE METAL G10,,2,,,no,no,none,manual,no,yes,Gigabyte Hyve Edge - verify
-4732,FUJJITSU,PRIMERGY RX2540 M1,PRIMERGY RX2540 M1,LGA2011-3,2,DDR4,,no,no,FUJJITSU\fujjitsu_PRIMERGY RX2540 M1_data sheet.pdf,derived,yes,no,Fujitsu RX2540 M1 (E5 v3)
-4733,GIGABYTE,GIGABYTE R282-N8,GIGABYTE R282 N8,LGA4189,2,DDR4,,no,no,GIGABYTE\GIGABYTE_R282-N81_datasheet.pdf,derived,yes,no,Gigabyte N8x (Ice Lake)
-4734,HPE,HPE DL380 GEN10 8SFF SAS + 8SFF NVME,HPE DL380 GEN10 SAS NVME,LGA3647,2,DDR4,"2.5"" SFF",no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
-4735,ASUS,ASSEMBLED SERVER,ASSEMBLED SERVER,,1,,,no,no,none,manual,no,yes,ASUS assembled - unknown
-4736,HPE,HPE DL385 GEN10 PLUS V2,HPE DL385 GEN10 PLUS V2,SP3,2,DDR4,,no,no,HPE\hpe-dl385-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4737,LENOVO,LENOVO METRO,LENOVO METRO,,2,,,no,no,none,manual,no,yes,Lenovo Metro - verify
-4738,QUANTA,QUANTA T42S-2U WITH 4 BLADES,QUANTA T42S 2U WITH 4 BLADES,LGA3647,2,DDR4,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
-4739,ASUS,ASUS ESC4000A-E10 8LFF,ASUS ESC4000A E10,SP3,2,DDR4,"3.5"" LFF",no,no,ASUS\ASUS DataSheet_ESC4000A-E10.pdf,derived,yes,no,ASUS A-series EPYC Rome/Milan
-4740,DELL,POWEREDGE R920,R920,LGA2011,4,DDR3,,no,no,DELL\Dell-PowerEdge-R920Technical-Guide-2018Jun DATA SHEET.pdf,derived,yes,no,Dell 12G 4-socket (E5-4600 v1/v2)
-4741,INSPUR,INSPUR SA5112M5 8LFF,INSPUR SA5112M5,LGA3647,2,DDR4,"3.5"" LFF",no,no,none,derived,yes,no,Inspur M5 (Skylake/Cascade)
-4742,HPE,HPE DL380 GEN10 PLUS 16SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
-4743,HPE,HPE DL365 GEN10 PLUS 8SFF,HPE DL365 GEN10 PLUS,SP3,2,DDR4,"2.5"" SFF",no,no,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4744,HPE,HPE DL365 GEN10 PLUS,HPE DL365 GEN10 PLUS,SP3,2,DDR4,,yes,yes,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
-4745,HPE,HPE DL580 GEN8 4U  10SFF,HPE DL580 GEN8 4U,LGA2011,2,DDR3,"2.5"" SFF",yes,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+stock_id,brand,model,model_family,cpu_socket,max_sockets,ram_type,max_dimm_slots,max_memory_gb,drive_form_factors,drive_bays,supported_interfaces,condition_new,condition_refurbished,datasheet,source,is_server,needs_review,note
+4745,HPE,HPE DL580 GEN8 4U  10SFF,HPE DL580 GEN8 4U,LGA2011,2,DDR3,,,"2.5"" SFF",10,,yes,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4744,HPE,HPE DL365 GEN10 PLUS,HPE DL365 GEN10 PLUS,SP3,2,DDR4,,,,,SATA;SAS;NVMe,yes,yes,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4743,HPE,HPE DL365 GEN10 PLUS 8SFF,HPE DL365 GEN10 PLUS,SP3,2,DDR4,,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4742,HPE,HPE DL380 GEN10 PLUS 16SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,,,"2.5"" SFF",16,SATA;SAS;NVMe,no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4741,INSPUR,INSPUR SA5112M5 8LFF,INSPUR SA5112M5,LGA3647,2,DDR4,,,"3.5"" LFF",8,,no,no,none,derived,yes,no,Inspur M5 (Skylake/Cascade)
+4740,DELL,POWEREDGE R920,R920,LGA2011,4,DDR3,96,6144,,,SATA;SAS;NVMe,no,no,DELL\Dell-PowerEdge-R920Technical-Guide-2018Jun DATA SHEET.pdf,derived,yes,no,Dell 12G 4-socket (E5-4600 v1/v2)
+4739,ASUS,ASUS ESC4000A-E10 8LFF,ASUS ESC4000A E10,SP3,2,DDR4,8,2048,"3.5"" LFF",8,NVMe,no,no,ASUS\ASUS DataSheet_ESC4000A-E10.pdf,derived,yes,no,ASUS A-series EPYC Rome/Milan
+4738,QUANTA,QUANTA T42S-2U WITH 4 BLADES,QUANTA T42S 2U WITH 4 BLADES,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
+4737,LENOVO,LENOVO METRO,LENOVO METRO,,2,,,,,,,no,no,none,manual,no,yes,Lenovo Metro - verify
+4736,HPE,HPE DL385 GEN10 PLUS V2,HPE DL385 GEN10 PLUS V2,SP3,2,DDR4,,,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl385-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4735,ASUS,ASSEMBLED SERVER,ASSEMBLED SERVER,,1,,,,,,,no,no,none,manual,no,yes,ASUS assembled - unknown
+4734,HPE,HPE DL380 GEN10 8SFF SAS + 8SFF NVME,HPE DL380 GEN10 SAS NVME,LGA3647,2,DDR4,,,"2.5"" SFF",16,SAS;NVMe,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4733,GIGABYTE,GIGABYTE R282-N8,GIGABYTE R282 N8,LGA4189,2,DDR4,32,256,,,SATA;SAS;NVMe,no,no,GIGABYTE\GIGABYTE_R282-N81_datasheet.pdf,derived,yes,no,Gigabyte N8x (Ice Lake)
+4732,FUJJITSU,PRIMERGY RX2540 M1,PRIMERGY RX2540 M1,LGA2011-3,2,DDR4,,1536,,,SATA;SAS,no,no,FUJJITSU\fujjitsu_PRIMERGY RX2540 M1_data sheet.pdf,derived,yes,no,Fujitsu RX2540 M1 (E5 v3)
+4731,GIGABYTE,HYVE EDGE METAL G10,HYVE EDGE METAL G10,,2,,,,,,,no,no,none,manual,no,yes,Gigabyte Hyve Edge - verify
+4730,DELL,DELL POWEREDGE E33S,DELL E33S,,1,,,,,,,no,no,none,manual,no,yes,Dell Edge/embedded - verify
+4729,DELL,DELL POWEREDGE E10S,DELL E10S,,1,,,,,,,no,no,none,manual,no,yes,Dell Edge/embedded - verify
+4728,HPE,HPE DL320E GEN8 V2,HPE DL320E GEN8 V2,LGA2011,2,DDR3,,,,,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4727,HPE,HPE DL380 GEN10 PLUS 12SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,,,"2.5"" SFF",12,SATA;SAS;NVMe,no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4726,INSPUR,INSPUR SA5212M5,INSPUR SA5212M5,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Inspur M5 (Skylake/Cascade)
+4725,GIGABYTE,GIGABYTE G292-Z20,GIGABYTE G292 Z20,SP3,2,DDR4,8,128,,,SATA;SAS;NVMe,no,no,GIGABYTE\GIGABYTE_G292-Z20_datasheet.pdf,derived,yes,no,Gigabyte EPYC Rome/Milan
+4724,DELL,DELL POWEREDGE R750 XS LFF,DELL R750 XS LFF,LGA4189,2,DDR4,16,1024,"3.5"" LFF",,SATA;SAS;NVMe,no,no,DELL\DELL poweredge r750xs-data sheet.pdf,derived,yes,no,Dell 15G (Ice Lake)
+4723,DELL,DELL POWEREDGE R840,DELL R840,LGA3647,4,DDR4,48,,,,SATA;SAS;NVMe,no,no,DELL\DELL poweredge-r840-DATA SHEET.pdf,derived,yes,no,Dell 14G 4-socket (Skylake/Cascade)
+4722,HPE,DL385 GEN11,DL385 GEN11,SP5,2,DDR5,,,,,SATA;SAS;NVMe,no,no,none,derived,yes,no,HPE EPYC Gen11
+4721,HPE,ProLiant DL360 Gen10,DL360 GEN10,LGA3647,2,DDR4,24,3072,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4720,HPE,DL385 GEN10 PLUS V2,DL385 GEN10 PLUS V2,SP3,2,DDR4,,,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl385-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4719,HPE,DL385 GEN10 PLUS,DL385 GEN10 PLUS,SP3,2,DDR4,,,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl385-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4718,DELL,DELL POWEREDGE R350 4LFF,DELL R350,LGA1151,1,DDR4,4,128,"3.5"" LFF",4,SATA;SAS,no,no,DELL\dell-emc-poweredge-r350-DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
+4717,DELL,DELL POWEREDGE R720 16SFF,DELL R720,LGA2011,2,DDR3,24,768,"2.5"" SFF",16,SATA;SAS,no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
+4716,HPE,HPE DL380 GEN9 8SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4715,HPE,DL360 GEN9  4LFF,DL360 GEN9,LGA2011-3,2,DDR4,24,3072,"3.5"" LFF",4,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4714,GIGABYTE,GIGABYTE R162-Z12,GIGABYTE R162 Z12,SP3,2,DDR4,,,,,,no,no,none,derived,yes,no,Gigabyte EPYC Rome/Milan
+4713,INSPUR,INSPUR NF5280M5  12LFF  * 2SFF,INSPUR NF5280M5,LGA3647,2,DDR4,,,"2.5"" SFF;3.5"" LFF",14,SATA;SAS;NVMe,no,no,INSPUR\INSPURE_NF5280M5 12LFF  2SFF DATA SHEET.pdf,derived,yes,no,Inspur M5 (Skylake/Cascade)
+4712,HPE,HPDL380P GEN8  8SFF,HPDL380P GEN8,LGA2011,2,DDR3,,,"2.5"" SFF",8,SAS,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4711,DELL,DELL POWEREDGE R640 8SFF,DELL R640,LGA3647,2,DDR4,24,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4710,DELL,DELL POWEREDGE R640 10SFF,DELL R640,LGA3647,2,DDR4,24,,"2.5"" SFF",10,SATA;SAS;NVMe,no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4709,HPE,HPE DL380 GEN10,HPE DL380 GEN10,LGA3647,2,DDR4,,,,,SAS;NVMe,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4708,QUANTA,QUANTA DS120,QUANTA DS120,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
+4707,QUANTA,QUANTA T4TS2U,QUANTA T4TS2U,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
+4706,QUANTA,QUANTA DS220,QUANTA DS220,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
+4705,DELL,DELL POWEREDGE R420 4LFF,DELL R420,LGA1356,2,DDR3,12,384,"3.5"" LFF",4,SATA;SAS,no,no,DELL\Dell-PowerEdge-R420Technical-Guide data sheet.pdf,derived,yes,no,Dell 12G entry (E5-2400)
+4704,CISCO,Cisco UCS UCSC-C220-M4S,CISCO UCS UCSC C220 M4S,LGA2011-3,2,DDR4,,,,,,no,no,none,derived,yes,no,Cisco UCS M4 (E5 v3/v4)
+4703,HPE,HPE DL360 GEN8 4LFF,HPE DL360 GEN8,LGA2011,2,DDR3,,,"3.5"" LFF",4,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4702,HPE,HPE DL120 GEN9,HPE DL120 GEN9,LGA2011-3,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4701,INSPUR,INSPUR SA5112M4 4LFF,INSPUR SA5112M4,LGA2011-3,2,DDR4,,,"3.5"" LFF",4,,no,no,none,derived,yes,no,Inspur M4 (E5 v3/v4)
+4700,INSPUR,INSPUR SA5112M4 8SFF,INSPUR SA5112M4,LGA2011-3,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,Inspur M4 (E5 v3/v4)
+4699,HPE,DL360 GEN10,DL360 GEN10,LGA3647,2,DDR4,24,3072,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4698,HPE,HPE DL360 GEN9 8SFF,HPE DL360 GEN9,LGA2011-3,2,DDR4,24,3072,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4697,LENOVO,LENOVO HR630X,LENOVO HR630X,LGA3647,2,DDR4,,,,,,no,no,none,derived,yes,no,Lenovo HR630X (Scalable)
+4696,HPE,HPE 365 GEN10 PLUS,HPE 365 GEN10 PLUS,LGA4189,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4695,DELL,DELL POWEREDGE 430  8SFF,DELL 430,LGA2011-3,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
+4694,DELL,DELL POWEREDGE R640 4LFF,DELL R640,LGA3647,2,DDR4,24,,"3.5"" LFF",4,SATA;SAS;NVMe,no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4693,HPE,HPE DL160 GEN9,HPE DL160 GEN9,LGA2011-3,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4692,HPE,HPE DL160 GEN8,HPE DL160 GEN8,LGA2011,2,DDR3,,,,,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4691,HPE,HPE DL360p GEN8,HPE DL360P GEN8,LGA2011,2,DDR3,,,,,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4690,HPE,HPE DL360 GEN9 4LFF,HPE DL360 GEN9,LGA2011-3,2,DDR4,24,3072,"3.5"" LFF",4,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4689,DELL,DELL POWEREDGE R440 10SFF,DELL R440,LGA3647,2,DDR4,16,768,"2.5"" SFF",10,SATA;SAS;NVMe,no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4688,DELL,DELL POWEREDGE R450 8SFF,DELL R450,LGA4189,2,DDR4,16,1024,"2.5"" SFF",8,SATA;SAS,no,no,DELL\DELL- PowerEdge-R450-DATA SHEET.pdf,derived,yes,no,Dell 15G (Ice Lake)
+4687,DELL,DELL POWEREDGE R620 8SFF,DELL R620,LGA2011,2,DDR3,24,768,"2.5"" SFF",8,SATA;SAS,no,no,DELL\Dell-PowerEdge-R620-data sheet.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
+4686,HPE,HPE DL380 GEN10  8SFF,HPE DL380 GEN10,LGA3647,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4685,GIGABYTE,GIGABYTE P162-Z12,GIGABYTE P162 Z12,SP3,2,DDR4,,,,,,no,no,none,derived,yes,no,Gigabyte EPYC Rome/Milan
+4684,HPE,HPE DL325 GEN10 PLUS V2 10SFF,HPE DL325 GEN10 PLUS V2,SP3,2,DDR4,,,"2.5"" SFF",10,SATA;SAS;NVMe,no,no,HPE\hpe-dl325-gen10-plus-v2-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4683,DELL,DELL POWEREDGE R440 8SFF,DELL R440,LGA3647,2,DDR4,16,768,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4682,HPE,HPE DL380 GEN10 PLUS 8SFF,HPE DL380 GEN10 PLUS,LGA4189,2,DDR4,,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,HPE\hpe-dl380-gen10-plus-datasheet.pdf,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4681,HPE,HPE DL380 GEN9 24SFF * 2SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,,,"2.5"" SFF",26,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4680,DELL,DELL POWEREDGE R530 8LFF,DELL R530,LGA2011-3,2,DDR4,12,,"3.5"" LFF",8,SATA;SAS,no,no,DELL\Dell-PowerEdge-R530-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4679,DELL,DELL POWEREDGE R7525,DELL R7525,SP3,2,DDR4,32,4096,,,SATA;SAS;NVMe,no,no,DELL\DELL poweredge-r7525-DATA SHEET.pdf,derived,yes,no,Dell EPYC Rome/Milan
+4678,DELL,DELL POWEREDGE R820,DELL R820,LGA2011,4,DDR3,48,1536,,,SATA;SAS,no,no,DELL\Dell-PowerEdge-R820Technical-Guide-2018Jun DATA SHEET.pdf,derived,yes,no,Dell 12G 4-socket (E5-4600 v1/v2)
+4677,HPE,HPE DL360p GEN8 4LFF,HPE DL360P GEN8,LGA2011,2,DDR3,,,"3.5"" LFF",4,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4676,DELL,DELL POWEREDGE R750XS 16SFF,DELL R750XS,LGA4189,2,DDR4,16,1024,"2.5"" SFF",16,SATA;SAS;NVMe,no,no,DELL\DELL poweredge r750xs-data sheet.pdf,derived,yes,no,Dell 15G (Ice Lake)
+4675,HPE,HPE DL380 GEN10 12LFF,HPE DL380 GEN10,LGA3647,2,DDR4,,,"3.5"" LFF",12,,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4674,DELL,DELL POWEREDGE 730 8SFF,DELL 730,LGA2011-3,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
+4673,DELL,DELL POWEREDGE 730XD 24SFF,DELL 730XD,LGA2011-3,2,DDR4,,,"2.5"" SFF",24,,no,no,none,derived,yes,no,Dell 13G (E5 v3/v4)
+4672,DELL,DELL POWEREDGE R720 8SFF,DELL R720,LGA2011,2,DDR3,24,768,"2.5"" SFF",8,SATA;SAS,no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
+4671,QUAUNTA,Hitachi DS220 12LFF,HITACHI DS220,LGA3647,2,DDR4,,,"3.5"" LFF",12,,no,no,none,derived,yes,no,Quanta cloud (Scalable Gen1/2)
+4670,DELL,DELL POWEREDGE R730XD 24 SFF,DELL R730XD,LGA2011-3,2,DDR4,24,768,"2.5"" SFF",24,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4669,DELL,DELL POWEREDGE R630 10SFF,DELL R630,LGA2011-3,2,DDR4,24,1536,"2.5"" SFF",10,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4668,DELL,DELL POWEREDGE R730 8LFF,DELL R730,LGA2011-3,2,DDR4,24,3072,"3.5"" LFF",8,SATA;SAS,no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4667,DELL,DELL POWEREDGE R740XD,DELL R740XD,LGA3647,2,DDR4,24,3072,,,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r740xd-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4666,HPE,DL360P GEN8,DL360P GEN8,LGA2011,2,DDR3,,,,,,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4665,HPE,HPDL380P GEN8,HPDL380P GEN8,LGA2011,2,DDR3,,,,,SAS,no,no,none,derived,yes,no,HPE Gen8 (E5 v1/v2)
+4664,DELL,DELL POWEREDGE R440,DELL R440,LGA3647,2,DDR4,16,768,,,SATA;SAS;NVMe,no,no,DELL\DELL poweredge-r440-DATA SHEET.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4663,DELL,DELL POWEREDGE R350,DELL R350,LGA1151,1,DDR4,4,128,,,SATA;SAS,no,no,DELL\dell-emc-poweredge-r350-DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
+4662,DELL,DELL POWEREDGE R340,DELL R340,LGA1151,1,DDR4,4,64,,,SATA;SAS,no,no,DELL\DELL_poweredge-r340-DATASHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
+4661,HPE,DL360 GEN9,DL360 GEN9,LGA2011-3,2,DDR4,24,3072,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen9-datasheet.pdf,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4660,HPE,DL 360 GEN10 PLUS,DL 360 GEN10 PLUS,LGA4189,2,DDR4,,,,,SATA;SAS;NVMe,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4659,DELL,DELL POWEREDGE R640,DELL R640,LGA3647,2,DDR4,24,,,,SATA;SAS;NVMe,no,no,DELL\dell poweredge-r640-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4658,DELL,DELL POWEREDGE R720,DELL R720,LGA2011,2,DDR3,24,768,,,SATA;SAS,no,no,DELL\Dell-PowerEdge-R720-DATA SHEET.pdf,derived,yes,no,Dell 12G (E5 v1/v2)
+4657,DELL,DELL POWEREDGE R630,DELL R630,LGA2011-3,2,DDR4,24,1536,,,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4656,DELL,DELLPOWEREDGE R7425,DELL R7425,SP3,2,DDR4,32,,,,SATA;SAS;NVMe,no,no,DELL\DELL PowerEdge-R7425-DATA SHEET.pdf,derived,yes,no,Dell EPYC Naples/Rome
+4655,DELL,DELL POWEREDGE R730XD,DELL R730XD,LGA2011-3,2,DDR4,24,768,,,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4654,DELL,DELL POWEREDGE R430,DELL R430,LGA2011-3,2,DDR4,12,,,,SATA;SAS,no,no,DELL\Dell-PowerEdge-R430-DATA SHEET.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4653,DELL,DELL POWEREDGE R630 8SFF,DELL R630,LGA2011-3,2,DDR4,24,1536,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r630-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4652,DELL,DELL POWEREDGE R740XD 24SFF,DELL R740XD,LGA3647,2,DDR4,24,3072,"2.5"" SFF",24,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r740xd-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4651,DELL,DELL POWEREDGE R730 16SFF,DELL R730,LGA2011-3,2,DDR4,24,3072,"2.5"" SFF",16,SATA;SAS,no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4650,DELL,DELL POWEREDGE NX3230,DELL NX3230,LGA2011-3,2,DDR4,,,,,SATA;SAS,no,no,DELL\DELLs_poweredge_nx3230_data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4649,DELL,DELL POWEREDGE R730XD 12LFF *2SFF,DELL R730XD,LGA2011-3,2,DDR4,24,768,"2.5"" SFF;3.5"" LFF",14,SATA;SAS;NVMe,no,no,DELL\dell-poweredge-r730xd-datasheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4648,DELL,DELL POWEREDGE NX3240 12LFF,DELL NX3240,LGA3647,2,DDR4,24,512,"3.5"" LFF",12,SATA;SAS,no,no,DELL\dell -PowerEdge-nx3240_data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4647,DELL,DELL POWEREDGE R740 8SFF,DELL R740,LGA3647,2,DDR4,24,3072,"2.5"" SFF",8,SATA;SAS,no,no,DELL\dell powerEdge -r740-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4646,DELL,DELL POWEREDGE R230 2LFF,DELL R230,LGA1151,1,DDR4,,64,"3.5"" LFF",2,SATA;SAS,no,no,DELL\Dell_PowerEdge_R230_DATA SHEET.pdf,derived,yes,no,Dell entry tower (Xeon E)
+4645,DELL,DELL POWEREDGE R740 8LFF,DELL R740,LGA3647,2,DDR4,24,3072,"3.5"" LFF",8,SATA;SAS,no,no,DELL\dell powerEdge -r740-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4644,DELL,DELL POWEREDGE R730 8SFF,DELL R730,LGA2011-3,2,DDR4,24,3072,"2.5"" SFF",8,SATA;SAS,no,no,DELL\Dell-PowerEdge-R730-data sheet.pdf,derived,yes,no,Dell 13G (E5 v3/v4)
+4643,DELL,DELL POWEREDGE R540 8LFF,DELL R540,LGA3647,2,DDR4,16,1024,"3.5"" LFF",8,SATA;SAS,no,no,DELL\dell PowerEdge-R540-data sheet.pdf,derived,yes,no,Dell 14G (Skylake/Cascade)
+4642,HPE,HPE DL385 GEN10,HPE DL385 GEN10,SP3,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE EPYC Gen10
+4641,HPE,HPE STORE EASY 1650,HPE STORE EASY 1650,LGA2011-3,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE StoreEasy 1650 (Gen9-based)
+4640,HPE,HPE DL360 GEN10,HPE DL360 GEN10,LGA3647,2,DDR4,24,3072,,,SATA;SAS;NVMe,no,no,HPE\hpe-dl360-gen10-datasheet.pdf,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4639,HPE,HPE DL 385 GEN 10 PLUS,HPE DL 385 GEN 10 PLUS,LGA4189,2,DDR4,,,,,,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)
+4638,HPE,DL380 GEN10 8SFF,DL380 GEN10,LGA3647,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,HPE Intel Gen10 (Skylake/Cascade)
+4637,HPE,DL160 GEN9 8SFF,DL160 GEN9,LGA2011-3,2,DDR4,,,"2.5"" SFF",8,SATA;SAS,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4636,HPE,HPE DL380 GEN9 12LFF * 2SFF,HPE DL380 GEN9,LGA2011-3,2,DDR4,,,"2.5"" SFF;3.5"" LFF",14,,no,no,none,derived,yes,no,HPE Gen9 (E5 v3/v4)
+4635,HPE,HPE DL385 GEN10  8SFF,HPE DL385 GEN10,SP3,2,DDR4,,,"2.5"" SFF",8,,no,no,none,derived,yes,no,HPE EPYC Gen10
+4634,HPE,HPE PROLIANT DL365 G10 PLUS 8SFF,HPE DL365 G10 PLUS,SP3,2,DDR4,,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,HPE\hpe-dl365-gen10-plus-datasheet.pdf,derived,yes,no,HPE EPYC Gen10 Plus
+4633,HPE,HPE DL 385 GEN 11 8SFF,HPE DL 385 GEN 11,LGA4677,2,DDR5,,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,none,derived,yes,no,HPE Intel Gen11
+4632,HPE,HPE DL 385 GEN 10 PLUS V2  8SFF,HPE DL 385 GEN 10 PLUS V2,LGA4189,2,DDR4,,,"2.5"" SFF",8,SATA;SAS;NVMe,no,no,none,derived,yes,no,HPE Intel Gen10 Plus (Ice Lake)

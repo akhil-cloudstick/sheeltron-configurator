@@ -8,6 +8,7 @@ type HddUnit struct {
 	HddBrand    string `gorm:"column:hdd_brand" json:"hdd_brand"`
 	Interface   string `gorm:"column:interface" json:"interface"`
 	Capacity    string `gorm:"column:capacity" json:"capacity"`
+	CapacityGB  *int   `gorm:"column:capacity_gb" json:"capacity_gb"`
 	FormFactor  string `gorm:"column:form_factor" json:"form_factor"`
 	Speed       string `gorm:"column:speed" json:"speed"`
 	RpmSpeed    string `gorm:"column:rpm_speed" json:"rpm_speed"`

@@ -23,6 +23,7 @@ type quoteRequest struct {
 	CustomerName    string `json:"customer_name"`
 	CustomerCompany string `json:"customer_company"`
 	CustomerEmail   string `json:"customer_email"`
+	Units           int    `json:"units"` // identical-config multiplier (default 1)
 	Lines           []struct {
 		Category  string   `json:"category"`
 		StockID   uint     `json:"stock_id"`
@@ -61,6 +62,13 @@ func CreateQuote(c echo.Context) error {
 			Condition: l.Condition, Qty: qty, UnitPrice: unit, LineTotal: lineTotal,
 		})
 	}
+	// units multiplies the whole configuration (N identical servers). Lines stay
+	// per-unit; the totals scale by units.
+	units := req.Units
+	if units < 1 {
+		units = 1
+	}
+	subtotal *= float64(units)
 	gst := subtotal * gstRate
 	grand := subtotal + gst
 
@@ -69,6 +77,7 @@ func CreateQuote(c echo.Context) error {
 		CustomerCompany: strings.TrimSpace(req.CustomerCompany),
 		CustomerEmail:   strings.TrimSpace(req.CustomerEmail),
 		Lines:           lines,
+		Units:           units,
 		Subtotal:        round2(subtotal),
 		Gst:             round2(gst),
 		GrandTotal:      round2(grand),

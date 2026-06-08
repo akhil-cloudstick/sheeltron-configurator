@@ -21,7 +21,12 @@ export interface ConfigOption {
   ram_type?: string
   drive_form_factors?: string
   max_sockets?: number | null
+  max_dimm_slots?: number | null
+  max_memory_gb?: number | null
+  drive_bays?: number | null
+  supported_interfaces?: string
   capacity?: string
+  capacity_gb?: number | null
   speed?: string
   interface?: string
   form_factor?: string
@@ -57,6 +62,7 @@ export interface QuotePayload {
   customer_name: string
   customer_company: string
   customer_email: string
+  units: number
   lines: QuoteLine[]
 }
 
@@ -76,6 +82,7 @@ export interface SavedQuote {
   customer_name: string
   customer_company: string
   customer_email: string
+  units: number
   lines: SavedQuoteLine[]
   subtotal: number
   gst: number

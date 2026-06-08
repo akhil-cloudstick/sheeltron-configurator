@@ -14,8 +14,11 @@ async function listOptions(path: string, params?: Record<string, string>): Promi
 export const listProcessors = () => listOptions('/api/configurator/processors')
 export const listChassis = (socket: string) => listOptions('/api/configurator/chassis', { socket })
 export const listMemory = (ramType: string) => listOptions('/api/configurator/memory', { ram_type: ramType })
-export const listStorage = (formFactors: string) =>
-  listOptions('/api/configurator/storage', { form_factors: formFactors })
+export const listStorage = (formFactors: string, supportedInterfaces = '') =>
+  listOptions('/api/configurator/storage', {
+    form_factors: formFactors,
+    supported_interfaces: supportedInterfaces,
+  })
 
 export async function createQuote(payload: QuotePayload): Promise<SavedQuote> {
   try {

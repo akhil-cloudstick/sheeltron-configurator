@@ -1,6 +1,11 @@
 package controllers
 
-import "configurator/modules/stock/models"
+import (
+	"strconv"
+	"strings"
+
+	"configurator/modules/stock/models"
+)
 
 // SsdCfg wires the generic engine for SSD stock. Deduped by product name; no status.
 var SsdCfg = UnitCfg[models.SsdUnit]{
@@ -22,10 +27,11 @@ var SsdCfg = UnitCfg[models.SsdUnit]{
 	// Correlation import: derived interface/form_factor/speed + needs_review from
 	// Corelation/storage.csv (only rows where KIND == SSD).
 	corrTemplateName: "ssd_correlation_template.csv",
-	corrTemplateHdrs: []string{"KIND", "PRODUCT NAME", "INTERFACE", "FORM FACTOR", "SPEED", "NEEDS REVIEW"},
+	corrTemplateHdrs: []string{"KIND", "PRODUCT NAME", "INTERFACE", "CAPACITY GB", "FORM FACTOR", "SPEED", "NEEDS REVIEW"},
 	corrHeaderToField: map[string]string{
 		"productname": "product_name", "product": "product_name",
 		"interface":   "interface",
+		"capacitygb":  "capacity_gb",
 		"formfactor":  "form_factor",
 		"speed":       "speed",
 		"needsreview": "needs_review",
@@ -34,6 +40,7 @@ var SsdCfg = UnitCfg[models.SsdUnit]{
 	corrFields: func(u *models.SsdUnit) []FieldKV {
 		return []FieldKV{
 			{"interface", "Interface", u.Interface},
+			{"capacity_gb", "Capacity (GB)", intPtrStr(u.CapacityGB)},
 			{"form_factor", "Form factor", u.FormFactor},
 			{"speed", "Speed", u.Speed},
 			{"needs_review", "Needs review", yesNo(u.NeedsReview)},
@@ -47,6 +54,10 @@ var SsdCfg = UnitCfg[models.SsdUnit]{
 			u.Interface = val
 		case "capacity":
 			u.Capacity = val
+		case "capacity_gb":
+			if n, err := strconv.Atoi(strings.TrimSpace(val)); err == nil {
+				u.CapacityGB = &n
+			}
 		case "form_factor":
 			u.FormFactor = val
 		case "speed":

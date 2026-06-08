@@ -26,6 +26,7 @@ export function exportQuoteCsv(q: SavedQuote): void {
     ['Customer', q.customer_name],
     ['Company', q.customer_company],
     ['Email', q.customer_email],
+    ['Units', q.units],
   ].map((r) => r.map(csvCell).join(','))
 
   const header = ['CATEGORY', 'PART', 'CONDITION', 'QTY', 'UNIT PRICE', 'LINE TOTAL'].join(',')

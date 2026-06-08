@@ -6,7 +6,7 @@ derives compatibility attributes (CPU socket, chassis socket/ram_type/form-facto
 RAM ddr-gen, storage interface/form-factor) and writes enriched catalogs the wizard
 can join on at runtime.
 """
-import csv, os, re, glob
+import csv, os, re, glob, subprocess, shutil, functools
 
 # Paths resolve relative to this script so the pipeline is portable.
 # Layout: <repo>/Configurator/Corelation/scripts/build_corr.py
@@ -15,10 +15,15 @@ OUT   = os.path.dirname(_HERE)                       # .../Configurator/Corelati
 _REPO = os.path.dirname(os.path.dirname(OUT))        # .../<repo root>
 DOCS  = os.path.join(_REPO, "docs")                  # legacy spares (not read by build)
 def stock_file(prefix):
-    """Find the actual-stock CSV by prefix (e.g. 'processor-stock-')."""
+    """Find the actual-stock CSV by prefix (e.g. 'processor-stock-'). None if absent."""
     hits = glob.glob(os.path.join(OUT, prefix + "*.csv"))
-    if not hits: raise FileNotFoundError(prefix)
-    return sorted(hits)[-1]
+    return sorted(hits)[-1] if hits else None
+
+def load_existing(name):
+    """Re-read a previously generated output so a missing stock input doesn't wipe it."""
+    p = os.path.join(OUT, name)
+    if not os.path.exists(p): return []
+    with open(p, encoding="utf-8") as fh: return list(csv.DictReader(fh))
 def g(row, *names):
     """Get the first present column (case/space tolerant)."""
     norm = {re.sub(r'[^a-z0-9]','',k.lower()): v for k,v in row.items()}
@@ -26,6 +31,12 @@ def g(row, *names):
         v = norm.get(re.sub(r'[^a-z0-9]','',n.lower()))
         if v is not None: return v.strip()
     return ""
+
+def cap_gb(s):
+    """Capacity string -> integer GB. '128GB'->128, '1.92TB'->1966, junk/''->''."""
+    m = re.search(r'(\d+(?:\.\d+)?)\s*(TB|GB)', (s or "").upper())
+    if not m: return ""
+    return int(round(float(m.group(1)) * (1024 if m.group(2) == "TB" else 1)))
 
 KNOWN_SOCKETS = {"LGA1366","LGA1356","LGA2011","LGA2011-3","LGA3647","LGA4189",
                  "LGA4677","LGA1150","LGA1151","LGA1700","SP3","SP5","SP6",
@@ -117,6 +128,23 @@ def drive_form_factors(model):
     if "LFF" in u: ff.add('3.5" LFF')
     # bay tokens like 8SFF/12LFF already covered; default unknown -> empty
     return ";".join(sorted(ff))
+
+def drive_bays(model):
+    """Total drive bays from the model name (e.g. '8SFF SAS + 8SFF NVME' -> 16)."""
+    tot = sum(int(m.group(1)) for m in re.finditer(r'(\d+)\s*(SFF|LFF)', model.upper()))
+    return tot or ""
+
+def supported_interfaces(backplane, model):
+    """Which drive interfaces the backplane accepts, from the BACK PLANE text + model.
+    Tri-Mode / U.3 backplanes accept all three. Empty = unknown (don't filter)."""
+    t = ((backplane or "") + " " + (model or "")).upper()
+    s = set()
+    if ("TRI" in t and "MODE" in t) or "U.3" in t or "U3 " in t: s.update(["SATA","SAS","NVMe"])
+    if "U.2" in t: s.add("NVMe")
+    if "NVME" in t: s.add("NVMe")
+    if "SAS"  in t: s.add("SAS")
+    if "SATA" in t: s.add("SATA")
+    return ";".join([x for x in ("SATA","SAS","NVMe") if x in s])
 
 def derive_chassis(brand, model):
     """Return dict(socket, max_sockets, ram_type, server, needs_review, note)."""
@@ -270,11 +298,72 @@ def match_datasheet(brand, model):
             best_score, best = score, os.path.join(f_folder, fname)
     return best
 
+# ---- RAM slot / max-memory extraction from the matched datasheet PDF ---------
+_PDFTOTEXT = shutil.which("pdftotext")
+_pdf_warned = [False]
+
+@functools.lru_cache(maxsize=None)
+def _pdf_text(rel):
+    """Cached plain text of a datasheet PDF (one pdftotext call per unique PDF)."""
+    if not rel or rel == "none": return ""
+    if not _PDFTOTEXT:
+        if not _pdf_warned[0]:
+            print("WARN: pdftotext not found — skipping DIMM/max-memory extraction")
+            _pdf_warned[0] = True
+        return ""
+    path = os.path.join(DS_ROOT, rel)
+    if not os.path.exists(path): return ""
+    try:
+        out = subprocess.run([_PDFTOTEXT, "-layout", path, "-"],
+                             capture_output=True, timeout=30)
+        return out.stdout.decode("utf-8", "ignore").upper()
+    except Exception:
+        return ""
+
+_MEM_EXCLUDE = ("OPTANE","PMEM","NVDIMM","PERSISTENT","CACHE","DRIVE","SSD","HDD",
+                "STORAGE","BAY","NVME","SATA","SAS","GPU")
+def extract_ram_specs(rel):
+    """Return (max_dimm_slots, max_memory_gb) parsed from the datasheet, best-effort.
+    Slots = largest plausible 'N ... DIMM' figure. Max memory = largest 'N TB/GB'
+    that sits next to 'MAX', excluding persistent-memory / drive / cache contexts."""
+    t = _pdf_text(rel)
+    if not t: return "", ""
+    slots = [int(m.group(1)) for m in
+             re.finditer(r'(\d{1,3})\s*(?:X\s*)?(?:DDR[45]\s*)?(?:ECC\s*)?(?:RDIMM|LRDIMM|DIMM)\b', t)
+             if 1 <= int(m.group(1)) <= 128]
+    mems = []
+    for m in re.finditer(r'(\d+(?:\.\d+)?)\s*(TB|GB)\b', t):
+        ctx = t[max(0, m.start()-70): m.end()+16]
+        trigger = ("MAX" in ctx) or ("UP TO" in ctx)       # "N TB max" or "up to N TB"
+        memctx  = ("DIMM" in ctx) or ("DDR" in ctx) or ("MEMORY" in ctx)
+        if not (trigger and memctx): continue              # must be a memory figure
+        if any(x in ctx for x in _MEM_EXCLUDE): continue   # skip persistent-mem / drives
+        v = float(m.group(1)) * (1024 if m.group(2) == "TB" else 1)
+        if 64 <= v <= 16384: mems.append(int(v))
+    return (max(slots) if slots else ""), (max(mems) if mems else "")
+
+def datasheet_interfaces(rel):
+    """Drive interfaces named in the datasheet's storage/drive sections (best-effort)."""
+    t = _pdf_text(rel)
+    if not t: return ""
+    s = set()
+    for kw in ("DRIVE", "STORAGE", "SFF", "LFF", "BACKPLANE", "HOT-PLUG", "HOT PLUG",
+               "BAY", "SSD", "HDD", "U.3", "U.2", "NVME"):
+        for m in re.finditer(re.escape(kw), t):
+            w = t[max(0, m.start()-60): m.start()+60]
+            if "NVME" in w or "U.3" in w or "U.2" in w: s.add("NVMe")
+            if "SAS"  in w: s.add("SAS")
+            if "SATA" in w: s.add("SATA")
+    return ";".join([x for x in ("SATA", "SAS", "NVMe") if x in s])
+
 # ============================================================================
 # 1. CPUs + socket_map
 # ============================================================================
 def build_cpus():
     src = stock_file("processor-stock-")
+    if not src:
+        print("WARN: processor-stock-*.csv missing — keeping existing cpus.csv")
+        return load_existing("cpus.csv")
     rows = []
     with open(src, encoding="utf-8-sig", newline="") as fh:
         for r in csv.DictReader(fh):
@@ -309,12 +398,21 @@ def build_chassis():
             if not model: continue
             d = derive_chassis(brand, model)
             ff = drive_form_factors(model)
+            bp = g(r,"BACK PLANE","BACKPLANE","BACK_PLANE")
             ds = match_datasheet(brand, model)
+            dimm_slots, max_mem = extract_ram_specs(ds)
+            # interfaces: union of stock-backplane text + datasheet storage section
+            _ifset = set(filter(None, supported_interfaces(bp, model).split(";"))) \
+                   | set(filter(None, datasheet_interfaces(ds).split(";")))
+            ifaces = ";".join([x for x in ("SATA","SAS","NVMe") if x in _ifset])
             rows.append(dict(
                 stock_id=g(r,"ID"),
                 brand=brand, model=model, model_family=model_family(brand,model),
                 cpu_socket=d["cpu_socket"], max_sockets=d["max_sockets"],
-                ram_type=d["ram_type"], drive_form_factors=ff,
+                ram_type=d["ram_type"], max_dimm_slots=dimm_slots, max_memory_gb=max_mem,
+                drive_form_factors=ff,
+                drive_bays=drive_bays(model),
+                supported_interfaces=ifaces,
                 condition_new=g(r,"CONDITION NEW") or "no",
                 condition_refurbished=g(r,"CONDITION REFURBISHED") or "no",
                 datasheet=ds or "none",
@@ -331,19 +429,23 @@ def build_chassis():
 # ============================================================================
 def build_ram():
     src = stock_file("memory-stock-")
+    if not src:
+        print("WARN: memory-stock-*.csv missing — keeping existing ram.csv")
+        return load_existing("ram.csv")
     rows = []
     with open(src, encoding="utf-8-sig", newline="") as fh:
         for r in csv.DictReader(fh):
             gen = g(r,"GENERATION").upper()
+            cap = g(r,"CAPACITY"); cg = cap_gb(cap)
             rows.append(dict(
                 stock_id=g(r,"ID"),
                 brand=g(r,"MEMORY BRAND","BRAND"),
-                capacity=g(r,"CAPACITY"),
+                capacity=cap, capacity_gb=cg,
                 ram_type=gen, rank=g(r,"RANK"),
                 condition_new=g(r,"CONDITION NEW") or "no",
                 condition_refurbished=g(r,"CONDITION REFURBISHED") or "no",
                 product_name=g(r,"PRODUCT NAME"),
-                needs_review="no" if gen in ("DDR2","DDR3","DDR4","DDR5") else "yes"))
+                needs_review="no" if (gen in ("DDR2","DDR3","DDR4","DDR5") and cg!="") else "yes"))
     with open(os.path.join(OUT,"ram.csv"),"w",encoding="utf-8",newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
     return rows
@@ -362,6 +464,9 @@ def norm_iface(s, name=""):
         if tok in s or tok in name: return tok.replace("NVME","NVMe")
     return ""
 def build_storage():
+    if not (stock_file("hdd-stock-") and stock_file("ssd-stock-")):
+        print("WARN: hdd/ssd-stock-*.csv missing — keeping existing storage.csv")
+        return load_existing("storage.csv")
     rows = []
     for kind,prefix,brandcol in [("HDD","hdd-stock-","HDD BRAND"),
                                  ("SSD","ssd-stock-","SSD BRAND")]:
@@ -372,7 +477,7 @@ def build_storage():
                 iface = norm_iface(g(r,"INTERFACE"), name)
                 rows.append(dict(
                     stock_id=g(r,"ID"), kind=kind, brand=g(r,brandcol,"BRAND"),
-                    interface=iface, capacity=g(r,"CAPACITY"),
+                    interface=iface, capacity=g(r,"CAPACITY"), capacity_gb=cap_gb(g(r,"CAPACITY")),
                     form_factor=ff, speed=g(r,"SPEED"),
                     rpm=g(r,"RPM SPEED") if kind=="HDD" else "",
                     condition_new=g(r,"CONDITION NEW") or "no",

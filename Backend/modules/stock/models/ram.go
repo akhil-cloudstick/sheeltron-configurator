@@ -7,6 +7,7 @@ type RamUnit struct {
 	ID          uint   `gorm:"column:id;primaryKey" json:"id"`
 	MemoryBrand string `gorm:"column:memory_brand" json:"memory_brand"`
 	Capacity    string `gorm:"column:capacity" json:"capacity"`
+	CapacityGB  *int   `gorm:"column:capacity_gb" json:"capacity_gb"`
 	Generation  string `gorm:"column:generation" json:"generation"`
 	Rank        string `gorm:"column:rank" json:"rank"`
 	ProductName string `gorm:"column:product_name" json:"product_name"`

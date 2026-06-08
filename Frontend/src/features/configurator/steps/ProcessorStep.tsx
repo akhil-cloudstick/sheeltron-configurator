@@ -12,6 +12,7 @@ export function ProcessorStep() {
       notReadyHint=""
       load={listProcessors}
       loadKey="processors"
+      maxQty={4}
       vendorFacet={{ key: 'brand', label: 'Vendor', get: (o) => o.brand }}
       facets={[
         { key: 'family', label: 'Family', get: (o) => o.family },

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import type { Category, ConfigOption, Customer, Selection } from '@/features/configurator/types'
-import { GST_RATE } from '@/features/configurator/types'
+import { GST_RATE, optionKey } from '@/features/configurator/types'
 
 // The build is deliberately session-only — it lives in memory and starts empty on
 // every page load. A refresh, a fresh visit, or a saved quote should never leave a
@@ -8,16 +8,23 @@ import { GST_RATE } from '@/features/configurator/types'
 const LEGACY_PERSIST_KEY = 'sheeltron.configurator'
 if (typeof localStorage !== 'undefined') localStorage.removeItem(LEGACY_PERSIST_KEY)
 
+// processor/chassis/ram are single picks; storage is a list (multiple drives, each
+// with its own qty, capped by the chassis drive bays). `units` multiplies the whole
+// configuration on the quote (N identical servers).
 interface ConfiguratorState {
   processor: Selection | null
   chassis: Selection | null
   ram: Selection | null
-  storage: Selection | null
+  storage: Selection[]
+  units: number
   customer: Customer
 
   select: (category: Category, option: ConfigOption) => void
   setQty: (category: Category, qty: number) => void
   clear: (category: Category) => void
+  toggleStorage: (option: ConfigOption) => void
+  setStorageQty: (key: string, qty: number) => void
+  setUnits: (units: number) => void
   setCustomer: (patch: Partial<Customer>) => void
   loadFromPack: (lines: { category: Category; qty: number; option: ConfigOption }[]) => void
   reset: () => void
@@ -29,31 +36,62 @@ export const useConfiguratorStore = create<ConfiguratorState>()((set) => ({
   processor: null,
   chassis: null,
   ram: null,
-  storage: null,
+  storage: [],
+  units: 1,
   customer: EMPTY_CUSTOMER,
 
   // Selecting a part applies the explorer's reset cascade: changing the CPU clears
-  // chassis + spares; changing the chassis clears the spares.
+  // chassis + spares; changing the chassis clears the spares. (Storage is a list, so
+  // it resets to []). Storage itself is managed via toggleStorage/setStorageQty.
   select: (category, option) =>
     set((s) => {
+      if (category === 'storage') return {} // storage uses toggleStorage
       const sel: Selection = { option, qty: s[category]?.qty ?? 1 }
       if (category === 'processor') {
-        return { processor: sel, chassis: null, ram: null, storage: null }
+        return { processor: sel, chassis: null, ram: null, storage: [] }
       }
       if (category === 'chassis') {
-        return { chassis: sel, ram: null, storage: null }
+        return { chassis: sel, ram: null, storage: [] }
       }
-      return { [category]: sel } as Pick<ConfiguratorState, Category>
+      return { [category]: sel } as Pick<ConfiguratorState, 'ram'>
     }),
 
   setQty: (category, qty) =>
     set((s) => {
+      if (category === 'storage') return {}
       const cur = s[category]
       if (!cur) return {}
-      return { [category]: { ...cur, qty: Math.max(1, qty) } } as Pick<ConfiguratorState, Category>
+      return { [category]: { ...cur, qty: Math.max(1, qty) } } as Pick<ConfiguratorState, 'ram'>
     }),
 
-  clear: (category) => set({ [category]: null } as Pick<ConfiguratorState, Category>),
+  clear: (category) =>
+    set(() =>
+      category === 'storage'
+        ? { storage: [] }
+        : ({ [category]: null } as Pick<ConfiguratorState, 'ram'>),
+    ),
+
+  // Add the drive if new, otherwise remove it (toggle). Keyed by optionKey so the same
+  // SKU in New vs Refurbished are distinct lines.
+  toggleStorage: (option) =>
+    set((s) => {
+      const key = optionKey(option)
+      const exists = s.storage.some((sel) => optionKey(sel.option) === key)
+      return {
+        storage: exists
+          ? s.storage.filter((sel) => optionKey(sel.option) !== key)
+          : [...s.storage, { option, qty: 1 }],
+      }
+    }),
+
+  setStorageQty: (key, qty) =>
+    set((s) => ({
+      storage: s.storage.map((sel) =>
+        optionKey(sel.option) === key ? { ...sel, qty: Math.max(1, qty) } : sel,
+      ),
+    })),
+
+  setUnits: (units) => set({ units: Math.max(1, Math.floor(units) || 1) }),
 
   setCustomer: (patch) => set((s) => ({ customer: { ...s.customer, ...patch } })),
 
@@ -61,47 +99,69 @@ export const useConfiguratorStore = create<ConfiguratorState>()((set) => ({
   // Starts from a clean slate so leftover picks never bleed in.
   loadFromPack: (lines) =>
     set(() => {
-      const next = {
-        processor: null as Selection | null,
-        chassis: null as Selection | null,
-        ram: null as Selection | null,
-        storage: null as Selection | null,
-      }
+      const next: {
+        processor: Selection | null
+        chassis: Selection | null
+        ram: Selection | null
+        storage: Selection[]
+      } = { processor: null, chassis: null, ram: null, storage: [] }
       for (const l of lines) {
-        next[l.category] = { option: l.option, qty: Math.max(1, l.qty) }
+        const sel: Selection = { option: l.option, qty: Math.max(1, l.qty) }
+        if (l.category === 'storage') next.storage.push(sel)
+        else next[l.category] = sel
       }
       return next
     }),
 
   reset: () =>
-    set({ processor: null, chassis: null, ram: null, storage: null, customer: EMPTY_CUSTOMER }),
+    set({ processor: null, chassis: null, ram: null, storage: [], units: 1, customer: EMPTY_CUSTOMER }),
 }))
 
-/** Derived line items (in BOM order), skipping empty slots. */
-export function selectionLines(s: {
+type StoreSlots = {
   processor: Selection | null
   chassis: Selection | null
   ram: Selection | null
-  storage: Selection | null
-}): { category: Category; sel: Selection }[] {
-  const order: Category[] = ['processor', 'chassis', 'ram', 'storage']
-  return order
-    .map((category) => ({ category, sel: s[category] }))
-    .filter((x): x is { category: Category; sel: Selection } => x.sel !== null)
+  storage: Selection[]
+}
+
+/** Derived line items (BOM order); storage expands to one line per drive. */
+export function selectionLines(s: StoreSlots): { category: Category; sel: Selection; key: string }[] {
+  const out: { category: Category; sel: Selection; key: string }[] = []
+  if (s.processor) out.push({ category: 'processor', sel: s.processor, key: 'processor' })
+  if (s.chassis) out.push({ category: 'chassis', sel: s.chassis, key: 'chassis' })
+  if (s.ram) out.push({ category: 'ram', sel: s.ram, key: 'ram' })
+  for (const sel of s.storage) {
+    out.push({ category: 'storage', sel, key: `storage-${optionKey(sel.option)}` })
+  }
+  return out
 }
 
 export function lineTotal(sel: Selection): number {
   return (sel.option.price ?? 0) * sel.qty
 }
 
-export function quoteTotals(lines: { sel: Selection }[]): {
-  subtotal: number
-  gst: number
-  grand: number
-  hasUnpriced: boolean
-} {
-  const subtotal = lines.reduce((sum, l) => sum + lineTotal(l.sel), 0)
+/** Totals over the line items, scaled by `units` identical configurations. */
+export function quoteTotals(
+  lines: { sel: Selection }[],
+  units = 1,
+): { subtotal: number; gst: number; grand: number; hasUnpriced: boolean } {
+  const perUnit = lines.reduce((sum, l) => sum + lineTotal(l.sel), 0)
+  const subtotal = perUnit * Math.max(1, units)
   const gst = subtotal * GST_RATE
   const hasUnpriced = lines.some((l) => l.sel.option.price == null)
   return { subtotal, gst, grand: subtotal + gst, hasUnpriced }
+}
+
+// --- RAM / storage usage helpers (for the step cap banners) -------------------
+
+export function ramSlotsUsed(s: StoreSlots): number {
+  return s.ram ? s.ram.qty : 0
+}
+
+export function ramGbUsed(s: StoreSlots): number {
+  return s.ram ? (s.ram.option.capacity_gb ?? 0) * s.ram.qty : 0
+}
+
+export function storageBaysUsed(s: StoreSlots): number {
+  return s.storage.reduce((n, sel) => n + sel.qty, 0)
 }

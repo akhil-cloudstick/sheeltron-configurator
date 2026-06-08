@@ -31,19 +31,24 @@ type ConfigOption struct {
 	Price     *float64 `json:"price"`
 
 	// Optional display / facet fields (only the ones relevant to the kind are set).
-	Socket           string `json:"socket,omitempty"`
-	Family           string `json:"family,omitempty"`
-	Series           string `json:"series,omitempty"`
-	Cores            string `json:"cores,omitempty"`
-	Threads          string `json:"threads,omitempty"`
-	RamType          string `json:"ram_type,omitempty"`
-	DriveFormFactors string `json:"drive_form_factors,omitempty"`
-	MaxSockets       *int   `json:"max_sockets,omitempty"`
-	Capacity         string `json:"capacity,omitempty"`
-	Speed            string `json:"speed,omitempty"`
-	Interface        string `json:"interface,omitempty"`
-	FormFactor       string `json:"form_factor,omitempty"`
-	Type             string `json:"type,omitempty"` // storage: HDD | SSD | NVMe
+	Socket              string `json:"socket,omitempty"`
+	Family              string `json:"family,omitempty"`
+	Series              string `json:"series,omitempty"`
+	Cores               string `json:"cores,omitempty"`
+	Threads             string `json:"threads,omitempty"`
+	RamType             string `json:"ram_type,omitempty"`
+	DriveFormFactors    string `json:"drive_form_factors,omitempty"`
+	MaxSockets          *int   `json:"max_sockets,omitempty"`
+	MaxDimmSlots        *int   `json:"max_dimm_slots,omitempty"`
+	MaxMemoryGB         *int   `json:"max_memory_gb,omitempty"`
+	DriveBays           *int   `json:"drive_bays,omitempty"`
+	SupportedInterfaces string `json:"supported_interfaces,omitempty"`
+	Capacity            string `json:"capacity,omitempty"`
+	CapacityGB          *int   `json:"capacity_gb,omitempty"`
+	Speed               string `json:"speed,omitempty"`
+	Interface           string `json:"interface,omitempty"`
+	FormFactor          string `json:"form_factor,omitempty"`
+	Type                string `json:"type,omitempty"` // storage: HDD | SSD | NVMe
 }
 
 // splitByCondition expands a base option into one entry per available condition (or a
@@ -108,7 +113,14 @@ func ConfigChassis(c echo.Context) error {
 		return fail(c, http.StatusBadRequest, "socket is required")
 	}
 	var rows []models.ServerUnit
-	if err := config.DB.Where("cpu_socket = ? AND needs_review = ?", socket, false).
+	// Only chassis the wizard can fully constrain a build on: the spec fields the
+	// downstream RAM/storage steps depend on must all be present (a missing one would
+	// leave RAM caps or the storage interface filter unbounded). datasheet must be a
+	// real path (the correlation dataset uses "none" for rows it couldn't source).
+	if err := config.DB.Where(
+		"cpu_socket = ? AND needs_review = ? AND max_dimm_slots IS NOT NULL AND "+
+			"max_memory_gb IS NOT NULL AND supported_interfaces <> '' AND "+
+			"datasheet <> '' AND lower(datasheet) <> 'none'", socket, false).
 		Order("brand, model").Find(&rows).Error; err != nil {
 		return fail(c, http.StatusBadRequest, "could not load chassis: "+err.Error())
 	}
@@ -118,7 +130,8 @@ func ConfigChassis(c echo.Context) error {
 		base := ConfigOption{
 			StockID: u.ID, Kind: "chassis", Brand: u.Brand, Label: u.Model,
 			Socket: u.CpuSocket, RamType: u.RamType, DriveFormFactors: u.DriveFormFactors,
-			MaxSockets: u.MaxSockets,
+			MaxSockets: u.MaxSockets, MaxDimmSlots: u.MaxDimmSlots, MaxMemoryGB: u.MaxMemoryGB,
+			DriveBays: u.DriveBays, SupportedInterfaces: u.SupportedInterfaces,
 		}
 		out = append(out, splitByCondition(base, u.Pricing)...)
 	}
@@ -147,7 +160,8 @@ func ConfigMemory(c echo.Context) error {
 		}
 		base := ConfigOption{
 			StockID: u.ID, Kind: "ram", Brand: u.MemoryBrand, Label: u.ProductName,
-			RamType: rt, Capacity: u.Capacity, Speed: deriveRamSpeed(u.ProductName),
+			RamType: rt, Capacity: u.Capacity, CapacityGB: u.CapacityGB,
+			Speed: deriveRamSpeed(u.ProductName),
 		}
 		out = append(out, splitByCondition(base, u.Pricing)...)
 	}
@@ -166,6 +180,19 @@ func ConfigStorage(c echo.Context) error {
 	}
 	keep := func(ff string) bool { return len(allowed) == 0 || allowed[strings.TrimSpace(ff)] }
 
+	// Drive interfaces the chassis accepts (e.g. "SATA;SAS;NVMe"). Empty → allow all,
+	// matching the form-factor handoff rule. Matched case-insensitively.
+	rawIface := strings.TrimSpace(c.QueryParam("supported_interfaces"))
+	allowedIface := map[string]bool{}
+	for _, ifc := range strings.Split(rawIface, ";") {
+		if ifc = strings.TrimSpace(ifc); ifc != "" {
+			allowedIface[strings.ToLower(ifc)] = true
+		}
+	}
+	keepIface := func(ifc string) bool {
+		return len(allowedIface) == 0 || allowedIface[strings.ToLower(strings.TrimSpace(ifc))]
+	}
+
 	var out []ConfigOption
 	var ssds []models.SsdUnit
 	if err := config.DB.Where("needs_review = ?", false).Order("ssd_brand, capacity").Find(&ssds).Error; err != nil {
@@ -173,12 +200,12 @@ func ConfigStorage(c echo.Context) error {
 	}
 	for i := range ssds {
 		u := &ssds[i]
-		if !keep(u.FormFactor) {
+		if !keep(u.FormFactor) || !keepIface(u.Interface) {
 			continue
 		}
 		base := ConfigOption{
 			StockID: u.ID, Kind: "ssd", Brand: u.SsdBrand, Label: u.ProductName,
-			Capacity: u.Capacity, Speed: u.Speed, Interface: u.Interface,
+			Capacity: u.Capacity, CapacityGB: u.CapacityGB, Speed: u.Speed, Interface: u.Interface,
 			FormFactor: u.FormFactor, Type: storageType("SSD", u.Interface),
 		}
 		out = append(out, splitByCondition(base, u.Pricing)...)
@@ -189,12 +216,12 @@ func ConfigStorage(c echo.Context) error {
 	}
 	for i := range hdds {
 		u := &hdds[i]
-		if !keep(u.FormFactor) {
+		if !keep(u.FormFactor) || !keepIface(u.Interface) {
 			continue
 		}
 		base := ConfigOption{
 			StockID: u.ID, Kind: "hdd", Brand: u.HddBrand, Label: u.ProductName,
-			Capacity: u.Capacity, Speed: u.Speed, Interface: u.Interface,
+			Capacity: u.Capacity, CapacityGB: u.CapacityGB, Speed: u.Speed, Interface: u.Interface,
 			FormFactor: u.FormFactor, Type: storageType("HDD", u.Interface),
 		}
 		out = append(out, splitByCondition(base, u.Pricing)...)

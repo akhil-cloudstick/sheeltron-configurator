@@ -53,6 +53,7 @@ type Quote struct {
 	CustomerCompany string     `gorm:"column:customer_company" json:"customer_company"`
 	CustomerEmail   string     `gorm:"column:customer_email" json:"customer_email"`
 	Lines           QuoteLines `gorm:"column:lines;type:jsonb" json:"lines"`
+	Units           int        `gorm:"column:units;default:1" json:"units"`
 	Subtotal        float64    `gorm:"column:subtotal" json:"subtotal"`
 	Gst             float64    `gorm:"column:gst" json:"gst"`
 	GrandTotal      float64    `gorm:"column:grand_total" json:"grand_total"`

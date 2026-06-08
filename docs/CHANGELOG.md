@@ -8,6 +8,20 @@ Format: dates are `DD/MM/YY`; each entry shows the time it was logged in
 
 ---
 
+## 08/06/26
+
+**`11:57 AM`**
+- Configurator wizard (salesman + super-admin pack builder) now uses the new chassis/RAM/storage specs.
+- CPU qty capped at 4 and filters chassis by socket count (1→1/2-socket, 2→2-socket, 3–4→4-socket); chassis qty fixed at 1; chassis missing datasheet/interfaces/dimm/memory are hidden.
+- RAM is one product × qty capped by DIMM slots + max memory; storage allows multiple drives filtered by supported_interfaces and capped by drive_bays — both show a "used / max" banner.
+- Review gained a "Units" field to multiply the whole config (N identical servers); saved quote stores units + summed totals (migration 0018).
+- Back button restores the previously-selected list with the pick highlighted instead of resetting to the first filter.
+
+**`10:50 AM`**
+- Correlation CSVs gained new spec columns; wired them through so the super-admin import no longer drops them. Chassis: `max_dimm_slots`, `max_memory_gb`, `drive_bays`, `supported_interfaces`. RAM/SSD/HDD: numeric `capacity_gb`. Added migration 0017, model fields, correlation parsing/templates, and the chassis edit form + detail view.
+
+---
+
 ## 06/06/26
 
 **`12:10 AM`**

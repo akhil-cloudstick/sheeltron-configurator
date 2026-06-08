@@ -8,6 +8,7 @@ type SsdUnit struct {
 	SsdBrand    string `gorm:"column:ssd_brand" json:"ssd_brand"`
 	Interface   string `gorm:"column:interface" json:"interface"`
 	Capacity    string `gorm:"column:capacity" json:"capacity"`
+	CapacityGB  *int   `gorm:"column:capacity_gb" json:"capacity_gb"`
 	FormFactor  string `gorm:"column:form_factor" json:"form_factor"`
 	Speed       string `gorm:"column:speed" json:"speed"`
 	ProductName string `gorm:"column:product_name" json:"product_name"`

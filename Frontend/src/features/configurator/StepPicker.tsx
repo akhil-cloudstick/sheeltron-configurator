@@ -5,7 +5,7 @@ import { ApiError } from '@/lib/api'
 import { useConfiguratorStore } from '@/store/configuratorStore'
 import { cn } from '@/lib/cn'
 import { useWizardSteps } from './wizardContext'
-import type { Category, ConfigOption } from './types'
+import type { Category, ConfigOption, Selection } from './types'
 import { optionKey } from './types'
 import { money, conditionLabel, conditionTone } from './format'
 
@@ -39,6 +39,14 @@ export function StepPicker({
   facets,
   searchText,
   specs,
+  // selection behaviour
+  multi = false,
+  hideQty = false,
+  maxQty,
+  prefilter,
+  capBanner,
+  canSelect,
+  canIncrement,
 }: {
   category: Category
   stepNo: number
@@ -52,12 +60,32 @@ export function StepPicker({
   facets: FacetDef[]
   searchText: (o: ConfigOption) => string
   specs: (o: ConfigOption) => SpecBadge[]
+  /** Storage uses multi-select (a list of drives, each with its own qty). */
+  multi?: boolean
+  /** Chassis hides the qty stepper (always 1). */
+  hideQty?: boolean
+  /** Hard per-row quantity cap (CPU = 4, RAM = DIMM slots). */
+  maxQty?: number
+  /** Narrow the loaded options before facets/counts (e.g. chassis socket rule). */
+  prefilter?: (o: ConfigOption) => boolean
+  /** Usage banner shown above the list (RAM slots/GB, storage bays). */
+  capBanner?: React.ReactNode
+  /** May an unselected row be added right now? (storage bays full → false). */
+  canSelect?: (o: ConfigOption) => boolean
+  /** May a selected row's qty be incremented? (RAM GB cap, storage bays). */
+  canIncrement?: (o: ConfigOption, currentQty: number) => boolean
 }) {
   const navigate = useNavigate()
-  const selected = useConfiguratorStore((s) => s[category])
+  // Single-pick categories read their slot; storage reads the array.
+  const singleSel = useConfiguratorStore((s) =>
+    multi ? null : (s[category as 'processor' | 'chassis' | 'ram'] as Selection | null),
+  )
+  const storageSels = useConfiguratorStore((s) => s.storage)
   const select = useConfiguratorStore((s) => s.select)
   const setQty = useConfiguratorStore((s) => s.setQty)
   const clear = useConfiguratorStore((s) => s.clear)
+  const toggleStorage = useConfiguratorStore((s) => s.toggleStorage)
+  const setStorageQty = useConfiguratorStore((s) => s.setStorageQty)
 
   const steps = useWizardSteps()
   const stepIdx = steps.findIndex((s) => s.category === category)
@@ -70,9 +98,27 @@ export function StepPicker({
   const [facetSel, setFacetSel] = useState<Record<string, FacetVal>>({})
 
   useEffect(() => {
-    setFacetSel({})
+    // Back-navigation restore: if this step already has a pick, reconstruct the
+    // drill-down so the product list shows immediately with the selection
+    // highlighted — instead of dropping the user back on the first filter chip.
+    const st = useConfiguratorStore.getState()
+    const existing = multi ? st.storage[0]?.option ?? null : st[category as 'processor' | 'chassis' | 'ram']?.option ?? null
+    if (existing && !multi) {
+      const restored: Record<string, FacetVal> = {}
+      for (const f of facets) restored[f.key] = f.get(existing) ?? null
+      setFacetSel(restored)
+      setVendor(vendorFacet ? vendorFacet.get(existing) ?? null : null)
+    } else if (existing && multi) {
+      // Multiple drives may span facet values → show the full list (all "Any").
+      const anyAll: Record<string, FacetVal> = {}
+      for (const f of facets) anyAll[f.key] = null
+      setFacetSel(anyAll)
+      setVendor(null)
+    } else {
+      setFacetSel({})
+      setVendor(null)
+    }
     setSearch('')
-    setVendor(null)
     if (!ready) {
       setOptions([])
       return
@@ -100,6 +146,13 @@ export function StepPicker({
     return v === undefined || v === null ? true : (f.get(o) || '') === v
   }
 
+  // Step-level prefilter (e.g. chassis socket rule) — applied before everything.
+  const base = useMemo(
+    () => (prefilter ? options.filter(prefilter) : options),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [options, prefilter],
+  )
+
   const activeIndex = facets.findIndex((f) => facetSel[f.key] === undefined)
   const allDecided = activeIndex === -1
 
@@ -107,21 +160,21 @@ export function StepPicker({
   const vendorTabs = useMemo(() => {
     if (!vendorFacet) return []
     const m = new Map<string, number>()
-    for (const o of options) {
+    for (const o of base) {
       if (!matchesSearch(o)) continue
       const v = vendorFacet.get(o)
       if (v) m.set(v, (m.get(v) || 0) + 1)
     }
     return [...m.entries()].sort((a, b) => b[1] - a[1])
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, search])
+  }, [base, search])
 
   // Counts for the currently-active facet, over vendor + already-decided facets.
   const activeFacet = allDecided ? null : facets[activeIndex]
   const activeValues = useMemo(() => {
     if (!activeFacet) return []
     const m = new Map<string, number>()
-    for (const o of options) {
+    for (const o of base) {
       if (!matchesVendor(o) || !matchesSearch(o)) continue
       if (!facets.slice(0, activeIndex).every((f) => facetMatches(o, f))) continue
       const v = activeFacet.get(o)
@@ -131,33 +184,73 @@ export function StepPicker({
       activeFacet.numeric ? (parseInt(b[0]) || 0) - (parseInt(a[0]) || 0) : b[1] - a[1],
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, vendor, search, facetSel])
+  }, [base, vendor, search, facetSel])
 
   const products = useMemo(() => {
-    if (searching) return options.filter(matchesSearch)
+    if (searching) return base.filter(matchesSearch)
     if (!allDecided) return []
-    return options.filter((o) => matchesVendor(o) && facets.every((f) => facetMatches(o, f)))
+    return base.filter((o) => matchesVendor(o) && facets.every((f) => facetMatches(o, f)))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, vendor, search, facetSel])
+  }, [base, vendor, search, facetSel])
 
   function pickFacet(key: string, value: string | null) {
     setFacetSel((s) => ({ ...s, [key]: value }))
   }
   function changeFacet(idx: number) {
-    // Re-open this facet and clear it + everything downstream. Changing a filter
-    // invalidates the current pick, so drop the selection (resets qty too).
+    // Re-open this facet and clear it + everything downstream. For single picks a
+    // filter change invalidates the current pick, so drop it (resets qty too).
+    // Storage picks are explicit adds, so changing a filter keeps the chosen drives.
     setFacetSel((s) => {
       const next = { ...s }
       for (let i = idx; i < facets.length; i++) next[facets[i].key] = undefined
       return next
     })
-    clear(category)
+    if (!multi) clear(category)
   }
   function pickVendor(v: string | null) {
     setVendor(v)
     setFacetSel({}) // restart the funnel
-    clear(category)
+    if (!multi) clear(category)
   }
+
+  // Selection adapters shared by both list render paths.
+  const selectedKeys = useMemo(
+    () =>
+      new Set(
+        multi
+          ? storageSels.map((sel) => optionKey(sel.option))
+          : singleSel
+            ? [optionKey(singleSel.option)]
+            : [],
+      ),
+    [multi, storageSels, singleSel],
+  )
+  const qtyOf = (o: ConfigOption) => {
+    if (multi) return storageSels.find((sel) => optionKey(sel.option) === optionKey(o))?.qty ?? 1
+    return singleSel && optionKey(singleSel.option) === optionKey(o) ? singleSel.qty : 1
+  }
+  const onPick = (o: ConfigOption) => (multi ? toggleStorage(o) : select(category, o))
+  const onRowQty = (o: ConfigOption, n: number) =>
+    multi ? setStorageQty(optionKey(o), n) : setQty(category, n)
+
+  const list = (items: ConfigOption[]) => (
+    <ProductList
+      products={items}
+      specs={specs}
+      isSelected={(o) => selectedKeys.has(optionKey(o))}
+      qtyOf={qtyOf}
+      onPick={onPick}
+      onQty={onRowQty}
+      hideQty={hideQty}
+      maxQty={maxQty}
+      multi={multi}
+      canSelect={canSelect}
+      canIncrement={canIncrement}
+    />
+  )
+
+  // Continue: single picks require a selection; storage is optional → always allowed.
+  const canContinue = multi ? true : !!singleSel
 
   // Back (hidden on the first step) + Continue, anchored at the bottom of the panel.
   const footer = (
@@ -169,7 +262,7 @@ export function StepPicker({
       ) : (
         <span />
       )}
-      <Button disabled={!selected} onClick={() => navigate(steps[stepIdx + 1].path)}>
+      <Button disabled={!canContinue} onClick={() => navigate(steps[stepIdx + 1].path)}>
         Continue →
       </Button>
     </div>
@@ -210,21 +303,15 @@ export function StepPicker({
         </div>
       }
     >
-      {error && <ErrorBanner message={error} />}
+      {error && <div className="shrink-0"><ErrorBanner message={error} /></div>}
+      {capBanner && <div className="mb-3 shrink-0">{capBanner}</div>}
 
       {loading ? (
         <Center>Loading…</Center>
       ) : searching ? (
-        <ProductList
-          products={products}
-          specs={specs}
-          selected={selected?.option ?? null}
-          qty={selected?.qty ?? 1}
-          onSelect={(o) => select(category, o)}
-          onQty={(n) => setQty(category, n)}
-        />
+        <div className="flex min-h-0 flex-1 flex-col">{list(products)}</div>
       ) : (
-        <div className="flex h-full flex-col">
+        <div className="flex min-h-0 flex-1 flex-col">
           {/* Chosen-filters row (decided facets, in one row) */}
           {facets.some((f) => facetSel[f.key] !== undefined) && (
             <div className="mb-3 flex flex-wrap items-center gap-1.5">
@@ -263,14 +350,7 @@ export function StepPicker({
                 {products.length} option{products.length === 1 ? '' : 's'}
                 {products.length > LIST_CAP && ` · showing ${LIST_CAP}`}
               </div>
-              <ProductList
-                products={products}
-                specs={specs}
-                selected={selected?.option ?? null}
-                qty={selected?.qty ?? 1}
-                onSelect={(o) => select(category, o)}
-                onQty={(n) => setQty(category, n)}
-              />
+              {list(products)}
             </div>
           )}
         </div>
@@ -306,8 +386,8 @@ function Frame({
         <p className="mt-0.5 max-w-2xl text-caption text-muted">{hint}</p>
         {tools && <div className="mt-3">{tools}</div>}
       </div>
-      <div className="mt-4 min-h-0 flex-1">{children}</div>
-      {footer && <div className="mt-4 shrink-0 border-t border-border pt-4">{footer}</div>}
+      <div className="mt-4 flex min-h-0 flex-1 flex-col">{children}</div>
+      {footer && <div className="mt-4 shrink-0 border-t border-border bg-surface pt-4">{footer}</div>}
     </div>
   )
 }
@@ -352,17 +432,27 @@ function FacetPanel({
 function ProductList({
   products,
   specs,
-  selected,
-  qty,
-  onSelect,
+  isSelected,
+  qtyOf,
+  onPick,
   onQty,
+  hideQty,
+  maxQty,
+  multi,
+  canSelect,
+  canIncrement,
 }: {
   products: ConfigOption[]
   specs: (o: ConfigOption) => SpecBadge[]
-  selected: ConfigOption | null
-  qty: number
-  onSelect: (o: ConfigOption) => void
-  onQty: (q: number) => void
+  isSelected: (o: ConfigOption) => boolean
+  qtyOf: (o: ConfigOption) => number
+  onPick: (o: ConfigOption) => void
+  onQty: (o: ConfigOption, q: number) => void
+  hideQty?: boolean
+  maxQty?: number
+  multi?: boolean
+  canSelect?: (o: ConfigOption) => boolean
+  canIncrement?: (o: ConfigOption, qty: number) => boolean
 }) {
   if (products.length === 0) {
     return <Center>No options match — change a filter, or go back and adjust an earlier pick.</Center>
@@ -370,17 +460,29 @@ function ProductList({
   return (
     <div className="min-h-0 flex-1 overflow-auto pr-1">
       <div className="flex flex-col gap-2">
-        {products.slice(0, LIST_CAP).map((o) => (
-          <OptionRow
-            key={optionKey(o)}
-            option={o}
-            specs={specs(o)}
-            selected={selected != null && optionKey(selected) === optionKey(o)}
-            qty={qty}
-            onSelect={() => onSelect(o)}
-            onQty={onQty}
-          />
-        ))}
+        {products.slice(0, LIST_CAP).map((o) => {
+          const selected = isSelected(o)
+          const qty = qtyOf(o)
+          const blocked = !selected && canSelect ? !canSelect(o) : false
+          const plusDisabled =
+            (maxQty != null && qty >= maxQty) || (canIncrement ? !canIncrement(o, qty) : false)
+          return (
+            <OptionRow
+              key={optionKey(o)}
+              option={o}
+              specs={specs(o)}
+              selected={selected}
+              qty={qty}
+              blocked={blocked}
+              hideQty={hideQty}
+              multi={multi}
+              plusDisabled={plusDisabled}
+              onSelect={() => !blocked && onPick(o)}
+              onQty={(n) => onQty(o, n)}
+              onRemove={() => onPick(o)}
+            />
+          )
+        })}
       </div>
     </div>
   )
@@ -391,25 +493,40 @@ function OptionRow({
   specs,
   selected,
   qty,
+  blocked,
+  hideQty,
+  multi,
+  plusDisabled,
   onSelect,
   onQty,
+  onRemove,
 }: {
   option: ConfigOption
   specs: SpecBadge[]
   selected: boolean
   qty: number
+  blocked?: boolean
+  hideQty?: boolean
+  multi?: boolean
+  plusDisabled?: boolean
   onSelect: () => void
   onQty: (q: number) => void
+  onRemove: () => void
 }) {
   const o = option
   return (
     <button
       type="button"
       onClick={onSelect}
+      disabled={blocked}
       style={selected ? { boxShadow: '0 0 0 3px var(--color-accent-soft)' } : undefined}
       className={cn(
         'group flex flex-col gap-2 rounded-card border bg-surface px-4 py-3 text-left transition-all duration-fast',
-        selected ? 'border-accent' : 'border-border hover:-translate-y-px hover:border-border-strong hover:shadow-hover',
+        selected
+          ? 'border-accent'
+          : blocked
+            ? 'cursor-not-allowed border-border opacity-50'
+            : 'border-border hover:-translate-y-px hover:border-border-strong hover:shadow-hover',
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -425,13 +542,22 @@ function OptionRow({
         ))}
         <Pill tone={conditionTone(o.condition)}>{conditionLabel(o.condition)}</Pill>
       </div>
-      {selected && (
+      {selected && !hideQty && (
         <div className="mt-1 flex items-center gap-3 border-t border-border pt-2" onClick={(e) => e.stopPropagation()}>
           <span className="text-[11px] uppercase tracking-wide text-muted">Quantity</span>
-          <QtyStepper qty={qty} onChange={onQty} />
+          <QtyStepper qty={qty} plusDisabled={plusDisabled} onChange={onQty} />
           <span className="text-caption text-muted">
             line total <b className="font-mono text-secondary">{money((o.price ?? 0) * qty)}</b>
           </span>
+          {multi && (
+            <button
+              type="button"
+              onClick={onRemove}
+              className="ml-auto text-[11px] font-medium text-muted hover:text-accent"
+            >
+              Remove
+            </button>
+          )}
         </div>
       )}
     </button>
@@ -465,14 +591,28 @@ function BigChip({ onClick, children }: { onClick: () => void; children: React.R
   )
 }
 
-function QtyStepper({ qty, onChange }: { qty: number; onChange: (q: number) => void }) {
+function QtyStepper({
+  qty,
+  plusDisabled,
+  onChange,
+}: {
+  qty: number
+  plusDisabled?: boolean
+  onChange: (q: number) => void
+}) {
   return (
     <div className="inline-flex items-center overflow-hidden rounded-control border border-border">
       <button type="button" className="px-2.5 py-0.5 text-primary hover:bg-subtle" onClick={() => onChange(qty - 1)} aria-label="Decrease quantity">
         −
       </button>
       <span className="w-9 text-center font-mono text-caption tabular-nums">{qty}</span>
-      <button type="button" className="px-2.5 py-0.5 text-primary hover:bg-subtle" onClick={() => onChange(qty + 1)} aria-label="Increase quantity">
+      <button
+        type="button"
+        disabled={plusDisabled}
+        className="px-2.5 py-0.5 text-primary hover:bg-subtle disabled:cursor-not-allowed disabled:opacity-40"
+        onClick={() => !plusDisabled && onChange(qty + 1)}
+        aria-label="Increase quantity"
+      >
         +
       </button>
     </div>

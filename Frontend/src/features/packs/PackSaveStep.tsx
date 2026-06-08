@@ -23,7 +23,7 @@ export function PackSaveStep() {
   const lines = selectionLines(store)
   const totals = quoteTotals(lines)
   // A pack is a complete, ready-to-sell build — require all four parts.
-  const complete = !!store.processor && !!store.chassis && !!store.ram && !!store.storage
+  const complete = !!store.processor && !!store.chassis && !!store.ram && store.storage.length > 0
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -131,8 +131,8 @@ export function PackSaveStep() {
                 </tr>
               </thead>
               <tbody>
-                {lines.map(({ category, sel }) => (
-                  <tr key={category} className="border-t border-border">
+                {lines.map(({ category, sel, key }) => (
+                  <tr key={key} className="border-t border-border">
                     <td className="py-2 text-primary">
                       <span className="text-muted">{CATEGORY_LABEL[category]} · </span>
                       {sel.option.label}

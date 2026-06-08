@@ -26,7 +26,11 @@ type ServerUnit struct {
 	CpuSocket        string `gorm:"column:cpu_socket" json:"cpu_socket"`
 	MaxSockets       *int   `gorm:"column:max_sockets" json:"max_sockets"`
 	RamType          string `gorm:"column:ram_type" json:"ram_type"`
+	MaxDimmSlots     *int   `gorm:"column:max_dimm_slots" json:"max_dimm_slots"`
+	MaxMemoryGB      *int   `gorm:"column:max_memory_gb" json:"max_memory_gb"`
 	DriveFormFactors string `gorm:"column:drive_form_factors" json:"drive_form_factors"`
+	DriveBays        *int   `gorm:"column:drive_bays" json:"drive_bays"`
+	SupportedInterfaces string `gorm:"column:supported_interfaces" json:"supported_interfaces"`
 	Datasheet        string `gorm:"column:datasheet" json:"datasheet"`
 	Source           string `gorm:"column:source" json:"source"`
 	IsServer         bool   `gorm:"column:is_server;default:true" json:"is_server"`

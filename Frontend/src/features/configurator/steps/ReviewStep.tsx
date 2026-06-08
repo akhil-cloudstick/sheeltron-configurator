@@ -22,10 +22,13 @@ export function ReviewStep() {
   const store = useConfiguratorStore()
   const customer = useConfiguratorStore((s) => s.customer)
   const setCustomer = useConfiguratorStore((s) => s.setCustomer)
+  const units = useConfiguratorStore((s) => s.units)
+  const setUnits = useConfiguratorStore((s) => s.setUnits)
   const reset = useConfiguratorStore((s) => s.reset)
 
   const lines = selectionLines(store)
-  const totals = quoteTotals(lines)
+  const totals = quoteTotals(lines, units)
+  const perUnitSubtotal = quoteTotals(lines, 1).subtotal
   const canSave = !!store.processor && !!store.chassis && lines.length > 0
 
   const [busy, setBusy] = useState(false)
@@ -40,6 +43,7 @@ export function ReviewStep() {
         customer_name: customer.name,
         customer_company: customer.company,
         customer_email: customer.email,
+        units,
         lines: lines.map(
           ({ category, sel }): QuoteLine => ({
             category,
@@ -144,8 +148,8 @@ export function ReviewStep() {
                 </tr>
               </thead>
               <tbody>
-                {lines.map(({ category, sel }) => (
-                  <tr key={category} className="border-t border-border">
+                {lines.map(({ category, sel, key }) => (
+                  <tr key={key} className="border-t border-border">
                     <td className="py-2 text-primary">
                       <span className="text-muted">{CATEGORY_LABEL[category]} · </span>
                       {sel.option.label}
@@ -164,7 +168,18 @@ export function ReviewStep() {
             </table>
           )}
           <div className="mt-4 flex flex-col items-end gap-1">
-            <SumRow label="Subtotal" value={money(totals.subtotal)} />
+            <div className="mb-1 flex w-56 items-center justify-between">
+              <span className="text-caption text-secondary">Units (identical servers)</span>
+              <Input
+                type="number"
+                min={1}
+                value={units}
+                className="w-20 font-mono"
+                onChange={(e) => setUnits(Math.max(1, Number(e.target.value.trim()) || 1))}
+              />
+            </div>
+            {units > 1 && <SumRow label="Per-unit subtotal" value={money(perUnitSubtotal)} muted />}
+            <SumRow label={units > 1 ? `Subtotal (× ${units})` : 'Subtotal'} value={money(totals.subtotal)} />
             <SumRow label="GST 18%" value={money(totals.gst)} muted />
             <div className="mt-1 flex w-56 items-center justify-between border-t border-border pt-2">
               <span className="font-display text-sm font-bold text-primary">Grand total</span>

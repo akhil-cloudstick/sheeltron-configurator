@@ -42,13 +42,23 @@ by matching keys at runtime (no precomputed matrix).
 
 | Step links | Rule |
 |---|---|
-| CPU → Chassis | `cpu.socket === chassis.cpu_socket` |
-| Chassis → RAM | `ram.ram_type === chassis.ram_type` |
-| Chassis → Storage | `chassis.drive_form_factors.split(';').includes(storage.form_factor)` (if chassis has no form-factor data, show all) |
+| CPU → Chassis (type) | `cpu.socket === chassis.cpu_socket` |
+| CPU → Chassis (qty) | `cpuQty <= chassis.max_sockets` (1 / 2 / 4) |
+| Chassis → RAM (type) | `ram.ram_type === chassis.ram_type` |
+| Chassis → RAM (qty) | `ramQty <= chassis.max_dimm_slots` and `totalRamGb <= chassis.max_memory_gb` (each when set) |
+| Chassis → Storage (form factor) | `chassis.drive_form_factors.split(';').includes(storage.form_factor)` (empty = unknown → show all) |
+| Chassis → Storage (interface) | `chassis.supported_interfaces.split(';').includes(storage.interface)` **only when set** (empty = unknown → don't filter) |
+| Chassis → Storage (qty) | `totalDrives <= chassis.drive_bays` (when set) |
 | Chassis → Network | not filtered in v1 — show all (chassis slot data is too thin) |
 
 **Always exclude** rows with `needs_review === "yes"`, and CPUs with
 `is_server === "no"`, from the wizard.
+
+> **Slot/interface fields are best-effort — apply only when set, never treat blank as
+> "unsupported".** `max_sockets` reliable. Of the 114 chassis: `supported_interfaces`
+> **73/114** (all 64 with a datasheet), `max_memory_gb` **44/114**, `max_dimm_slots`
+> **50/114**, `drive_bays` **59/114**. Blanks are where no datasheet exists (50/114) or the
+> HPE Gen10-Plus/EPYC spec-table didn't parse (~14) — top up by hand. Interface is advisory.
 
 ---
 
@@ -66,14 +76,18 @@ by matching keys at runtime (no precomputed matrix).
 **Step 2 · Chassis** — only chassis whose `cpu_socket` matches the CPU:
 - A **Brand** facet (HPE / Dell / …) with counts narrows the list.
 - Chassis are grouped by `model_family` (drive-bay variants collapse); each shows
-  `ram_type`, `drive_form_factors`, and stock count.
-- Selecting a chassis fixes `ram_type` + `drive_form_factors`.
+  `max_sockets` (1P/2P/4P), `ram_type`, `drive_form_factors`, `drive_bays`,
+  `supported_interfaces`, and stock count.
+- Selecting a chassis fixes `ram_type` + `drive_form_factors` + `drive_bays` + `supported_interfaces`.
 
 **Step 3 · RAM** — only the chassis's DDR generation:
 - Facets: **DDR generation** (fixed by chassis), **Brand**, **Speed (MT/s)**.
+- The "why" line shows the chassis's `max_dimm_slots` / `max_memory_gb` (when known) for the quantity rule.
 
-**Step 4 · Storage** — only the chassis's drive form factor(s):
+**Step 4 · Storage** — only the chassis's drive form factor(s) **and** supported interface(s):
+- Filtered by `drive_form_factors` and (when known) `supported_interfaces`.
 - Facets: **Type** (HDD / SSD / NVMe), **Brand**, **Speed**.
+- The "why" line shows the bay cap (`up to N drives`) for the quantity rule.
 
 **Reset cascade** (critical): changing the **CPU** clears chassis + its brand filter +
 all RAM/storage selections; changing the **chassis** clears the RAM/storage facet
